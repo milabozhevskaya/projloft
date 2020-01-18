@@ -30,9 +30,7 @@ html(lang="en")
                       a.socials__link
                         +icon(item, "socials__icon")        
             .star__content
-              .user-info
-                .user-info__desc Личный сайт веб-разработчика
-                .user-info__username Мила Божевская
+              .username Мила <br> Божевская
             .star__buttons
               a.scroll-btn Скролл
         section.about
@@ -55,13 +53,18 @@ html(lang="en")
                         each row in rows
                           tr.user__text-row
                             each cell in row
-                              td #{cell}
+                              td.user__text-td #{cell}
               .about__right
-                .about__textwelcom Привет, меня зовут
+                .about__textwelcome Привет, меня зовут
                 .about__nameuser Мила Божевская
                 .about__desc Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
                 .about__postscr Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-
+      .values
+        .tringles
+          svg.tringles__item.tringles__item--left(viewBox="0 0 1000 100" preserveAspectRatio="none")
+            polygon(points="0,0 0,100 1000,100")
+          svg.tringles__item.tringles__item--right(viewBox="0 0 1000 100" preserveAspectRatio="none")
+            polygon(points="1000,0 1000,100 0,100")
 
       //- .maincontent
       //-   +image('content/user.jpg', 'user-pic')
