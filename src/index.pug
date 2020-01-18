@@ -1,0 +1,43 @@
+include ./mixins.pug
+
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Portfolio | main page
+  body
+    .wrapper
+      .welcome-section
+        section.star
+          header.star__header
+            .star__logo
+              .logo BA
+            .star__menu
+              - var menu = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"];
+              nav.menu
+                ul.menu__items
+                  each item in menu
+                    li.munu__item
+                      a.menu__link #{item}
+            .star__links
+              - var icons = ["insta", "vk", "github"];
+              ul.socials
+                each item in icons
+                  li.socials__item
+                    a.socials__link
+                      +icon(item, "socials__icon")        
+          .star__content
+            .user-info
+              .user-info__desc Личный сайт
+              .user-info__username Мила Божевская
+          .star__buttons
+            a.scroll-btn Скролл
+
+
+
+      //- .maincontent
+      //-   +image('content/user.jpg', 'user-pic')
+      //-   +icon('link', 'link-class')
+      //-   .icon-bg
