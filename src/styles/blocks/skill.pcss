@@ -1,0 +1,41 @@
+.skill {
+  width: 200px;
+  height: 200px;
+  fill: transparent;
+  position: relative;
+
+  &__circle {
+    &--under {
+      stroke: #eaeaea;
+      stroke-width: 10px;
+    }
+    &--above {
+      stroke-width: 20px;
+      stroke-dasharray: 421;
+      animation: animateSkill 100s linear infinite;
+      animation-play-state: paused;
+    }
+
+  }
+  &__title {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+
+}
+
+@keyframes animateSkill{
+  from {
+    stroke-dashoffset: 421;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
