@@ -1,4 +1,21 @@
 include ./mixins.pug
+//- include ./components/variables.pug
+-
+  var menu = [
+    ["Главная", "#"],
+    ["Обо мне", "#"],
+    ["Навыки", "#"],
+    ["Работы", "#"],
+    ["Отзывы", "#"],
+    ["Связаться", "#"]
+  ];
+
+- 
+  var social = [
+    ["insta", "#"],
+    ["vk", "#"],
+    ["github", "#"]
+  ];
 
 <!DOCTYPE html>
 html(lang="en")
@@ -16,29 +33,21 @@ html(lang="en")
               .star__logo
                 .logo BA
               .star__menu
-                - var menu = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"];
-                nav.menu
-                  ul.menu__items
-                    each item in menu
-                      li.menu__item
-                        a.menu__link #{item}
+                +nav(menu, "header")
               .star__links
-                - var icons = ["insta", "vk", "github"];
-                ul.socials
-                  each item in icons
-                    li.socials__item
-                      a.socials__link
-                        +icon(item, "socials__icon")        
+                +socials(social,"header")       
             .star__content
               .username Мила <br> Божевская
             .star__buttons
-              a.scroll-btn Скролл
+              a.scroll-btn
+                .scroll-btn__name Скролл
+                +icon("scroll", "scroll")
         section.about
           .container
             .about__container
               .about__left
-                .user
-                  .user__avatar
+                .user-boss
+                  .user-boss__avatar
                     .avatar
                       +image("content/user.jpg", "user photo", "avatar__pic")
                   .user__data
@@ -59,13 +68,15 @@ html(lang="en")
                 .about__nameuser Мила Божевская
                 .about__desc Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
                 .about__postscr Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-      .values
+      section.values
         .tringles
           svg.tringles__item.tringles__item--left(viewBox="0 0 1000 100" preserveAspectRatio="none")
             polygon(points="0,0 0,100 1000,100")
           svg.tringles__item.tringles__item--right(viewBox="0 0 1000 100" preserveAspectRatio="none")
             polygon(points="1000,0 1000,100 0,100")
-        .container
+        .guitar
+          +image("bg/guitar.png", "guitar photo", "guitar__pic")
+        .container.values__container
           .values__text
             .values__text-title Чем я могу быть вам полезна?
             .values__text-desc Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
@@ -107,10 +118,133 @@ html(lang="en")
                                   r="67" cx="100" cy="100" stroke="url(#skill__gradient" transform="rotate(-180 100 100)" style=`animation-delay: ${skill[1]};`
                                 ).skill__circle.skill__circle--above
                               .skill__title #{skill[0]}
+      section.my-works
+        .container
+          .my-works__title Мои работы
+          .my-works__content
+            .slider
+              .slider__display
+                .display
+                  +image("content/my-works-prev1.png", "my-works", "display-pic")
+                  .display__slider-prev
+                    - 
+                      var mini= [
+                      "my-works-mini1", "my-works-mini2",
+                      "my-works-mini3", "my-works-mini4"
+                      ];
+                    ul.slider-prev
+                      each item in mini
+                        li.slider-prev__item
+                          a.slider-prev__link
+                            .slider-prev__mask
+                            +image(`content/${item}.png`, "#{item}", "slider-prev-mini")
+                    .display__buttons
+                      a.display__btn.display__btn--next
+                        +icon("arrow-down", "arrow-next")
+                      a.display__btn.display__btn--prev
+                        +icon("arrow-down", "arrow-prev")
+              .slider__desc
+                .slider__desc-tags
+                  -
+                    var tags= [
+                      "HTML", "CSS", "JavaScript"
+                    ]
+                  ul.tags
+                    each item in tags
+                      li.tags__item #{item}
+                .slider__desc-text
+                  h3.slider__desc-title Сайт школы<br>образования
+                  .slider__desc-info Эта девушка проходила обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                .slider__desc-btns
+                  a.my-works__link
+                    +icon("link", "my-works-icon")
+                    .my-works__link-text Посмотреть сайт
+      .end-section
+        section.reviews
+          .container.reviews__container
+            .reviews__content
+              h2.reviews__title Что обо мне говорят
+              ul.reviews__slider
+                - for (var i = 0; i<2; i++)
+                  -
+                    var reviews= [
+                      ["Эта девушка проходила обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
+                        "koval",
+                        "Ковальчук Дмитрий",
+                        "Основатель Loftschool"
+                      ],
+                      [
+                        "Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах",
+                        "sabanc",
+                        "Владимир Сабанцев",
+                        "Преподаватель"
+                      ]
+                    ]
+                  li.reviews__item
+                    .reviews__quote
+                      +icon("quote", "reviews__quote-icon")
+                    .review
+                      .review__text #{reviews[i][0]}
+                      .review__user
+                        .user
+                          .user__photo
+                            +image(`content/${reviews[i][1]}.png`, "user photo", "user__photo-avatar")
+                          .user__info
+                            .user__info-name #{reviews[i][2]}
+                            .user__info-pos #{reviews[i][3]}
+                .reviews__slider-direc
+                  a.reviews__slider-direc--prev.reviews__slider-direc--link
+                    +icon("arrow-down", "reviews__slider-arrow-prev arrow-prev")
+                  a.reviews__slider-direc--next.reviews__slider-direc--link
+                    +icon("arrow-down", "reviews__slider-arrow-next arrow-next")
+        section.network
+          .container.network__container
+            .network__content
+              .network__title Связаться со мной
+              .network__form-message
+                form.form(metod="post")
+                  .form__elem
+                    .form__row
+                      label.form__block
+                        .form__text.form__text--name Введите ваше имя
+                        .form__icon.form__icon--name
+                          +icon("user", "user-icon-form")
+                        input.form__input.form__input--name(type="text" name="name" required autocomplete="off" placeholder="Ковальчук Дмитрий" onFocus="this.placeholder='';")
+                        .error(aria-label="ошибка - не ввдено имя")
+                      label.form__block
+                        .form__text.form__text-email Введите ваш email
+                        .form__icon.form__icon--email
+                          +icon("envelope", "envelope-icon-form")
+                        input.form__input.form__input--email(type="text" name="email" required autocomplete="off" placeholder="loftschool@study.com" onFocus="this.placeholder='';")
+                        .error(aria-label="ошибка - не ввден email")
+                    .form__row
+                      label.form__inline
+                        .form__text.form__text-msg Сообщение к письму
+                        textarea.form__input.form__input--textarea(name="comment" max-cols="30" max-rows="10" placeholder="Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса" onFocus="this.placeholder='';")
+                        .form__icon.form__icon--msg
+                          +icon("message", "message-icon-form")
+                    .form__button
+                      a.form__button--ref Отправить
+      footer.footer
+          .container.footer__container
+            .footer__content
+              .footer__autor
+                .copyright
+                  .copyright__year © 2019
+                  .copyright__autor
+                    .copyright__autor-name Мила<br/>Божевская
+                    .copyright__autor-info Личный сайт<br/>веб разработчика
+              .footer__info
+                .footer__menu
+                  +nav(menu, "header")
+                .footer__column
+                  .footer___column-left
+                    .footer__info-about Этот сайт я сделала в рамках обучения в Школе онлайн образования Loftschool
+                    .footer__info-socials
+                      +socials(social, "footer")
+                  .footer__column-right
+                    .footer__info-text Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                    .footer__info-autor Martin Goldwig
+                
 
 
-
-      //- .maincontent
-      //-   +image('content/user.jpg', 'user-pic')
-      //-   +icon('link', 'link-class')
-      //-   .icon-bg
