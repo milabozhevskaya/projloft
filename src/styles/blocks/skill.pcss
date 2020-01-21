@@ -2,12 +2,24 @@
 .skills-circles {
   display: inline-flex;
   flex-direction: column;
+  width: 90%;
+}
+
+.skills-circles__item {
+  margin-bottom: 4%;
+  &:last-child {
+    margin-bottom: 0;
+  }
+
 }
 
 .skills {
   display: flex;
   flex-direction: row;
-  aligne-items: center;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  
 }
 
 .skills-row__title {
@@ -20,8 +32,8 @@
 }
 
 .skill {
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: 200px;
   fill: transparent;
   position: relative;
 
@@ -32,7 +44,7 @@
     }
     &--above {
       stroke-width: 20px;
-      stroke-dasharray: 421;
+      stroke-dasharray: 425;
       animation: animateSkill 100s linear infinite;
       animation-play-state: paused;
     }
@@ -46,14 +58,15 @@
     font-size: 18px;
     font-weight: bold;
     text-align: center;
+    line-height: 2.67;
+    opacity: .5;
   }
-
 
 }
 
 @keyframes animateSkill{
   from {
-    stroke-dashoffset: 421;
+    stroke-dashoffset: 425;
   }
   to {
     stroke-dashoffset: 0;

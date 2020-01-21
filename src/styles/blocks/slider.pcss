@@ -31,7 +31,7 @@
   position: absolute;
   bottom: 10%;
   right: 0;
-  width: 75%;
+  width: 85%;
 }
 
 .slider-prev {
@@ -40,8 +40,10 @@
 }
 
 .slider-prev__item {
+  transition: .6s;
   &--active {
-    outline: 3px solid #5500f2;
+    z-index: 10;
+    outline: 3px solid $main-color;
   }
   position: relative;
 }
@@ -53,7 +55,7 @@
   background-color: none;
   transition: .7s;
   &:hover {
-    background-color: #5500f2;
+    background-color: $main-color;
     opacity: .3;
   }
   
@@ -88,7 +90,7 @@
   display: flex;
   justify-content: center;
   &:hover {
-    background-color: #5500f2;
+    background-color: $main-color;
   }
 }
 
@@ -100,7 +102,7 @@
 }
 
 .slider__desc-tags {
-  margin-bottom: 40px;
+  margin-bottom: 13%;
 }
 
 .tags {
@@ -120,12 +122,13 @@
   font-size: 30px;
   font-weight: bold;
   line-height: 1.6;
-  margin-bottom: 30px;
+  margin-bottom: 13%;
 }
 
 .slider__desc-info {
   font-weight: 600;
   line-height: 1.8;
   opacity: .7;
+  margin-bottom: 10%;
 }
 

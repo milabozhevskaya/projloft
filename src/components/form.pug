@@ -1,0 +1,26 @@
+form.form(metod="post")
+  .form__elem
+    .form__row
+      label.form__block
+        .form__text.form__text--name Введите ваше имя
+        .form__wrap
+          .form__icon.form__icon--name
+            +icon("user", "user-icon-form")
+          input.form__input.form__input--name(type="text" name="name" required autocomplete="off" placeholder="Ковальчук Дмитрий" onFocus="this.placeholder='';")
+        .error(aria-label="ошибка - не ввдено имя")
+      label.form__block
+        .form__text.form__text-email Введите ваш email
+        .form__wrap
+          .form__icon.form__icon--email
+            +icon("envelope", "envelope-icon-form")
+          input.form__input.form__input--email(type="text" name="email" required autocomplete="off" placeholder="loftschool@study.com" onFocus="this.placeholder='';")
+        .error(aria-label="ошибка - не ввден email")
+    .form__row
+      label.form__inline
+        .form__text.form__text-msg Сообщение к письму
+        .form__wrap
+          textarea.form__input.form__input--textarea(name="comment" max-cols="30" max-rows="10" placeholder="Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса" onFocus="this.placeholder='';")
+          .form__icon.form__icon--msg
+            +icon("message", "message-icon-form")
+    .form__button
+      a.form__button--ref Отправить

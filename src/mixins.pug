@@ -17,5 +17,5 @@ mixin nav(array, mode)
   nav.menu
     ul.menu__items
       each item in array
-        li.menu__item
+        li(class="menu__item menu__item"+item[2])
           a(class='menu__link menu__link--'+mode href=`${item[1]}`) #{item[0]}

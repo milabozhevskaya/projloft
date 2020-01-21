@@ -2,40 +2,49 @@
 .form__row {
   display: flex;
   flex-direction: row;
-  margin-bottom: 25px;
-  &:last-child {
-    margin-bottom: 0;
-  }
+  margin-bottom: 6%;
 }
 
 .form__block {
-  width: 50%;
-  margin-right: 38px;
+  width: 43%;
+  margin-right: 5%;
   position: relative;
+  
   &:last-child {
     margin-right: 0;
   }
+  
 }
+.form__wrap {
+  transition: .6s;
+  &:hover {
+    opacity: 1;
+    color: $main-color;
+    fill: $main-color;
+  }
+}
+
 .form__inline {
   position: relative;
   width: 100%;
 }
 .form__text{
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.88;
   opacity: .3;
   margin-bottom: 10px;
+  padding-left: 16%;
 }
 .form__icon {
   position: absolute;
   fill: currentColor;
   opacity: .3;
   &--name {
-    top: 56%;
+    top: 50%;
   }
   &--email {
-    top: 60%;
+    top: 44%;
   }
   &--msg {
     top: 40%;
@@ -73,12 +82,16 @@
 }
 
 .form__button--ref {
-  padding: 20px 70px;
-  background-image: linear-gradient(to right, rgb(173,0,237) 0%, rgb(129,0,240) 40%, rgb(85,0,242) 100%);
+  padding: 29px 122px;
+  background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,124,241) 60%, rgb(0,137,242) 100%);
   text-transform: uppercase;
-  border-radius: 40px 5px;
+  border-radius: 40px;
   font-size: 18px;
   font-weight: bold;
   line-height: 2.67;
   color: currentColor;
+  transition: .6s;
+  &:hover {
+    background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,127,255) 35%, rgb(0,145,255) 100%);
+  }
 }

@@ -1,0 +1,26 @@
+section.about
+  .container
+    .about__container
+      .about__left
+        .user-boss
+          .user-boss__avatar
+            .avatar
+              +image("content/user.jpg", "user photo", "avatar__pic")
+          .user__data
+            -
+              var rows = [
+                ["Проживаю", "Херсон"],
+                ["Возраст", "25 лет"],
+                ["Родилась", "11 августа"]
+              ];
+            table.user__text
+              table.user__text-table
+                each row in rows
+                  tr.user__text-row
+                    each cell in row
+                      td.user__text-td #{cell}
+      .about__right
+        .about__textwelcome Привет, меня зовут
+        .about__nameuser Мила Божевская
+        .about__desc Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+        .about__postscr Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!

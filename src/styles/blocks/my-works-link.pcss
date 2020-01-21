@@ -7,10 +7,22 @@
   font-size: 18px;
   font-weight: bold;
   line-height: 2.67;
+  transition: .6s;
+  &:hover {
+    & .my-works__link-text {
+        border-bottom: 1px solid $links-color;
+    }
+    
+  }
 }
 .my-works-icon {
   fill: currentColor;
   width: 15px;
   height: 15px;
   margin-right: 20px;
+}
+.my-works__link-text {
+  transition: .6s;
+  border-bottom: 1px solid transparent;
+
 }
