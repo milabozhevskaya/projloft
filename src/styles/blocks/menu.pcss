@@ -1,24 +1,23 @@
 .menu__items {
   display: flex;
+  justify-content: space-between;
 }
 
 .menu__item {
-  margin-right: 50px;
   color: currentColor;
   border-bottom: 1px solid transparent;
   opacity: .7;
   transition: .6s;
+  flex-grow: 1;
+  text-align: center;
 
   &:last-child {
     margin-right: 0;
   }
   &:hover {
     opacity: 1;
-  }
-  &--active {
     color: $main-color;
     border-color: $main-color;
-    opacity: 1;
   }
 }
 
@@ -26,7 +25,5 @@
   text-decoration: none;
   color: currentColor;
   line-height: 5;
-  &--footer {
-    
-  }
+  
 }
