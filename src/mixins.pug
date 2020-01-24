@@ -5,3 +5,17 @@ mixin icon(name, className)
 
 mixin image(path, altdesc, className)
   img(src=require(`images/${path}`) alt=altdesc class=className)
+
+mixin socials(array, mode)
+  ul.socials
+    each item in array
+      li.socials__item
+        a(class='socials__link socials__link--'+mode href="`${item[1]}`" target="blank")
+          +icon(`${item[0]}`, "socials__icon socials__icon--"+mode)
+
+mixin nav(array, mode)
+  nav.menu
+    ul.menu__items
+      each item in array
+        li.menu__item
+          a(class='menu__link menu__link--'+mode href=`${item[1]}`) #{item[0]}

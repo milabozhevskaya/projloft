@@ -1,0 +1,21 @@
+section.reviews
+  .container.reviews__container
+    .reviews__content
+      h2.reviews__title Что обо мне говорят
+      ul.reviews__slider
+        - for (var i = 0; i<2; i++)
+          li.reviews__item
+            .reviews__quote
+              +icon("quote", "reviews__quote-icon")
+            .review
+              .review__text #{reviews[i][0]}
+              .review__user
+                .user
+                  .user__photo
+                    +image(`content/${reviews[i][1]}.png`, "user photo", "user__photo-avatar")
+                  .user__info
+                    .user__info-name #{reviews[i][2]}
+                    .user__info-pos #{reviews[i][3]}
+      .reviews__slider-direc
+        +arrow("reviews__slider-btn", "prev")
+        +arrow("reviews__slider-btn", "next")

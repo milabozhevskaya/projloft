@@ -1,0 +1,32 @@
+.end-section {
+  width: 100%;
+  /* height: 100%; */
+  /* // width: 1800px; */
+  height: 100%;
+  background-image: url('~images/bg/last-page.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  &::before {
+    content: "";
+    background-image: url('~images/bg/guitarist.png');
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 73%;
+    z-index: 10;
+  }
+  &::after {
+    content: "";
+    background-image: url('~images/bg/instr.png');
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 50%;
+    z-index: 9;
+    top: 41%;
+  }
+}
