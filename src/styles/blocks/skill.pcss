@@ -2,11 +2,14 @@
 .skills-circles {
   display: inline-flex;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
 }
 
 .skills-circles__item {
-  margin-bottom: 4%;
+  margin-bottom: 2%;
+  @include fulldesctop {
+    margin-bottom: 4%;
+  }
   &:last-child {
     margin-bottom: 0;
   }
@@ -29,6 +32,9 @@
   font-stretch: normal;
   font-style: normal;
   line-height: 2;
+  @include fulldesctop {
+    padding-left: 6%;
+  }
 }
 
 .skill {
@@ -36,6 +42,10 @@
   height: 200px;
   fill: transparent;
   position: relative;
+  @include fulldesctop {
+    width: 180px;
+    height: 180px;
+  }
 
   &__circle {
     &--under {

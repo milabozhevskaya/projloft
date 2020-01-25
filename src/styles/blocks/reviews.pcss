@@ -1,21 +1,34 @@
 .reviews {
   min-width: 500px;
   color: white;
-  padding-top: 12%;
+  padding-top: 7%;
+  @include fulldesctop {
+    padding-top: 11%;
+  }
+}
+
+.reviews__container {
+  @include fulldesctop {
+  width: 90%;
+
+  }
 }
 
 .reviews__content {
-  width: 95%;
+  width: 73%;
   display: flex;
   flex-direction: column;
   position: relative;
+  @include fulldesctop {
+    width: 94%;
+  }
 }
 
 .reviews__title {
   font-size: 36px;
   font-weight: bold;
   line-height: 1.33;
-  margin-bottom: 10%;
+  margin-bottom: 9%;
 }
 
 .reviews__slider {
@@ -28,18 +41,28 @@
   display: flex;
   flex-direction: row;
   margin-right: 1%;
-  width: 49%;
+  width: 46%;
+  @include fulldesctop {
+    margin-right: 3%;
+  }
   &:last-child {
     margin-right: 0;
   }
 }
 
+.reviews__quote {
+  margin-right: 10%;
+  @include fulldesctop {
+    margin-right: 5%;
+  }
+
+}
 .reviews__quote-icon {
   width: 75px;
   height: 63px;
   fill: currentColor;
   opacity: .2;
-  margin-right: 15px;
+  
 }
 
 .review__text {
@@ -47,6 +70,9 @@
   line-height: 1.88;
   opacity: .5;
   margin-bottom: 7%;
+  @include fulldesctop {
+    margin-bottom: 9%;
+  }
 }
 
 .reviews__slider-direc {
@@ -54,8 +80,12 @@
   display: flex;
   flex-direction: row;
   position: absolute;
-  top: 6px;
-  left: 48%;
+  top: 3%;
+  left: 45%;
+  @include fulldesctop {
+    top: 2%;
+    left: 60%;
+  }
 }
 
 .reviews__slider-btn {

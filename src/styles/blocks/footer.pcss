@@ -1,10 +1,17 @@
 .footer {
-  padding-top: 5%;
+  padding-top: 4%;
   padding-bottom: 5%;
   background-color: #040009;
   color: white;
   z-index: 20;
   position: relative;
+}
+
+.footer__container {
+  width: 85%;
+  @include fulldesctop {
+    width: 90%;
+  }
 }
 
 .footer__content {
@@ -15,13 +22,21 @@
 
 .footer__autor {
   width: 26%;
-  padding-top: 4%;
+  padding-top: 2%;
+  margin-right: 8%;
+  @include fulldesctop {
+    padding-top: 4%;
+    margin-right: 0;
+  }
 }
 
 .copyright {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-around;
+  @include fulldesctop {
+    flex-direction: column;
+  }
 }
 
 .copyright__year {
@@ -36,7 +51,7 @@
   font-size: 18px;
   font-weight: bold;
   line-height: 1.67;
-  margin-bottom: 10%;
+  margin-bottom: 9%;
   text-transform: uppercase;
 }
 
@@ -47,10 +62,18 @@
 
 .footer__info {
   width: 60%;
+  @include fulldesctop {
+    width: 77%;
+  }
 }
 
 .footer__menu {
   margin-bottom: 3%;
+  width: 80%;
+  @include fulldesctop {
+    margin-bottom: 5%;
+    width: 90%;
+  }
 }
 
 
@@ -60,7 +83,10 @@
 }
 
 .footer___column-left {
-  margin-right: 23%;
+  margin-right: 20%;
+  @include fulldesctop {
+    margin-right: 8%;
+  }
 }
 
 .footer__info-about {

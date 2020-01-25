@@ -1,8 +1,10 @@
-
 .form__row {
   display: flex;
   flex-direction: row;
-  margin-bottom: 6%;
+  margin-bottom: 3%;
+  &--textarea {
+    margin-bottom: 9%;
+  }
 }
 
 .form__block {
@@ -22,6 +24,9 @@
     color: $main-color;
     fill: $main-color;
   }
+  &--textarea {
+
+  }
 }
 
 .form__inline {
@@ -33,21 +38,29 @@
   font-weight: 600;
   line-height: 1.88;
   opacity: .3;
-  margin-bottom: 10px;
-  padding-left: 16%;
+  padding-left: 12%;
+  &-msg {
+    padding-left: 6%;
+  }
+  @include fulldesctop {
+    margin-bottom: 2%;
+  }
 }
 .form__icon {
   position: absolute;
   fill: currentColor;
   opacity: .3;
   &--name {
-    top: 50%;
+    top: 48%;
+    left: 2%;
+
   }
   &--email {
-    top: 44%;
+    top: 51%;
   }
   &--msg {
-    top: 40%;
+    top: 42%;
+    left: 1%;
   }
 }
 .user-icon-form {
@@ -82,7 +95,7 @@
 }
 
 .form__button--ref {
-  padding: 29px 122px;
+  padding: 29px 120px;
   background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,124,241) 60%, rgb(0,137,242) 100%);
   text-transform: uppercase;
   border-radius: 40px;

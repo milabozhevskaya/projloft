@@ -15,10 +15,10 @@ form.form(metod="post")
             +icon("envelope", "envelope-icon-form")
           input.form__input.form__input--email(type="text" name="email" required autocomplete="off" placeholder="loftschool@study.com" onFocus="this.placeholder='';")
         .error(aria-label="ошибка - не ввден email")
-    .form__row
+    .form__row.form__row--textarea
       label.form__inline
         .form__text.form__text-msg Сообщение к письму
-        .form__wrap
+        .form__wrap--textarea
           textarea.form__input.form__input--textarea(name="comment" max-cols="30" max-rows="10" placeholder="Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса" onFocus="this.placeholder='';")
           .form__icon.form__icon--msg
             +icon("message", "message-icon-form")

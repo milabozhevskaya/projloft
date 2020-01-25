@@ -1,14 +1,28 @@
 .network {
   min-width: 500px;
-  padding-top: 19%;
-  padding-bottom: 15%;
+  padding-top: 11%;
+  padding-bottom: 9%;
   color: white;
+  @include fulldesctop {
+    margin-top: 6%;
+  padding-bottom: 15%;
+
+  }
 }
 
 .network__content {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 65%;
+  @include fulldesctop {
+    width: 88%;
+  }
+}
+
+.network__container {
+  @include fulldesctop {
+    width: 90%;
+  }
 }
 
 .network__title {
@@ -17,4 +31,6 @@
   line-height: 1.33;
   color: currentColor;
   margin-bottom: 8%;
+  @include fulldesctop {
+  }
 }
