@@ -5,6 +5,9 @@
   @include fulldesctop {
     padding-top: 11%;
   }
+  @include tablets {
+    padding-top: 16%;
+  }
 }
 
 .reviews__container {
@@ -21,6 +24,9 @@
   position: relative;
   @include fulldesctop {
     width: 94%;
+  }
+  @include tablets {
+    width: 100%;
   }
 }
 
@@ -45,6 +51,9 @@
   @include fulldesctop {
     margin-right: 3%;
   }
+  @include fulldesctop {
+    margin-right: 5%;
+  }
   &:last-child {
     margin-right: 0;
   }
@@ -62,7 +71,10 @@
   height: 63px;
   fill: currentColor;
   opacity: .2;
-  
+  @include tablets {
+    width: 36px;
+    height: 29px;
+  }
 }
 
 .review__text {
@@ -86,14 +98,18 @@
     top: 2%;
     left: 60%;
   }
+  @include tablets {
+    top: 0%;
+    left: 57%
+  }
 }
 
 .reviews__slider-btn {
-  padding: 12px 20px;
+  padding: 13px 21px;
   border-radius: 50%;
   border: 1px solid currentColor;
   background-color: transparent;
-  margin-right: 30px;
+  margin-right: 36px;
   transition: .6s;
   &:last-child {
     margin-right: 0;

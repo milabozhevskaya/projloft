@@ -1,6 +1,11 @@
 .menu__items {
   display: flex;
   justify-content: space-between;
+  @include tablets {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    line-height: 1;
+  }
 }
 
 .menu__item {
@@ -10,7 +15,11 @@
   transition: .6s;
   flex-grow: 1;
   text-align: center;
-
+   @include tablets {
+    flex-grow: 0;
+    text-align: left;
+    margin-right: 13%;
+   }
   &:last-child {
     margin-right: 0;
   }
@@ -25,5 +34,8 @@
   text-decoration: none;
   color: currentColor;
   line-height: 5;
-  
+  @include tablets {
+    line-height: 3;
+    
+  }
 }

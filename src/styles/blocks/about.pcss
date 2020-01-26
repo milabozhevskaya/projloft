@@ -5,8 +5,9 @@
   color: $color-light;
   @include fulldesctop {
     padding-top: 29%;
-    
-    
+  }
+  @include tablets {
+    padding-top: 44%;
   }
 }
 
@@ -23,6 +24,9 @@
 .about__left {
   width: 30%;
   margin-right: 8%;
+  @include tablets {
+    margin-right: 15%;
+  }
 }
 
 .about__right {
@@ -48,6 +52,9 @@
   line-height: 1.88;
   opacity: .5;
   margin-bottom: 13%;
+  @include tablets {
+    margin-bottom: 10%;
+  }
 }
 
 .about__postscr {

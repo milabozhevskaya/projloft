@@ -1,6 +1,9 @@
 .slider {
   display: flex;
   flex-direction: row;
+  @include tablets {
+    flex-direction: column;
+  }
 }
 .slider__display {
   position: relative;
@@ -14,14 +17,18 @@
     font-weight: 800;
     color: #e6e6e6;
   }
-@include fulldesctop {
-  width: 72%;
-  padding-top: 4%;
-  &:before {
-    font-size: 350px;
-    right: -2%;
-    bottom: 11%;
-  }
+  @include fulldesctop {
+    width: 72%;
+    padding-top: 4%;
+    &:before {
+      font-size: 350px;
+      right: -2%;
+      bottom: 11%;
+    }
+    @include tablets {
+      width: 100%;
+      margin-bottom: 9%;
+    }
 }
 }
 
@@ -30,6 +37,9 @@
   position: relative;
   @include fulldesctop {
     width: 90%;
+  }
+  @include tablets {
+    width: 91%;
   }
 }
 .display-pic {
@@ -46,6 +56,12 @@
   @include fulldesctop {
     width: 85%;
     height: 27%;
+  }
+  @include tablets {
+    bottom: 9%;
+    height: 28%;
+
+
   }
 }
 
@@ -120,11 +136,19 @@
   @include fulldesctop {
     width: 27%;
   }
+  @include tablets {
+    width: 100%;
+  }
 }
 
 .slider__desc-tags {
   margin-bottom: 10%;
   width: 84%;
+  @include tablets {
+    margin: 0 auto;
+    width: 43%;
+    margin-bottom: 2%;
+  }
 }
 
 .tags {
@@ -142,6 +166,11 @@
 
 .slider__desc-text {
   margin-bottom: 8%;
+  @include tablets {
+    text-align: center;
+    width: 64%;
+    margin: 0 auto;
+  }
 
 }
 
@@ -150,6 +179,9 @@
   font-weight: bold;
   line-height: 1.6;
   margin-bottom: 9%;
+  @include tablets {
+    margin-bottom: 5%;
+  }
 }
 
 .slider__desc-info {

@@ -7,6 +7,9 @@
   font-weight: bold;
   line-height: 2.67;
   transition: .6s;
+  @include tablets {
+    justify-content: center;
+  }
   &:hover {
     & .my-works__link-text {
         border-bottom: 1px solid $links-color;

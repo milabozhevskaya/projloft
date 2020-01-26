@@ -4,7 +4,8 @@
   padding-top: 2%;
   padding-bottom: 3%;
   color: $color-light;
-  @include fulldesctop {
+  @include tablets {
+    padding-top: 8%;
   }
 }
 
@@ -16,12 +17,18 @@
   @include fulldesctop {
     width: 90%;
   }
+  @include tablets {
+    justify-content: flex-start;
+  }
 }
 
 .star__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @include tablets {
+    margin-bottom: 25%;
+  }
 }
 
 .star__logo {
@@ -47,6 +54,15 @@
     width: 70%;
     margin: 0 4%;
   }
+  @include tablets {
+    display: none;
+  }
+}
+
+.star__links {
+  @include tablets {
+    padding-left: 25%;
+  }
 }
 
 .socials__icon--header {
@@ -63,6 +79,9 @@
   justify-content: center;
   flex-direction: row;
   align-items: flex-star;
+  @include tablets {
+    flex-direction: column;
+  }
 }
 
 .site-desc {
@@ -72,14 +91,26 @@
   opacity: .4;
   text-align: right;
   margin-right: 3%;
+  @include tablets {
+    font-size: 18px;
+    text-align: center;
+    margin: 0 0;
+    margin-bottom: 4%;
+  }
 }
 
 .username {
-  font-size: 78px;
+  font-size: 48px;
   font-weight: 800;
   font-stretch: normal;
   font-style: normal;
   line-height: 0.83;
+  @include tablets {
+    text-align: center;
+    margin: 0 0;
+    line-height: 1;
+
+  }
 }
 
 .star__buttons {
@@ -95,6 +126,9 @@
   &:hover {
     color: $main-color;
     fill: $main-color;
+  }
+  @include tablets {
+    display: none;
   }
 }
 

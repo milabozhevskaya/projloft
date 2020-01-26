@@ -5,6 +5,9 @@
   top: -131px;
   z-index: 10;
   width: 100%;;
+  @include tablets {
+    top: -70px;
+  }
 }
 
 .tringles__item {
@@ -12,7 +15,9 @@
   display: block;
   height: 132px;
   fill: currentColor;
- 
+  @include tablets {
+    height: 70px;
+  }
   &--left {
     width: 80%;
   }

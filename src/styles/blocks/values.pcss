@@ -12,6 +12,12 @@
     background-position: bottom 11% left -32%;
 
   }
+  @include tablets {
+    padding-top: 14%;
+    padding-bottom: 60%;
+    background-size: 89% 32%;
+
+  }
 }
 
 .guitar {
@@ -25,6 +31,12 @@
     top: -20%;
     left: -16%;
   }
+  @include tablets {
+    height: 58%;
+    transform: rotate(90deg);
+    top: 50%;
+    left: 30%;
+  }
 }
 
 .values__container {
@@ -32,6 +44,10 @@
   padding-left: 20%;
   @include fulldesctop {
     padding-left: 17%;
+  }
+  @include tablets {
+    padding-left: 0;
+    width: 80%;
   }
   
 }
@@ -41,6 +57,12 @@
   width: 74%;
   @include fulldesctop {
     margin-bottom: 11%;
+  }
+  @include tablets {
+    font-size: 18px;
+    width: 65%;
+    margin: 0 auto;
+    margin-bottom: 2%;
   }
 }
 
@@ -52,12 +74,21 @@
   @include fulldesctop {
     margin-bottom: 9%;
   }
+  @include tablets {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 4%;
+    line-height: 1.4;
+
+  }
 }
 
 .values__text-desc {
   font-weight: 600;
   line-height: 1.88;
   opacity: .5;
+  font-size: 16px;
 }
 
 .values__content {
