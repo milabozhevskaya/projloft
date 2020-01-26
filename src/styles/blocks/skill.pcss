@@ -10,6 +10,9 @@
   @include fulldesctop {
     margin-bottom: 4%;
   }
+  @include tablets {
+    margin-bottom: 14%;
+  }
   &:last-child {
     margin-bottom: 0;
   }
@@ -22,6 +25,11 @@
   align-items: center;
   width: 100%;
   justify-content: space-between;
+  @include tablets {
+    flex-wrap: wrap;
+    justify-content: center;
+
+  }
   
 }
 
@@ -35,9 +43,13 @@
   @include fulldesctop {
     padding-left: 6%;
   }
-  @include tablets {
+  @include desctop {
     padding-left: 0;
     text-align: center;
+  }
+  @include tablets {
+      font-size: 20px;
+
   }
 }
 
@@ -49,6 +61,11 @@
   @include fulldesctop {
     width: 180px;
     height: 180px;
+  }
+  @include tablets {
+    width: 164px;
+    height: 164px;
+    // display: flex;
   }
 
   &__circle {
@@ -76,6 +93,10 @@
     opacity: .5;
   }
 
+}
+.skill__shape {
+  width: 160px;
+  height: 160px;
 }
 
 @keyframes animateSkill{

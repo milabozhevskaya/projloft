@@ -1,9 +1,9 @@
 .menu__items {
   display: flex;
   justify-content: space-between;
-  @include tablets {
+  @include desctop {
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-between;
     line-height: 1;
   }
 }
@@ -15,10 +15,13 @@
   transition: .6s;
   flex-grow: 1;
   text-align: center;
-   @include tablets {
+  @include desctop {
     flex-grow: 0;
     text-align: left;
     margin-right: 13%;
+    &:last-child {
+      margin-right: 0;
+    }
    }
   &:last-child {
     margin-right: 0;
@@ -34,7 +37,7 @@
   text-decoration: none;
   color: currentColor;
   line-height: 5;
-  @include tablets {
+  @include desctop {
     line-height: 3;
     
   }

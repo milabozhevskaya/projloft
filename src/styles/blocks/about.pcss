@@ -6,7 +6,7 @@
   @include fulldesctop {
     padding-top: 29%;
   }
-  @include tablets {
+  @include desctop {
     padding-top: 44%;
   }
 }
@@ -19,18 +19,33 @@
   @include fulldesctop {
     width: 100%;
   }
+  @include tablets {
+    flex-direction: column;
+    width: 88%;
+
+  }
 }
 
 .about__left {
   width: 30%;
   margin-right: 8%;
-  @include tablets {
+  @include desctop {
     margin-right: 15%;
+  }
+  @include tablets {
+    margin-right: 0%;
+    width: 100%;
+    margin-bottom: 17%;
   }
 }
 
 .about__right {
   width: 58%;
+  @include tablets {
+      width: 100%;
+
+
+  }
 }
 
 .about__textwelcome {
@@ -45,6 +60,10 @@
   font-weight: bold;
   line-height: 1.33;
   margin-bottom: 7%;
+  @include tablets {
+    margin-bottom: 11%;
+
+  }
 }
 
 .about__desc {
@@ -52,8 +71,13 @@
   line-height: 1.88;
   opacity: .5;
   margin-bottom: 13%;
-  @include tablets {
+  @include desctop {
     margin-bottom: 10%;
+  }
+  @include tablets {
+    margin-bottom: 25%;
+    line-height: 1.6;
+
   }
 }
 
@@ -61,4 +85,8 @@
   font-style: italic;
   line-height: 1.88;
   opacity: .5;
+  @include tablets {
+    line-height: 1.6;
+
+  }
 }

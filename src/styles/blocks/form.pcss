@@ -2,13 +2,21 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 3%;
-  @include tablets {
+  @include desctop {
     margin-bottom: 5%;
+  }
+  @include tablets {
+    flex-direction: column;
+
+
   }
   &--textarea {
     margin-bottom: 9%;
-    @include tablets {
+    @include desctop {
       margin-bottom: 6%;
+    }
+    @include tablets {
+      margin-bottom: 22%;
     }
   }
 }
@@ -21,9 +29,16 @@
   &:last-child {
     margin-right: 0;
   }
-  @include tablets {
+  @include desctop {
     width: 49%;
     margin-right: 3%;
+  }
+  @include tablets {
+    width: 100%;
+    margin-right: 0%;
+    margin-bottom: 13%;
+
+
   }
 }
 .form__wrap {
@@ -117,8 +132,11 @@
   line-height: 2.67;
   color: currentColor;
   transition: .6s;
-  @include tablets {
+  @include desctop {
     padding: 29px 130px;
+  }
+  @include tablets {
+    padding: 25px 90px;
   }
   &:hover {
     background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,127,255) 35%, rgb(0,145,255) 100%);

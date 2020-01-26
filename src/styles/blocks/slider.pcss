@@ -1,7 +1,7 @@
 .slider {
   display: flex;
   flex-direction: row;
-  @include tablets {
+  @include desctop {
     flex-direction: column;
   }
 }
@@ -25,9 +25,16 @@
       right: -2%;
       bottom: 11%;
     }
-    @include tablets {
+    @include desctop {
       width: 100%;
       margin-bottom: 9%;
+    }
+    @include tablets {
+      margin-bottom: 20%;
+
+      &:before {
+        content: none;
+      }
     }
 }
 }
@@ -38,8 +45,11 @@
   @include fulldesctop {
     width: 90%;
   }
-  @include tablets {
+  @include desctop {
     width: 91%;
+  }
+  @include tablets {
+    width: 100%;
   }
 }
 .display-pic {
@@ -57,9 +67,15 @@
     width: 85%;
     height: 27%;
   }
-  @include tablets {
+  @include desctop {
     bottom: 9%;
     height: 28%;
+
+
+  }
+  @include tablets {
+    bottom: 0;
+    height: 48%;
 
 
   }
@@ -68,6 +84,9 @@
 .slider-prev {
   display: flex;
   flex-direction: row;
+  @include tablets {
+    display: none;
+  }
 }
 
 .slider-prev__item {
@@ -111,6 +130,10 @@
   @include fulldesctop {
     width: 9%;
   }
+  @include tablets {
+    width: 17%;
+    left: 83%;
+  }
 
   
 }
@@ -136,7 +159,7 @@
   @include fulldesctop {
     width: 27%;
   }
-  @include tablets {
+  @include desctop {
     width: 100%;
   }
 }
@@ -144,10 +167,15 @@
 .slider__desc-tags {
   margin-bottom: 10%;
   width: 84%;
-  @include tablets {
+  @include desctop {
     margin: 0 auto;
     width: 43%;
     margin-bottom: 2%;
+  }
+  @include tablets {
+    width: 86%;
+    margin-bottom: 4%;
+
   }
 }
 
@@ -166,10 +194,16 @@
 
 .slider__desc-text {
   margin-bottom: 8%;
-  @include tablets {
+  @include desctop {
     text-align: center;
     width: 64%;
     margin: 0 auto;
+  }
+  @include tablets {
+    text-align: left;
+    width: 83%;
+    margin-bottom: 4%;
+
   }
 
 }
@@ -179,8 +213,12 @@
   font-weight: bold;
   line-height: 1.6;
   margin-bottom: 9%;
-  @include tablets {
+  @include desctop {
     margin-bottom: 5%;
+  }
+  @include tablets {
+    font-size: 23px;
+    
   }
 }
 
@@ -190,3 +228,6 @@
   opacity: .7;
 }
 
+.slider__desc-btns {
+  padding-left: 9%;
+}

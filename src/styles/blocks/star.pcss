@@ -4,8 +4,13 @@
   padding-top: 2%;
   padding-bottom: 3%;
   color: $color-light;
-  @include tablets {
+  @include desctop {
     padding-top: 8%;
+  }
+  @include tablets {
+    padding-top: 20%;
+    min-width: 100%;
+
   }
 }
 
@@ -17,8 +22,11 @@
   @include fulldesctop {
     width: 90%;
   }
-  @include tablets {
+  @include desctop {
     justify-content: flex-start;
+  }
+  @include tablets {
+    width: 82%;
   }
 }
 
@@ -26,8 +34,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @include tablets {
+  @include desctop {
     margin-bottom: 25%;
+  }
+  @include tablets {
+    margin-bottom: 47%;
   }
 }
 
@@ -54,14 +65,17 @@
     width: 70%;
     margin: 0 4%;
   }
-  @include tablets {
+  @include desctop {
     display: none;
   }
 }
 
 .star__links {
-  @include tablets {
+  @include desctop {
     padding-left: 25%;
+  }
+  @include tablets {
+    display: none;
   }
 }
 
@@ -79,7 +93,7 @@
   justify-content: center;
   flex-direction: row;
   align-items: flex-star;
-  @include tablets {
+  @include desctop {
     flex-direction: column;
   }
 }
@@ -91,7 +105,7 @@
   opacity: .4;
   text-align: right;
   margin-right: 3%;
-  @include tablets {
+  @include desctop {
     font-size: 18px;
     text-align: center;
     margin: 0 0;
@@ -105,10 +119,16 @@
   font-stretch: normal;
   font-style: normal;
   line-height: 0.83;
-  @include tablets {
+  @include desctop {
     text-align: center;
     margin: 0 0;
     line-height: 1;
+
+  }
+  @include tablets {
+    line-height: 1.2;
+    font-size: 36px;
+
 
   }
 }
@@ -127,7 +147,7 @@
     color: $main-color;
     fill: $main-color;
   }
-  @include tablets {
+  @include desctop {
     display: none;
   }
 }

@@ -12,10 +12,17 @@
     background-position: bottom 11% left -32%;
 
   }
-  @include tablets {
+  @include desctop {
     padding-top: 14%;
-    padding-bottom: 60%;
+    padding-bottom: 45%;
     background-size: 89% 32%;
+
+  }
+  @include tablets {
+    padding-top: 24%;
+    padding-bottom: 100%;
+    background-position: bottom 4% left 135%;
+    
 
   }
 }
@@ -31,11 +38,16 @@
     top: -20%;
     left: -16%;
   }
-  @include tablets {
+  @include desctop {
     height: 58%;
     transform: rotate(90deg);
     top: 50%;
-    left: 30%;
+    left: 33%;
+  }
+  @include tablets {
+    height: 33%;
+    top: 70%;
+    left: 39%;
   }
 }
 
@@ -45,9 +57,9 @@
   @include fulldesctop {
     padding-left: 17%;
   }
-  @include tablets {
+  @include desctop {
     padding-left: 0;
-    width: 80%;
+    width: 90%;
   }
   
 }
@@ -58,11 +70,16 @@
   @include fulldesctop {
     margin-bottom: 11%;
   }
-  @include tablets {
+  @include desctop {
     font-size: 18px;
     width: 65%;
     margin: 0 auto;
     margin-bottom: 2%;
+  }
+  @include tablets {
+    width: 93%;
+    margin-bottom: 14%;
+
   }
 }
 
@@ -74,12 +91,17 @@
   @include fulldesctop {
     margin-bottom: 9%;
   }
-  @include tablets {
+  @include desctop {
     width: 90%;
     margin: 0 auto;
     text-align: center;
     margin-bottom: 4%;
     line-height: 1.4;
+
+  }
+  @include tablets {
+    width: 100%;
+    text-align: left;
 
   }
 }
@@ -96,6 +118,9 @@
   padding-left: 8%;
   @include fulldesctop {
     padding-left: 0%;
+  }
+  @include desctop {
+    justify-content: center;
   }
 }
 

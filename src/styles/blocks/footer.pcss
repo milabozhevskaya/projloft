@@ -5,8 +5,13 @@
   color: white;
   z-index: 20;
   position: relative;
-  @include tablets {
+  @include desctop {
     padding-top: 6%;
+  }
+  @include tablets {
+    padding-top: 19%;
+    padding-bottom: 18%;
+
   }
 }
 
@@ -15,12 +20,21 @@
   @include fulldesctop {
     width: 90%;
   }
+  @include tablets {
+    width: 81%;
+  }
 }
 
 .footer__content {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  @include tablets {
+  flex-direction: column;
+  justify-content: center;
+
+
+  }
 }
 
 .footer__autor {
@@ -31,9 +45,16 @@
     padding-top: 4%;
     margin-right: 0;
   }
-  @include tablets {
+  @include desctop {
     padding-top: 3%;
     margin-right: 12%;
+  }
+  @include tablets {
+    width: 100%;
+    margin-right: 0%;
+    margin-bottom: 11%;
+
+
   }
 }
 
@@ -52,8 +73,12 @@
   line-height: 0.63;
   opacity: .4;
   margin-bottom: 10%;
-  @include tablets {
+  @include desctop {
   margin-bottom: 18%;
+
+  }
+  @include tablets {
+  margin-bottom: 12%;
 
   }
 }
@@ -64,6 +89,10 @@
   line-height: 1.67;
   margin-bottom: 9%;
   text-transform: uppercase;
+  @include tablets {
+    margin-bottom: 3%;
+
+  }
 }
 
 .copyright__autor-info {
@@ -76,6 +105,9 @@
   @include fulldesctop {
     width: 77%;
   }
+  @include tablets {
+    width: 95%;
+  }
   
 }
 
@@ -86,9 +118,20 @@
     margin-bottom: 5%;
     width: 90%;
   }
-  @include tablets {
+  @include desctop {
     width: 100%;
     margin-bottom: 8%;
+    // & .menu__item {
+    //   margin-right: 17%;
+    //   &:last-child {
+    //     margin-right: 0;
+    //   }
+    // }
+
+  }
+  @include tablets {
+    width: 100%;
+    margin-bottom: 10%;
 
   }
 }
@@ -97,12 +140,21 @@
 .footer__column {
   display: flex;
   flex-direction: row;
+  @include tablets {
+  flex-direction: column;
+
+  }
 }
 
 .footer___column-left {
   margin-right: 20%;
   @include fulldesctop {
     margin-right: 8%;
+  }
+  @include tablets {
+    margin-right: 0%;
+    margin-bottom: 19%;
+
   }
 }
 
@@ -112,7 +164,7 @@
   margin-bottom: 5%;
 }
 .footer__info-socials {
-  @include tablets {
+  @include desctop {
     .socials__item {
       margin-right: 7%;
       &:last-child {
@@ -154,7 +206,11 @@
 }
 
 .footer__column-right {
-  @include tablets {
+  @include desctop {
     display: none;
+  }
+  @include tablets {
+    display: flex;
+    flex-direction: column;
   }
 }

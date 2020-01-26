@@ -5,8 +5,11 @@
   @include fulldesctop {
     padding-top: 11%;
   }
-  @include tablets {
+  @include desctop {
     padding-top: 16%;
+  }
+  @include tablets {
+    padding-top: 29%;
   }
 }
 
@@ -25,7 +28,7 @@
   @include fulldesctop {
     width: 94%;
   }
-  @include tablets {
+  @include desctop {
     width: 100%;
   }
 }
@@ -35,6 +38,11 @@
   font-weight: bold;
   line-height: 1.33;
   margin-bottom: 9%;
+  @include tablets {
+    font-size: 24px;
+    margin-bottom: 27%;
+
+  }
 }
 
 .reviews__slider {
@@ -51,8 +59,13 @@
   @include fulldesctop {
     margin-right: 3%;
   }
-  @include fulldesctop {
+  @include desctop {
     margin-right: 5%;
+  }
+  @include tablets {
+    margin-right: 0%;
+    width: 100%;
+
   }
   &:last-child {
     margin-right: 0;
@@ -64,6 +77,9 @@
   @include fulldesctop {
     margin-right: 5%;
   }
+  @include tablets {
+    display: none;
+  }
 
 }
 .reviews__quote-icon {
@@ -71,7 +87,7 @@
   height: 63px;
   fill: currentColor;
   opacity: .2;
-  @include tablets {
+  @include desctop {
     width: 36px;
     height: 29px;
   }
@@ -98,9 +114,13 @@
     top: 2%;
     left: 60%;
   }
-  @include tablets {
+  @include desctop {
     top: 0%;
     left: 57%
+  }
+  @include tablets {
+    top: 12%;
+    left: 20%;
   }
 }
 
