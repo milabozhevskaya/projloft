@@ -75,9 +75,11 @@
     }
     &--above {
       stroke-width: 20px;
-      stroke-dasharray: 425;
+      stroke-dasharray: 420;
+      // stroke-dashoffset: 0;
       animation: animateSkill 100s linear infinite;
       animation-play-state: paused;
+      animation-delay: 0;
     }
 
   }
@@ -101,7 +103,7 @@
 
 @keyframes animateSkill{
   from {
-    stroke-dashoffset: 425;
+    stroke-dashoffset: 420;
   }
   to {
     stroke-dashoffset: 0;
