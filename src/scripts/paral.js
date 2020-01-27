@@ -7,6 +7,11 @@ var parallax = (function () {
   var bgWelcome6 = document.querySelector('.welcome-bg__item--6');
   var bgWelcome8 = document.querySelector('.welcome-bg__item--8');
   var bgWelcome9 = document.querySelector('.welcome-bg__item--9');
+  var bgEnd1 = document.querySelector('.end-bg__item--1');
+  var bgEnd2 = document.querySelector('.end-bg__item--2');
+  var bgEnd3 = document.querySelector('.end-bg__item--3');
+  var bgEnd4 = document.querySelector('.end-bg__item--4');
+  var bgEnd5 = document.querySelector('.end-bg__item--5');
 
   var star = document.querySelector('.star');
   var about = document.querySelector('.about');
@@ -34,14 +39,14 @@ var parallax = (function () {
         this.move(bgWelcome9, wScroll, 50);
       }
       
-      // if (bottomOffset < 0) {
-      //   this.move(bgEnd1, bottomOffset, 300);
-      //   this.move(bgEnd2, bottomOffset, 300);
-      //   this.move(bgEnd3, bottomOffset, 300);
-      //   this.move(bgEnd4, bottomOffset, 300);
-      //   this.move(bgEnd5, bottomOffset, 300);
-      //   this.move(bgEnd6, bottomOffset, 300);
-      // }
+      if (bottomOffset < 0) {
+        this.move(bgEnd1, bottomOffset, 300);
+        this.move(bgEnd2, bottomOffset, 10);
+        this.move(bgEnd3, bottomOffset, 20);
+        this.move(bgEnd4, bottomOffset, 30);
+        this.move(bgEnd5, bottomOffset, 30);
+        this.move(bgEnd6, bottomOffset, 30);
+      }
     }
   }
 }());

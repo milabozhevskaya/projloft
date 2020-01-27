@@ -1,5 +1,7 @@
 include ./mixins.pug
 include components/arrow-prev-next
+
+
 -
   var menu = [
     ["Главная", "#"],
@@ -17,21 +19,21 @@ include components/arrow-prev-next
     ["github", "#"]
   ];
 
-- 
-  var skills = [
-    ["Frontend", [
-      ["HTML5", "-25s"],
-      ["CSS3", '-13s'],
-      ["Javascript", '-75s'],
-      ["Jquery и Vue.js", '-26s']]
-    ],
-    ["Workflow", [
-      ["GIT", '-13s'],
-      ["Terminal", '-25s'],
-      ["Gulp", '-50s'],
-      ["Webpack", '-40s']]
-    ]
-  ];
+//- - 
+//-   var skills = [
+//-     ["Frontend", [
+//-       ["HTML5", "-25s"],
+//-       ["CSS3", '-13s'],
+//-       ["Javascript", '-75s'],
+//-       ["Jquery и Vue.js", '-26s']]
+//-     ],
+//-     ["Workflow", [
+//-       ["GIT", '-13s'],
+//-       ["Terminal", '-25s'],
+//-       ["Gulp", '-50s'],
+//-       ["Webpack", '-40s']]
+//-     ]
+//-   ];
 
 - 
   var mini= [
@@ -91,7 +93,6 @@ html(lang="en")
           .end-bg__item.end-bg__item--3
           .end-bg__item.end-bg__item--4
           .end-bg__item.end-bg__item--5
-          .end-bg__item.end-bg__item--6
         include components/reviews
         section.network
           .container.network__container
@@ -100,6 +101,4 @@ html(lang="en")
               .network__form-message
                 include components/form
       include components/footer
-                
-
 
