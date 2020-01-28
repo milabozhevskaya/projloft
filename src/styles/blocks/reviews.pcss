@@ -22,7 +22,7 @@
 
 .reviews__content {
   width: 73%;
-  display: flex;
+  // display: flex;
   flex-direction: column;
   position: relative;
   @include fulldesctop {
@@ -46,20 +46,23 @@
 }
 
 .reviews__slider {
-  display: flex;
+  // display: flex;
   flex-direction: row;
   position: relative;
+  width: 100%;
 }
 
 .reviews__item {
   display: flex;
   flex-direction: row;
-  margin-right: 1%;
+  margin-right: 4%;
   width: 46%;
   @include fulldesctop {
+    width: 47%;
     margin-right: 3%;
   }
   @include desctop {
+    width: 45%;
     margin-right: 5%;
   }
   @include tablets {
@@ -103,7 +106,7 @@
   }
 }
 
-.reviews__slider-direc {
+.reviews__slider-direction {
   fill: currentColor;
   display: flex;
   flex-direction: row;
@@ -124,7 +127,7 @@
   }
 }
 
-.reviews__slider-btn {
+.reviews__slider-direc {
   padding: 13px 21px;
   border-radius: 50%;
   border: 1px solid currentColor;
