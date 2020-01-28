@@ -14,6 +14,9 @@
   &:last-child {
     margin-right: 0;
   }
+  &--first {
+    margin-right: 10%;
+  }
 }
 
 .socials__link {
@@ -31,6 +34,12 @@
   width: 28px;
   height: 28px;
   fill: currentColor;
+  &--first {
+    transition: .6s;
+    &:hover {
+      fill: $main-color;
+    }
+  }
   @include fulldesctop {
     // width: 30px;
     // height: 30px;

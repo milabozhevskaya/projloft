@@ -29,23 +29,22 @@ var parallax = (function () {
       var bottomOffset = getOffsets('end-section').top,
           welcomeOffset = getOffsets('welcome-section').bottom;
       if (welcomeOffset > 0) {
-        this.move(bgWelcome1, wScroll, 35);
-        this.move(bgWelcome2, wScroll, 32);
-        this.move(bgWelcome3, wScroll, 30);
-        this.move(bgWelcome4, wScroll, 25);
-        this.move(bgWelcome5, wScroll, 20);
-        this.move(bgWelcome6, wScroll, 15);
-        this.move(bgWelcome8, wScroll, 10);
-        this.move(bgWelcome9, wScroll, 50);
+        this.move(bgWelcome1, wScroll, 500);
+        this.move(bgWelcome2, wScroll, 60);
+        this.move(bgWelcome3, wScroll, 60);
+        this.move(bgWelcome4, wScroll, 40);
+        this.move(bgWelcome5, wScroll, 40);
+        this.move(bgWelcome6, wScroll, 30);
+        this.move(bgWelcome8, wScroll, 400);
+        this.move(bgWelcome9, wScroll, 500);
       }
       
       if (bottomOffset < 0) {
         this.move(bgEnd1, bottomOffset, 300);
-        this.move(bgEnd2, bottomOffset, 10);
+        this.move(bgEnd2, bottomOffset, 20);
         this.move(bgEnd3, bottomOffset, 20);
-        this.move(bgEnd4, bottomOffset, 30);
-        this.move(bgEnd5, bottomOffset, 30);
-        this.move(bgEnd6, bottomOffset, 30);
+        this.move(bgEnd4, bottomOffset, 50);
+        this.move(bgEnd5, bottomOffset, 50);
       }
     }
   }
@@ -62,3 +61,17 @@ window.onscroll = function () {
 
   parallax.init(wScroll);
 };
+
+
+
+const paral = document.querySelector(".welcome-bg");
+const layers = paral.children;
+
+function moveLayersDependsOnScroll(wScroll) {
+
+}
+
+window.addEventListener('scroll', e => {
+  const wScroll = window.pageYOffset;
+moveLayersDependsOnScroll(wScroll);
+})

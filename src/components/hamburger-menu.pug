@@ -1,15 +1,18 @@
 section.first
   .first__container
-    .first__bg
+    .first-bg
+      .first-bg__item.first-bg__item--1
+      .first-bg__item.first-bg__item--2
+      .first-bg__item.first-bg__item--3
+      .first-bg__item.first-bg__item--4
+    .first__header
+      .first__logo
+        .logo BA
+      .first__close
+        +icon("remove", "icon-close")
     .first__content
-      .first__header
-        .first__logo
-          .logo BA
-        .first__close
-          +icon("remove", "icon-close")
       .first__menu
-        .first__menu
-          +nav(menu, "first")
+        +nav(menu, "first")
       .first__social
         +socials(social,"first")
     

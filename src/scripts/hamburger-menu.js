@@ -6,13 +6,13 @@ const firstClose = document.querySelector('.first__close');
 function noScroll() {
   window.scrollTo(0, 0);
 }
-$("[data-scroll-to]").on("click", e => {
-  e.preventDefault();
-  const $this = $(e.currentTarget);
-  const target = $this.attr("data-scroll-to");
-  performTransition(target);
-  first.style.display = 'none';
-});
+// $("[data-scroll-to]").on("click", e => {
+//   e.preventDefault();
+//   const $this = $(e.currentTarget);
+//   const target = $this.attr("data-scroll-to");
+//   performTransition(target);
+//   // first.style.display = 'none';
+// });
 
 hamburger.addEventListener('click', function(event) {
   event.preventDefault();
