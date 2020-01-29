@@ -95,13 +95,14 @@
 
 .slider-prev__item {
   transition: .6s;
-  &--active {
-    z-index: 10;
-    outline: 3px solid $main-color;
-  }
   position: relative;
 }
-
+.slider-prev__item--active {
+  transition: .6s;
+  position: relative;
+  z-index: 10;
+  outline: 3px solid $main-color;
+}
 .slider-prev__mask {
   position: absolute;
   width: 100%;

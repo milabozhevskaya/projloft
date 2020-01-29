@@ -61,17 +61,3 @@ window.onscroll = function () {
 
   parallax.init(wScroll);
 };
-
-
-
-const paral = document.querySelector(".welcome-bg");
-const layers = paral.children;
-
-function moveLayersDependsOnScroll(wScroll) {
-
-}
-
-window.addEventListener('scroll', e => {
-  const wScroll = window.pageYOffset;
-moveLayersDependsOnScroll(wScroll);
-})

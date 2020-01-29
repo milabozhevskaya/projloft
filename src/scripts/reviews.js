@@ -31,25 +31,32 @@ new Vue({
   methods: {
     next() {
       this.$refs.flickity.next();
-      // this.checkArrows();
+      this.checkArrows();
     },
     
     previous() {
       this.$refs.flickity.previous();
-      // this.checkArrows();
+      this.checkArrows();
 
     },
     checkArrows() {
       if (this.$refs.flickity.selectedIndex() == 0) {
-        this.$el.querySelector('.reviews__slider-direc--prev').disabled = true;
+        this.$el.querySelector('.reviews__slider-direc--prev').style.opacity=".3";
+        this.$el.querySelector('.reviews__slider-direc--next').style.opacity="1";
+
       } else if (this.$refs.flickity.selectedIndex() == this.$refs.flickity.slides().length-1) {
-        this.$el.querySelector('.reviews__slider-direc--next').disabled = true;
+        this.$el.querySelector('.reviews__slider-direc--next').style.opacity=".3";
+        this.$el.querySelector('.reviews__slider-direc--prev').style.opacity="1";
 
       } else {
         this.$el.querySelector('.reviews__slider-direc--prev').disabled = false;
+        this.$el.querySelector('.reviews__slider-direc--prev').style.opacity="1";
+
         this.$el.querySelector('.reviews__slider-direc--next').disabled = false;
+        this.$el.querySelector('.reviews__slider-direc--next').style.opacity="1";
 
       }
+    
     }
   }
 });

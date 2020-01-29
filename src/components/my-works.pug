@@ -9,7 +9,7 @@ section.my-works
             .display__slider-prev
               ul.slider-prev
                 each item in mini
-                  li(class="slider-prev__item slider-prev__item"+item[1])
+                  li(class="slider-prev__item"+item[1])
                     button.slider-prev__link
                       .slider-prev__mask
                       +image(`content/${item[0]}.png`, "#{item[0]}", "slider-prev-mini")

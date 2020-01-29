@@ -128,7 +128,7 @@
   }
 }
 
-.reviews__slider-direc {
+.reviews__slider-direc--prev {
   padding: 13px 21px;
   border-radius: 50%;
   border: 1px solid currentColor;
@@ -142,4 +142,31 @@
     background-color: $main-color;
     border-color: $main-color;
   }
+  
 }
+.reviews__slider-direc--next {
+  padding: 13px 21px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  background-color: transparent;
+  margin-right: 36px;
+  transition: .6s;
+  &:last-child {
+    margin-right: 0;
+  }
+  &:hover {
+    background-color: $main-color;
+    border-color: $main-color;
+  }
+  
+}
+
+// .disabled { 
+  
+//     background-color: white;
+//     border-color: white;
+  
+//  }
+// .reviews__slider-direc--next:disabled { 
+//   display: none;
+//  }
