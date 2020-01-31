@@ -2,29 +2,50 @@ section.my-works
   .container.my-works__container
     .my-works__title Мои работы
     .my-works__content
-      .slider
-        .slider__display
-          .display
-            +image("content/my-works-prev1.png", "my-works", "display-pic")
-            .display__slider-prev
-              ul.slider-prev
-                each item in mini
-                  li(class="slider-prev__item"+item[1])
-                    button.slider-prev__link
-                      .slider-prev__mask
-                      +image(`content/${item[0]}.png`, "#{item[0]}", "slider-prev-mini")
-              .display__buttons
-                +arrow("display__btn", "next")
-                +arrow("display__btn", "prev")
-        .slider__desc
-          .slider__desc-tags
-            ul.tags
-              each item in tags
-                li.tags__item #{item}
-          .slider__desc-text
-            h3.slider__desc-title Сайт школы образования
-            .slider__desc-info Эта девушка проходила обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-          .slider__desc-btns
-            a.my-works__link
-              +icon("link", "my-works-icon")
-              .my-works__link-text Посмотреть сайт
+      #slider-component
+      
+
+script(type="text/x=template")#slider-container
+  .slider
+    pre {{works}}
+    display
+    description
+
+script(type="text/x=template")#slider-display
+  .slider__display
+    .display
+      +image("content/my-works-prev1.png", "my-works", "display-pic")
+      .display__slider-prev
+        thumbs
+        btns  
+  
+
+script(type="text/x=template")#slider-thumbs
+  ul.slider-prev
+    each item in mini
+      li(class="slider-prev__item"+item[1])
+        button.slider-prev__link
+          .slider-prev__mask
+          +image(`content/${item[0]}.png`, "#{item[0]}", "slider-prev-mini")
+
+script(type="text/x=template")#slider-btns
+  .display__buttons
+    +arrow("display__btn", "next")
+    +arrow("display__btn", "prev")
+
+script(type="text/x=template")#slider-description
+  .slider__desc
+    .slider__desc-tags
+      tags
+    .slider__desc-text
+      h3.slider__desc-title Сайт школы образования
+      .slider__desc-info Эта девушка проходила обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+    .slider__desc-btns
+      a.my-works__link
+        +icon("link", "my-works-icon")
+        .my-works__link-text Посмотреть сайт
+
+script(type="text/x=template")#slider-tags
+  ul.tags
+    each item in tags
+      li.tags__item #{item}
