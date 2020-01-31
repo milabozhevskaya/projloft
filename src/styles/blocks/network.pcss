@@ -1,14 +1,46 @@
 .network {
   min-width: 500px;
-  padding-top: 19%;
-  padding-bottom: 15%;
+  padding-top: 11%;
+  padding-bottom: 9%;
   color: white;
+  @include fulldesctop {
+    padding-top: 17%;
+    padding-bottom: 15%;
+
+  }
+  @include desctop {
+    padding-top: 11%;
+    padding-bottom: 17%;
+
+  }
+  @include tablets {
+    padding-top: 25%;
+    min-width: 100%;
+    padding-bottom: 38%;
+
+
+  }
 }
 
 .network__content {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 65%;
+  @include fulldesctop {
+    width: 88%;
+  }
+  @include desctop {
+    width: 100%;
+  }
+}
+
+.network__container {
+  @include fulldesctop {
+    width: 90%;
+  }
+  @include tablets {
+    width: 82%;
+  }
 }
 
 .network__title {
@@ -17,4 +49,13 @@
   line-height: 1.33;
   color: currentColor;
   margin-bottom: 8%;
+  @include desctop {
+    margin: 0 auto;
+    margin-bottom: 6%;
+  }
+  @include tablets {
+    font-size: 23px;
+    margin-bottom: 16%;
+
+  }
 }

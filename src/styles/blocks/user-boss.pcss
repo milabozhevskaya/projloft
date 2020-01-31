@@ -6,12 +6,18 @@
 }
 
 .user-boss__avatar {
-  margin-bottom: 30%;
+  margin-bottom: 26%;
+  @include desctop {
+    margin-bottom: 17%;
+  }
+  @include tablets {
+    margin-bottom: 2%;
+  }
 }
 
 .avatar {
-  width: 200px;
-  height: 200px;
+  width: 210px;
+  height: 210px;
   overflow: hidden;
   border-radius: 50%;
 }
@@ -26,10 +32,21 @@
   width: 100%;
 }
 
+.user__text-table {
+  margin: 0 auto;
+}
+
 .user__text-td {
   padding-right: 30%;
   opacity: .15;
   height: 40px;
+  @include desctop {
+    padding-right: 25%;
+  }
+  @include tablets {
+    height: 29px;
+
+  }
   &:last-child {
     padding-right: 0;
     opacity: .8;

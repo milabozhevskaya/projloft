@@ -1,5 +1,7 @@
 include ./mixins.pug
 include components/arrow-prev-next
+
+
 -
   var menu = [
     ["Главная", "#"],
@@ -18,25 +20,9 @@ include components/arrow-prev-next
   ];
 
 - 
-  var skills = [
-    ["Frontend", [
-      ["HTML5", "-25s"],
-      ["CSS3", '-13s'],
-      ["Javascript", '-75s'],
-      ["Jquery и Vue.js", '-26s']]
-    ],
-    ["Workflow", [
-      ["GIT", '-13s'],
-      ["Terminal", '-25s'],
-      ["Gulp", '-50s'],
-      ["Webpack", '-40s']]
-    ]
-  ];
-
-- 
   var mini= [
-    ["my-works-mini1"], ["my-works-mini2", "--active"],
-    ["my-works-mini3"], ["my-works-mini4"]
+    ["my-works-mini1",""], ["my-works-mini2", "--active"],
+    ["my-works-mini3",""], ["my-works-mini4",""]
   ];
 
 -
@@ -46,6 +32,39 @@ include components/arrow-prev-next
 
 -
   var reviews= [
+    ["Эта девушка проходила обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
+      "koval",
+      "Ковальчук Дмитрий",
+      "Основатель Loftschool"
+    ],
+     [
+      "Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах",
+      "sabanc",
+      "Владимир Сабанцев",
+      "Преподаватель"
+    ],
+    ["Эта девушка проходила обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
+      "koval",
+      "Ковальчук Дмитрий",
+      "Основатель Loftschool"
+    ],
+    [
+      "Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах",
+      "sabanc",
+      "Владимир Сабанцев",
+      "Преподаватель"
+    ],
+    ["Эта девушка проходила обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
+      "koval",
+      "Ковальчук Дмитрий",
+      "Основатель Loftschool"
+    ],
+    [
+      "Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах",
+      "sabanc",
+      "Владимир Сабанцев",
+      "Преподаватель"
+    ],
     ["Эта девушка проходила обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!",
       "koval",
       "Ковальчук Дмитрий",
@@ -70,11 +89,27 @@ html(lang="en")
   body
     .wrapper
       .welcome-section
+        .welcome-bg
+          .welcome-bg__item.welcome-bg__item--1
+          .welcome-bg__item.welcome-bg__item--2
+          .welcome-bg__item.welcome-bg__item--3
+          .welcome-bg__item.welcome-bg__item--4
+          .welcome-bg__item.welcome-bg__item--5
+          .welcome-bg__item.welcome-bg__item--6
+          .welcome-bg__item.welcome-bg__item--7
+          .welcome-bg__item.welcome-bg__item--8
+          .welcome-bg__item.welcome-bg__item--9
         include components/star
         include components/about
       include components/values
       include components/my-works
       .end-section
+        .end-bg
+          .end-bg__item.end-bg__item--1
+          .end-bg__item.end-bg__item--2
+          .end-bg__item.end-bg__item--3
+          .end-bg__item.end-bg__item--4
+          .end-bg__item.end-bg__item--5
         include components/reviews
         section.network
           .container.network__container
@@ -83,6 +118,4 @@ html(lang="en")
               .network__form-message
                 include components/form
       include components/footer
-                
-
-
+      include components/hamburger-menu

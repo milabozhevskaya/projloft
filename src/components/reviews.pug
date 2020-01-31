@@ -1,10 +1,10 @@
-section.reviews
+section.reviews(@click="checkArrows" @touchend="checkArrows")
   .container.reviews__container
     .reviews__content
       h2.reviews__title Что обо мне говорят
-      ul.reviews__slider
-        - for (var i = 0; i<2; i++)
-          li.reviews__item
+      flickity(ref="flickity" :options="flickityOptions").reviews__slider
+        - for (var i = 0; i<7; i++)
+          .reviews__item
             .reviews__quote
               +icon("quote", "reviews__quote-icon")
             .review
@@ -16,6 +16,8 @@ section.reviews
                   .user__info
                     .user__info-name #{reviews[i][2]}
                     .user__info-pos #{reviews[i][3]}
-      .reviews__slider-direc
+    .reviews__slider-direction
+      .reviews__slider-direc--prev(@click="previous" )
         +arrow("reviews__slider-btn", "prev")
+      .reviews__slider-direc--next(@click="next" :disabled=false)
         +arrow("reviews__slider-btn", "next")

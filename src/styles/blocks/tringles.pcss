@@ -2,21 +2,32 @@
   display: flex;
   color: white;
   position: absolute;
-  top: -95px;
+  top: -130px;
   z-index: 10;
   width: 100%;;
+  @include desctop {
+    top: -69px;
+  }
+  @include tablets {
+    top: -25px;
+  }
 }
 
 .tringles__item {
   
   display: block;
-  height: 95px;
+  height: 132px;
   fill: currentColor;
- 
+  @include desctop {
+    height: 70px;
+  }
+  @include tablets {
+    height: 26px;
+  }
   &--left {
-    width: 82%;
+    width: 80%;
   }
   &--right {
-    width: 18%;
+    width: 20%;
   }
 }

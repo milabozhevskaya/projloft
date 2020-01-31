@@ -1,6 +1,15 @@
 .menu__items {
   display: flex;
   justify-content: space-between;
+  @include desctop {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    line-height: 1;
+  }
+  &--first {
+    flex-direction: column;
+    margin-bottom: 20%;
+  }
 }
 
 .menu__item {
@@ -10,7 +19,14 @@
   transition: .6s;
   flex-grow: 1;
   text-align: center;
-
+  @include desctop {
+    flex-grow: 0;
+    text-align: left;
+    margin-right: 13%;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
   &:last-child {
     margin-right: 0;
   }
@@ -19,11 +35,25 @@
     color: $main-color;
     border-color: $main-color;
   }
+  &--first {
+    margin-right: 0;
+    border-bottom: none;
+
+
+  }
 }
 
 .menu__link {
   text-decoration: none;
   color: currentColor;
   line-height: 5;
-  
+  &--first {
+    line-height: .3;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  @include desctop {
+    line-height: 3;
+    
+  }
 }

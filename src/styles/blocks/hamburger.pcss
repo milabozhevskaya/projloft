@@ -1,0 +1,156 @@
+.first {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 20;
+  display: none;
+}
+
+.first__container {
+  height: 100%;
+  
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  position: relative;
+  
+}
+
+.first-bg {
+	width: 60%;
+	overflow: hidden;
+	height: 100%;
+	position: relative;
+
+}
+
+.first-bg__item {
+	// min-width: 100%;
+	// min-height: 100%;
+	background-position: 50% 0;
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	&--1 {
+		position: absolute;
+		background-image: url('~images/bg/end1.png');
+		z-index: 1;
+		
+	}
+	&--2 {
+		background-image: url('~images/bg/end2.png');
+		z-index: 2;
+	}
+	&--3 {
+		position: absolute;
+		background-image: url('~images/bg/end3.png');
+		z-index: 3;
+		background-position: 9% 0;
+		height: 71%;
+    top: 29%;
+	}
+	&--4 {
+		position: absolute;
+		background-image: url('~images/bg/end5.png');
+    z-index: 4;
+	}
+
+}
+
+.first__close {
+	height: 20px;
+	width: 20px;
+	
+}
+
+.icon-close {
+	fill: currentColor;
+	stroke-width: 100px;
+	&:hover {
+		fill: $main-color;
+	}
+}
+
+// .menu__item--first {
+// 	&:last-child {
+// 		margin-right: 0;
+// 	}
+// }
+.first__content {
+	width: 40%;
+	padding-left: 6%;
+}
+
+.first__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  position: absolute;
+	top: 10%;
+	z-index: 5;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.first__logo {
+	font-size: 36px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+	line-height: 0.83;
+	color: white;
+}
+.first__menu {
+
+}
+
+
+.hamb-menu__ref {
+	vertical-align: middle;
+	position: relative;
+	height: 22px;
+	align-items: center;
+	display: none;
+
+	@include desctop {
+		display: inline-flex;
+	}
+}
+
+.hamburger {
+	
+	&, &:before, &:after {
+		background: #fff;
+		width: 28px;
+		height: 5px;
+		border-radius: 2px;
+			
+	}
+
+	&:before, &:after {
+		content: "";
+		display: block;
+		position: absolute;
+		// background-color: $main-color;
+
+	}
+
+	&:before {
+		top: 0;
+		
+	}
+
+	&:after {
+		bottom: 0;
+	}
+}

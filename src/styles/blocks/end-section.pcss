@@ -3,30 +3,70 @@
   /* height: 100%; */
   /* // width: 1800px; */
   height: 100%;
-  background-image: url('~images/bg/last-page.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   position: relative;
-  &::before {
-    content: "";
-    background-image: url('~images/bg/guitarist.png');
-    background-repeat: no-repeat;
+  
+
+}
+.end-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: -1;
+
+  &__item {
+    min-width: 100%;
+    // min-height: 100%;
+    background-position: 50% 0;
+    background-size: cover;
     position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 73%;
-    z-index: 10;
+    top: 0;
+    left: 0;
+    transform: translateX(0) translateZ(0);
+
+    &--1 {
+      background-image: url('~images/bg/end1.png');
+      z-index: 1;
+      height: 100%;
+
+    }
+    &--2 {
+      background-image: url('~images/bg/end2.png');
+      z-index: 2;
+      top: 45%;
+      height: 792px;
+
+    }
+    &--3 {
+      background-image: url('~images/bg/end3.png');
+      z-index: 3;
+      top: 37%;
+      left: 26%;
+      height: 900px;
+      background-position: 0 0;
+
+    }
+    &--4 {
+      background-image: url('~images/bg/end4.png');
+      z-index: 4;
+      top: 7%;
+      height: 90.25rem;
+      min-width: 52%;
+      height: 100%;
+      left: 50%;
+      background-position: 20% 0;
+
+    }
+    &--5 {
+      background-image: url('~images/bg/end5.png');
+      z-index: 5;
+      top: 0;
+      height: 100%;
+
+    }
+    
   }
-  &::after {
-    content: "";
-    background-image: url('~images/bg/instr.png');
-    background-repeat: no-repeat;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 50%;
-    z-index: 9;
-    top: 41%;
-  }
+    
 }

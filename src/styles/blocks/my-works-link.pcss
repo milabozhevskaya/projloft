@@ -3,11 +3,16 @@
   flex-direction: row;
   color: $links-color;
   align-items: center;
-  padding: 10px;
   font-size: 18px;
   font-weight: bold;
   line-height: 2.67;
   transition: .6s;
+  @include desctop {
+    justify-content: center;
+  }
+  @include tablets {
+    justify-content: left;
+  }
   &:hover {
     & .my-works__link-text {
         border-bottom: 1px solid $links-color;

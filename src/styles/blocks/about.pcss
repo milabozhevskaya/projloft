@@ -1,24 +1,58 @@
 .about {
-  min-height: 850px;
-  padding-top: 30%;
-  padding-bottom: 100px;
+  padding-top: 6%;
+  min-height: 0;
+  padding-bottom: 0;
   color: $color-light;
+  @include fulldesctop {
+    padding-top: 6%;
+  }
+  @include desctop {
+    padding-top: 17%;
+  }
+  @include tablets {
+    padding-top: 10%;
+  }
+  @include phones {
+    padding-top: 40%;
+
+  }
 }
 
 .about__container {
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  width: 60%;
   margin: 0 auto;
+  @include fulldesctop {
+    width: 100%;
+  }
+  @include tablets {
+    flex-direction: column;
+    width: 88%;
+
+  }
 }
 
 .about__left {
   width: 30%;
   margin-right: 8%;
+  @include desctop {
+    margin-right: 15%;
+  }
+  @include tablets {
+    margin-right: 0%;
+    width: 100%;
+    margin-bottom: 17%;
+  }
 }
 
 .about__right {
   width: 58%;
+  @include tablets {
+      width: 100%;
+
+
+  }
 }
 
 .about__textwelcome {
@@ -33,6 +67,10 @@
   font-weight: bold;
   line-height: 1.33;
   margin-bottom: 7%;
+  @include tablets {
+    margin-bottom: 11%;
+
+  }
 }
 
 .about__desc {
@@ -40,10 +78,22 @@
   line-height: 1.88;
   opacity: .5;
   margin-bottom: 13%;
+  @include desctop {
+    margin-bottom: 10%;
+  }
+  @include tablets {
+    margin-bottom: 7%;
+    line-height: 1.6;
+
+  }
 }
 
 .about__postscr {
   font-style: italic;
   line-height: 1.88;
   opacity: .5;
+  @include tablets {
+    line-height: 1.6;
+
+  }
 }

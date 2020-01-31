@@ -9,27 +9,45 @@ section.values
       .values__text-title Чем я могу быть вам полезна?
       .values__text-desc Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
     .values__content
+      #skills-component
       .guitar
         +image("bg/guitar.png", "guitar photo", "guitar__pic")
-      ul.skills-circles
-        each row in skills
-          li.skills-circles__item
-            .skills-row
-              .skills-row__title #{row[0]}
-              .skills-row__desc
-                ul.skills
-                  each skill in row[1]
-                    li.skills__item
-                      .skill
-                        svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
-                          defs.defs
-                            linearGradient(x1="0%" y1="50%" x2="100%" y2="100%")#skill__gradient
-                              stop(offset="60%" stop-color="#008dff").skill__fill--start
-                              stop(offset="100%" stop-color="#355de9").skill__fill--stop
-                          circle(
-                            r="67" cx="100" cy="100"
-                          ).skill__circle.skill__circle--under
-                          circle(
-                            r="67" cx="100" cy="100" stroke="url(#skill__gradient" transform="rotate(-180 100 100)" style=`animation-delay: ${skill[1]};`
-                          ).skill__circle.skill__circle--above
-                        .skill__title #{skill[0]}
+
+
+
+script(type="text/x-template")#skills-list
+  .values__circles
+    //- pre {{skills}}
+    ul.skills-circles
+      li.skills-circles__item(v-for="skill in skills")
+        skills-row(
+          :skill="skill"
+        )
+        
+script(type="text/x-template")#skills-row
+  .skills-row
+    .skills-row__title {{skill.skillsGroup}}
+    .skills-row__desc
+      ul.skills
+        li.skills__item(v-for="(skillPercent, skillName) in skill.skills")
+          skill(
+            :skillName="skillName"
+            :skillPercent="skillPercent"
+          )
+
+script(type="text/x-template")#skill
+  .skill
+    svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
+      defs.defs
+        linearGradient(x1="0%" y1="50%" x2="100%" y2="100%")#skill__gradient
+          stop(offset="60%" stop-color="#008dff").skill__fill--start
+          stop(offset="100%" stop-color="#355de9").skill__fill--stop
+      circle(
+        r="67" cx="100" cy="100" 
+      ).skill__circle.skill__circle--under
+      circle(
+        r="67" cx="100" cy="100" ref="color-circle" stroke="url(#skill__gradient" transform="rotate(-180 100 100)" 
+      ).skill__circle.skill__circle--above
+    .skill__title {{skillName}}
+
+

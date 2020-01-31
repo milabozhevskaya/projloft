@@ -28,12 +28,12 @@ body {
 
 .container {
   margin: 0 auto;
-  max-width: 1200px;
-  width: 91%;
+  // max-width: 1200px;
+  width: 83%;
   // width: 1490px;
 
-  @include phones {
-    width: 85%;
+  @include tablets {
+    width: 93%;
   }
 }
 
@@ -42,8 +42,22 @@ body {
   min-height: 650px;
 }
 
+// button {
+//   border: 0;
+//   cursor: pointer;
+// }
+/**
+ * Сброс стилей у кнопки.
+ * Придётся немного поработать, чтобы получить нейтральный вид.
+*/
 button {
-  border: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+/* отображаем курсор в виде руки при наведении; некоторые
+  считают, что необходимо оставлять стрелочный вид для кнопок */
   cursor: pointer;
 }
 

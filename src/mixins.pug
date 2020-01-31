@@ -9,13 +9,13 @@ mixin image(path, altdesc, className)
 mixin socials(array, mode)
   ul.socials
     each item in array
-      li.socials__item
+      li(class="socials__item socials__item--"+mode)
         a(class='socials__link socials__link--'+mode href="`${item[1]}`" target="blank")
           +icon(`${item[0]}`, "socials__icon socials__icon--"+mode)
 
 mixin nav(array, mode)
   nav.menu
-    ul.menu__items
+    ul(class="menu__items menu__items--"+mode)
       each item in array
-        li.menu__item
+        li(class="menu__item menu__item--"+mode)
           a(class='menu__link menu__link--'+mode href=`${item[1]}`) #{item[0]}

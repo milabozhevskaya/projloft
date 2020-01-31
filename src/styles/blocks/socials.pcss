@@ -4,9 +4,18 @@
 
 .socials__item {
   margin-right: 40px;
+  @include fulldesctop {
+      margin-right: 21px;
+  }
+  @include desctop {
+    margin-right: 60%;
+  }
 
   &:last-child {
     margin-right: 0;
+  }
+  &--first {
+    margin-right: 10%;
   }
 }
 
@@ -25,6 +34,16 @@
   width: 28px;
   height: 28px;
   fill: currentColor;
+  &--first {
+    transition: .6s;
+    &:hover {
+      fill: $main-color;
+    }
+  }
+  @include fulldesctop {
+    // width: 30px;
+    // height: 30px;
+  }
   
 }
 
