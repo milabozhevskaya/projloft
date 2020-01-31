@@ -1,25 +1,40 @@
 import Vue from "vue";
 
 const thumbs = {
-  template: "#slider-thumbs"
-}
+  template: "#slider-thumbs",
+  props: ["works", "currentWork"]
+};
 const btns = {
   template: "#slider-btns"
-}
+};
 const tags = {
-  template: "#slider-tags"
-}
+  template: "#slider-tags",
+  props: ["tags"]
+};
 const description = {
   template: "#slider-description",
-  components: {tags}
-}
+  components: {tags},
+  props: ["currentWork"],
+  computed: {
+    tagsArray() {
+      return this.currentWork.skills.split(', ');
+    }
+  }
+};
 
 const display = {
   template: "#slider-display",
   components: {
     thumbs, btns
+  },
+  props: ["works", "currentWork", "currentIndex"],
+  computed: {
+    reversedWorks() {
+      return [...this.works].reverse();
+    }
   }
-}
+  
+};
 
 new Vue({
   el: "#slider-component",
@@ -29,8 +44,14 @@ new Vue({
   },
   data() {
     return {
-      works: []
+      works: [],
+      currentIndex: 0
     };
+  },
+  computed: {
+    currentWork() {
+      return this.works[this.currentIndex]
+    }
   },
   methods: {
     makeArrWithRequiredImages(data) {
@@ -40,6 +61,26 @@ new Vue({
         return item;
 
       });
+    },
+    handleSlide(direction) {
+      switch(direction) {
+        case "next":
+          this.currentIndex++;
+          break;
+        case "prev":
+          this.currentIndex--;
+          break;
+      }
+    },
+    loopIndex(value) {
+      const worksLength = this.works.length - 1;
+      if (value > worksLength) this.currentIndex = 0;
+      if (value < 0) this.currentIndex = worksLength;
+    }
+  },
+  watch: {
+    currentIndex(value) {
+      this.loopIndex(value);
     }
   },
   created() {
