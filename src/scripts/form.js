@@ -32,13 +32,13 @@ new Vue({
       if (this.email.length < 8) {
         this.emailValid = false;
         this.emailError = 'Слишком короткий email';
-      } else if (!regex.test(this.email)) {
+      } else {if (!regex.test(this.email)) {
         this.emailValid = false;
         this.emailError = 'Неверный email';
       } else {
         this.emailValid = true;
         this.emailError = '';
-      }
+      }}
       return this.emailValid;
     },
     validateMessage() {

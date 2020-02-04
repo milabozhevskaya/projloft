@@ -28,7 +28,7 @@ form.form(@submit.prevent="submitForm")
             onFocus="this.placeholder=''"
             @input="validateEmail"
             )
-          .form__text--email-error {{emailError}}
+          .form-error.form__text--email-error {{emailError}}
     .form__row.form__row--textarea
       label.form__inline
         .form__text.form__text-msg Сообщение к письму
@@ -43,7 +43,7 @@ form.form(@submit.prevent="submitForm")
             )
           .form__icon.form__icon--msg
             +icon("message", "form-icon message-icon-form")
-          .form__text--message-error {{messageError}}
+          .form-error.form__text--message-error {{messageError}}
     .form__button
       button(@click.prevent="submitForm").form__button--ref Отправить
   .overlay(:class="{disabled: overlayHidden}" @click="hideOverlay")
