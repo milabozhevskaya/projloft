@@ -30,7 +30,8 @@ const display = {
   props: ["works", "currentWork", "currentIndex"],
   computed: {
     reversedWorks() {
-      return [...this.works].reverse();
+      // return [...this.works].reverse();
+      return this.works;
     }
   }
   
@@ -74,8 +75,31 @@ new Vue({
     },
     loopIndex(value) {
       const worksLength = this.works.length - 1;
-      if (value > worksLength) this.currentIndex = 0;
-      if (value < 0) this.currentIndex = worksLength;
+      if (value > worksLength) {
+        this.currentIndex = worksLength;
+      }
+      if (value < 0) {
+        this.currentIndex = 0;
+      }
+      if (value > (worksLength-1)) {
+        this.$el.querySelector('.display__btn-next').style.opacity=".5";
+
+      }
+      if (value < 1) {
+        this.$el.querySelector('.display__btn-prev').style.opacity=".5";
+      }
+      if ((value >0) & (value<worksLength)) {
+        this.$el.querySelector('.display__btn-next').style.opacity="1";
+
+      }
+      if ((value >0) & (value=(worksLength-1))) {
+        this.$el.querySelector('.display__btn-prev').style.opacity="1";
+
+
+      }
+
+      // if (value > worksLength) this.currentIndex = 0;
+      // if (value < 0) this.currentIndex = worksLength;
     }
   },
   watch: {

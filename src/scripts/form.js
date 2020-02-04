@@ -66,7 +66,7 @@ new Vue({
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(userData)
-          }).then((response) => {
+          }).then(() => {
             this.resultMessage = "Сообщение отправлено!";
             this.overlayHidden = false;
             setTimeout(this.hideOverlay, 5000);

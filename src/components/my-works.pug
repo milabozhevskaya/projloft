@@ -44,9 +44,9 @@ script(type="text/x=template")#slider-thumbs
 
 script(type="text/x=template")#slider-btns
   .display__buttons
-    button.display__btn(@click.prevent="$emit('slide', 'next')")
+    button.display__btn.display__btn-next(@click.prevent="$emit('slide', 'next')")
       +arrow("next")
-    button.display__btn(@click.prevent="$emit('slide', 'prev')")
+    button.display__btn.display__btn-prev(@click.prevent="$emit('slide', 'prev')")
       +arrow("prev")
 
 script(type="text/x=template")#slider-description
