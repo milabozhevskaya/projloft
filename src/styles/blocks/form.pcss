@@ -77,7 +77,7 @@
   &--name {
     top: 48%;
     left: 2%;
-
+    
   }
   &--email {
     top: 51%;
@@ -91,7 +91,81 @@
   width: 26px;
   height: 30px;
 }
-
+.form__text--name-error {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  background: red;
+  font-size: 14px;
+  font-weight: normal;
+  color: white;
+  padding: 3px 15px;
+  opacity: 0;
+  &:before {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-100%);
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 7.5px 7px 7.5px;
+    border-color: transparent transparent red transparent;
+  }
+}
+.form__text--email-error {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  background: red;
+  font-size: 14px;
+  font-weight: normal;
+  color: white;
+  padding: 3px 15px;
+  opacity: 0;
+  &:before {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-100%);
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 7.5px 7px 7.5px;
+    border-color: transparent transparent red transparent;
+  }
+}
+.form__text--message-error {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  background: red;
+  font-size: 14px;
+  font-weight: normal;
+  color: white;
+  padding: 3px 15px;
+  opacity: 0;
+  &:before {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-100%);
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 7.5px 7px 7.5px;
+    border-color: transparent transparent red transparent;
+  }
+}
 .envelope-icon-form {
   width: 30px;
   height: 23px;
@@ -141,4 +215,18 @@
   &:hover {
     background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,127,255) 35%, rgb(0,145,255) 100%);
   }
+}
+.error .form__input {
+  border-color: red;
+  transition: .2s ease-in-out all;
+}
+.error .form-icon {
+  fill: red;
+  transition: .2s ease-in-out all;
+}
+.error .form-error {
+  display: block;
+  opacity: 1;
+  left: 50px;
+  transition: .2s ease-in-out all;
 }
