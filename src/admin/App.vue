@@ -32,13 +32,14 @@
                   button.admin__btn Отправить
       header.admin-header
         .admin-header__container
-          .user-info
+          .user-info-photo
             .user-info__avatar
               img(src=`~images/content/user.jpg`).user-info__photo
+          .user-info
             .user-info__name Мила Божевская
-          .admin-title Панель администрирования
-          .admin-exit
-            a.admin-exit__ref Выйти
+            .admin-title Панель администрирования
+            .admin-exit
+              a.admin-exit__ref Выйти
       nav.admin-nav
         .admin-nav__container  
           ul.admin__menu-list
@@ -222,10 +223,10 @@
                     .work__info Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
                     a.work__link http://loftschool.ru
                 .works-form__btns
-                  .works-form__pencil
+                  button.works-form__pencil
                     .works-form__pencil--text Править
                     .works-form__pencil--icon 
-                  .works-form__remove
+                  button.works-form__remove
                     .works-form__remove--text Удалить
                     .works-form__remove--icon
               .works-form
@@ -239,10 +240,10 @@
                     .work__info Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
                     .work__link http://loftschool.ru
                 .works-form__btns
-                  .works-form__pencil
+                  button.works-form__pencil
                     .works-form__pencil--text Править
                     .works-form__pencil--icon 
-                  .works-form__remove
+                  button.works-form__remove
                     .works-form__remove--text Удалить
                     .works-form__remove--icon
               .works-form
@@ -256,10 +257,10 @@
                     .work__info Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
                     .work__link http://loftschool.ru
                 .works-form__btns
-                  .works-form__pencil
+                  button.works-form__pencil
                     .works-form__pencil--text Править
                     .works-form__pencil--icon 
-                  .works-form__remove
+                  button.works-form__remove
                     .works-form__remove--text Удалить
                     .works-form__remove--icon
               .works-form
@@ -273,10 +274,10 @@
                     .work__info Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
                     .work__link http://loftschool.ru
                 .works-form__btns
-                  .works-form__pencil
+                  button.works-form__pencil
                     .works-form__pencil--text Править
                     .works-form__pencil--icon 
-                  .works-form__remove
+                  button.works-form__remove
                     .works-form__remove--text Удалить
                     .works-form__remove--icon
         .reviews
@@ -332,10 +333,10 @@
                     .review__desc
                       .review__desc--text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
                   .review-form__btns
-                    .review-form__pencil
+                    button.review-form__pencil
                       .review-form__pencil--text Править
                       .review-form__pencil--icon 
-                    .review-form__remove
+                    button.review-form__remove
                       .review-form__remove--text Удалить
                       .review-form__remove--icon
                 .reviews-form
@@ -350,10 +351,10 @@
                     .review__desc
                       .review__desc--text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
                   .review-form__btns
-                    .review-form__pencil
+                    button.review-form__pencil
                       .review-form__pencil--text Править
                       .review-form__pencil--icon 
-                    .review-form__remove
+                    button.review-form__remove
                       .review-form__remove--text Удалить
                       .review-form__remove--icon
               
@@ -393,10 +394,10 @@
     @include tablets {
       padding-bottom: 39%;
       height: 100%;
-    }
-    @include phones {
-      height: 100%;
     } */
+    @include phones {
+      display: none;
+    } 
 
     & .login-bg {
       position: absolute;
@@ -486,15 +487,38 @@
       background-color: white;
       padding: 4%;
       color: $text-color;
+      @include desctop {
+        width: 45%;
+      }
+      @include tablets {
+        width: 60%;
+      }
+      @include phones {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
     & .login-overlay__container {
       display: flex;
       justify-content: center;
       flex-direction: column;
+      @include phones {
+        /* width: 80%; */
+        display: none;
+      }
     }
     & .login-overlay__menu {
       display: flex;
       justify-content: flex-end;
+      @include phones {
+        position: absolute;
+        top: 8%;
+        right: 10%;
+      }
     }
     & .login-overlay__close {
       background: svg-load("remove.svg", "fill=$text-color", "width=100%", "height=100%");
@@ -532,7 +556,7 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        margin-bottom: 6%;
+        margin-bottom: 8%;
         &:last-child {
           margin-bottom: 0;
         }
@@ -565,10 +589,12 @@
         color: white;
         transition: .6s;
         @include desctop {
-          padding: 29px 130px;
+          padding: 20px 70px;
+          font-size: 16px;
         }
         @include tablets {
-          padding: 25px 90px;
+          padding: 13px 55px;
+          font-size: 16px;
         }
         &:hover {
           background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,127,255) 35%, rgb(0,145,255) 100%);
@@ -604,40 +630,90 @@
       display: flex;
       flex-direction: row;
       color: white;
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding-top: 15px;
+      padding-bottom: 15px;
       align-items: center;
+      justify-content: space-between;
+      @include tablets {
+        width: 97%;
+      }
+      @include phones {
+        flex-direction: row;
+        align-items: start;
+      }
     }
     & .user-info {
-      width: 25%;
+      width: 95%;
       display: flex;
       flex-direction: row;
       align-items: center;
+      @include desctop {
+        width: 92%;
+      }
+      @include phones {
+        width: 85%;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: start;
+      }
+      
+    }
+    & .user-info-photo {
+      width: 6%;
+      @include tablets {
+        width: 12%;
+      }
     }
     & .user-info__avatar {
       width: 44px;
       height: 44px;
       border-radius: 50%;
       overflow: hidden;
-      margin-right: 5%;
+      margin-right: 2%;
+      @include tablets {
+        margin-right: 2%;
+      }
     }
     & .user-info__photo {
-      max-width: 100%;
-      max-height: none;
+      min-width: 100%;
+      height: 100%;
+      /* min-height: 100%; */
     }
     & .user-info__name {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       line-height: 1.89;
+      width: 15%;
+      @include desctop {
+        width: 24%;
+      }
+      @include tablets {
+        width: 44%;
+      }
+      @include phones {
+        width: 70%;
+      }
     }
     & .admin-title {
-      width: 65%;
+      width: 72%;
       opacity: .7;
+      font-size: 14px;
+      @include tablets {
+        width: 60%;
+      }
+      @include phones {
+        display: none;
+      }
     }
     & .admin-exit {
       width: 10%;
       display: flex;
       justify-content: flex-end;
+      @include phones {
+        width: 19%;
+        justify-content: flex-start;
+
+      }
     }
     & .admin-exit__ref {
       text-decoration: underline;
@@ -661,6 +737,12 @@
       flex-direction: row;
       justify-content: flex-start;
       width: 35%;
+      @include tablets {
+        width: 60%;
+      }
+      @include phones {
+        width: 100%;
+      }
     }
     & .admin__menu-item {
       width: 10%;
@@ -705,18 +787,33 @@
       flex-direction: row;
       align-items: center;
       margin-bottom: 4%;
+      @include phones {
+        flex-direction: column;
+        align-items: start;
+        margin-bottom: 10%;
+
+      }
     }
     & .about-me__title {
       font-size: 21px;
       font-weight: bold;
       line-height: 1.62;
       margin-right: 7%;
+      @include phones {
+        margin-bottom: 5%;
+      }
     }
     & .about-me__new-group {
       display: flex;
       flex-direction: row;
       width: 25%;
       color: $main-color;
+      @include tablets {
+        width: 40%;
+      }
+      @include phones {
+        width: 70%;
+      }
       &--icon {
         position: relative;
         background-color: $main-color;
@@ -760,6 +857,10 @@
         &:last-child {
           margin-right: 0;
         }
+        @include phones {
+          margin-right: 0;
+          width: 99%;
+        }
       }
       & .form-skills {
         padding: 5%;
@@ -781,7 +882,7 @@
           }
         }
         & .title-group {
-          width: 60%;
+          width: 77%;
           background-color: transparent;
           border: none;
           outline: none;
@@ -791,6 +892,10 @@
           font-weight: 600;
           line-height: 1.89;
           color: currentColor;
+          @include tablets {
+            width: 89%;
+            font-size: 15px;
+          }
           &:focus {
             border-bottom: 1px solid rgba($text-color,1);
           }
@@ -846,7 +951,9 @@
             top: 48%;
             left: 80%;
             transform: translate(-50%,-50%);
-            
+            @include tablets {
+              left: 76%;
+            }
           }
         }
         & .skill-row--name {
@@ -861,7 +968,9 @@
           line-height: 1.89;
           color: currentColor;
           opacity: .8;
-
+          @include tablets {
+            width: 54%;
+          }
           &:focus {
             border-bottom: 1px solid rgba($text-color,1);
           }
@@ -888,7 +997,10 @@
           width: 10%;
           display: flex;
           flex-direction: row;
-          justify-content: space-between
+          justify-content: space-between;
+          @include tablets {
+            width: 17%;
+          }
         }
         & .form-skills__skill {
           display: flex;
@@ -896,6 +1008,9 @@
           justify-content: flex-end;
           position: relative;
           align-items: center;
+          @include tablets {
+            justify-content: flex-start;
+          }
            &:after {
             content: "%";
             display: flex;
@@ -907,7 +1022,9 @@
             top: 48%;
             left: 84%;
             transform: translate(-50%,-50%);
-            
+            @include tablets {
+              left: 76%;
+            }
           }
         }
         & .skill-title {
@@ -923,6 +1040,13 @@
           color: currentColor;
           opacity: .8;
           margin-right: 2%;
+          @include tablets {
+            width: 55%;
+            font-size: 14px
+          }
+          @include phones {
+            width: 60%;
+          }
           &:focus {
             opacity: 1;
           }
@@ -940,7 +1064,11 @@
           color: currentColor;
           opacity: .8;
           position: relative;
-         
+          @include tablets {
+            font-size: 14px;
+            width: 15%;
+            margin-right: 22px;
+          }
           &:focus {
             opacity: 1;
           }
@@ -1021,7 +1149,10 @@
       margin: 0 auto;
       box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
       margin-bottom: 3%;
-      padding-bottom: 3%;
+      padding-bottom: 4%;
+      @include phones {
+        padding-bottom: 10%;
+      }
       & .rewriting {
         width: 100%;
         margin-bottom: 3%;
@@ -1041,6 +1172,10 @@
         flex-direction: row;
         justify-content: space-between;
         margin: 0 auto;
+        @include tablets {
+          flex-direction: column;
+          width: 80%;
+        }
       }
       & .rewriting__work--img {
         width: 40%;
@@ -1056,6 +1191,11 @@
         align-items: center;        
         padding: 5% 0;
         height: 100%;
+        @include tablets {
+          width: 100%;
+          padding: 17%;
+          margin-bottom: 10%;
+        }
       }
       & .label-upload {
         width: 90%;
@@ -1091,10 +1231,14 @@
         color: white;
         transition: .6s;
         @include desctop {
-          padding: 29px 130px;
+          padding: 8px 20px; 
+          width: 60%; 
         }
         @include tablets {
-          padding: 25px 90px;
+          width: 80%; 
+        }
+        @include phones {
+          width: 90%;
         }
         &:hover {
           background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,127,255) 35%, rgb(0,145,255) 100%);
@@ -1106,6 +1250,9 @@
         flex-direction: column;
         justify-content: center;
         padding: 0 5px;
+        @include tablets {
+          width: 100%;
+        }
       }
       & .rewriting__work--info-row {
         width: 100%;
@@ -1141,6 +1288,9 @@
           font-size: 16px;
           font-weight: 600;
           line-height: 1.2;
+          @include tablets {
+            font-size: 16px;
+          }
           &:focus {
             border: 1px solid  rgba($main-color,1);
           }
@@ -1172,6 +1322,9 @@
           font-size: 16px;
           font-weight: 600;
           line-height: 2;
+          @include tablets {
+            font-size: 16px;
+          }
           &:focus {
             border: 1px solid  rgba($main-color,1);
           }
@@ -1181,6 +1334,10 @@
         width: 100%;
         margin-bottom: 8%;
         height: 40%;
+        @include tablets {
+        margin-bottom: 16%;
+
+        }
       }
       & .rewriting__work--textarea-title {
         font-size: 16px;
@@ -1206,6 +1363,10 @@
           font-size: 16px;
           font-weight: 600;
           line-height: 1.6;
+          @include tablets {
+            line-height: 1.6;
+            padding: 5px 5px;
+          }
           &:focus {
             border: 1px solid  rgba($main-color,1);
           }
@@ -1246,6 +1407,9 @@
         flex-direction: row;
         align-items: center;
         margin-bottom: 5%;
+        @include phones {
+          margin-bottom: 15%;
+        }
       }
       & .work--tag {
         padding: 10px 17px;
@@ -1257,6 +1421,9 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
+        @include tablets {
+          justify-content: flex-start;
+        }
       }
       & .rewriting__work--btn {
         width: 28%;
@@ -1267,6 +1434,13 @@
         line-height: 2;
         transition: .3s;
         color: $main-color;
+        @include tablets {
+          width: 46%;
+        }
+        @include phones {
+          width: 55%;
+          padding: 8px 10px;
+        }
         &:hover {
           background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,124,241) 60%, rgb(0,137,242) 100%);
           text-transform: uppercase;
@@ -1291,17 +1465,30 @@
         align-items: bottom;
         color: white;
         position: relative;
+        &__btn {
+          width: 100%;
+          height: 100%;
+        }
       }
       & .add-work__icon {
         position: absolute;
         top: 42%;
         left: 50%;
         transform: translate(-50%,-50%);
+        @include phones {
+          top: 50%;
+          left: 18%;
+          transform: translateY(-50%);
+        }
       }
       & .add-work__icon-circle {
         background-image: svg-load("circle.svg", "fill=white", "width=100%", "height=100%");
         width: 150px;
         height: 150px;
+        @include phones {
+          width: 50px;
+          height: 50px;
+        }
         
       }
       & .add-work__icon-plus {
@@ -1312,6 +1499,10 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
+        @include phones {
+          width: 12px;
+          height: 12px;
+        }
       }
       & .add-work__text {
         position: absolute;
@@ -1322,6 +1513,9 @@
         font-size: 18px;
         font-weight: bold;
         line-height: 1.67;
+        @include phones {
+          top: 50%;
+        }
       }
       & .works-form {
         width: 32%;
@@ -1333,15 +1527,39 @@
         box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
         padding-bottom: 2%;
         margin-bottom: 2%;
+        width: 48%;
+        &.add-work {
+          @include phones {
+          padding: 13% 0;
+        }
+        }
+        
         &:last-child {
           margin-right: 0;
         }
         &:nth-child(3n) {
           margin-right: 0;
+          @include tablets {
+            margin-right: 3%
+          }
+          @include phones {
+            margin-right: 0;
+          }
+        }
+        @include tablets {
+          margin-right: 3%;
+          &:nth-child(2n) {
+            margin-right: 0;
+          }
+        }
+        @include phones {
+          width: 100%;
+          margin-right: 0;
         }
       }
       & .works-form-1 {
         opacity: .4;
+        
       }
       & .works-form__work {
         display: flex;
@@ -1360,18 +1578,19 @@
       & .work__tags {
         width: 100%;
         position: absolute;
-        top: 70%;
-        left: 0;
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%,-50%);
         color: currentColor;
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-around;
       }
       & .work--tag {
         padding: 8px 20px;
         background-color: #eceff2;
         border-radius: 40%;
-        margin-right: 3%;
+        /* margin-right: 3%; */
       }
       & .work__desc {
         display: flex;
@@ -1478,7 +1697,9 @@
       box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
       margin-bottom: 3%;
       padding-bottom: 3%;
-      
+      @include phones {
+        padding-bottom: 6%;
+      }
     }
     & .review-new {
       width: 100%;
@@ -1497,6 +1718,12 @@
       justify-content: center;
       flex-direction: column;
       margin: 0 auto;
+      @include desctop {
+        width: 90%;
+      }
+      @include tablets {
+        width: 94%;
+      }
       
     
     .review-new__desc {
@@ -1512,6 +1739,10 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      @include tablets {
+          width: 40%;
+          margin-right: 2%;
+        }
     }
     & .review-new__photo--icon {
       display: flex;
@@ -1522,6 +1753,13 @@
       width: 200px;
       height: 200px;
       margin: 0 auto;
+      @include desctop {
+        max-width: 100%;
+      }
+      @include tablets {
+        width: 180px;
+        height: 180px;
+      }
     }
     & .photo--icon {
       width: 50%;
@@ -1565,9 +1803,15 @@
       display: flex;
       flex-direction: row;
       margin-bottom: 5%;
+      @include tablets {
+        flex-direction: column;
+      }
       &--name {
         width: 42%;
         margin-right: 5%;
+        @include tablets {
+          width: 80%;
+        }
         &-title {
           font-size: 16px;
           font-weight: 600;
@@ -1594,7 +1838,10 @@
       }
       &--pos {
         width: 42%;
-        margin-right: 5%;
+        /* margin-right: 5%; */
+        @include tablets {
+          width: 80%;
+        }
         &-title {
           font-size: 16px;
           font-weight: 600;
@@ -1647,6 +1894,11 @@
         resize: vertical;
         padding: 15px 13px 15px 20px;
         space-word: wrap;
+        @include tablets {
+          padding: 4px 5px;
+          font-size: 14px;
+
+        }
         &:focus {
           border: 1px solid  rgba($main-color,1);
         }
@@ -1667,6 +1919,9 @@
         line-height: 2;
         transition: .3s;
         color: $main-color;
+        @include tablets {
+          width: 32%;
+        }
         &:hover {
           background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,124,241) 60%, rgb(0,137,242) 100%);
           text-transform: uppercase;
@@ -1691,17 +1946,32 @@
         align-items: bottom;
         color: white;
         position: relative;
+        
+        &__btn {
+          width: 100%;
+          height: 100%;
+        }
       }
       & .add-review__icon {
         position: absolute;
         top: 42%;
         left: 50%;
         transform: translate(-50%,-50%);
+        @include phones {
+          top: 50%;
+          left: 20%;
+          transform: translateY(-50%);
+
+        }
       }
       & .add-review__icon-circle {
         background-image: svg-load("circle.svg", "fill=white", "width=100%", "height=100%");
         width: 150px;
         height: 150px;
+        @include phones {
+          width: 50px;
+          height: 50px;
+        }
         
       }
       & .add-review__icon-plus {
@@ -1712,16 +1982,24 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
+        @include phones {
+          width: 12px;
+          height: 12px;
+        }
       }
       & .add-review__text {
         position: absolute;
         top: 62%;
+        left: 50%;
         top: 70%;
         width: 46%;
         transform: translate(-50%, -50%);
         font-size: 18px;
         font-weight: bold;
         line-height: 1.67;
+        @include phones {
+          top: 50%;
+        }
       }
       & .reviews-form {
         width: 32%;
@@ -1733,11 +2011,37 @@
         box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
         padding: 2%;
         margin-bottom: 2%;
+        &.add-review {
+          @include phones {
+          padding: 50px 0;
+          }
+        }
+        @include tablets {
+          width: 48%;
+          margin-right: 3%;
+          padding-bottom: 4%;
+          &:nth-child(2n) {
+          margin-right: 0;
+
+          }
+        }
+        @include phones {
+          width: 100%;
+          margin-right: 0;
+          margin-bottom: 6%;
+          padding: 7%;
+        }
         &:last-child {
           margin-right: 0;
         }
         &:nth-child(3n) {
           margin-right: 0;
+          @include tablets {
+            margin-right: 3%;
+          }
+          @include phones {
+            margin-right: 0;
+          }
         }
       }
       & .review-form__review {
@@ -1813,6 +2117,9 @@
         font-weight: 600;
         line-height: 1.88;
         width: 87%;
+        @include desctop {
+          width: 100%;
+        }
       }
       & .review-form__pencil--text {
         margin-right: 10%;
