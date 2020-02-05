@@ -9,3 +9,4 @@ import "./scripts/reviews";
 import "./scripts/hamburger-menu";
 import "./scripts/slider";
 import "./scripts/form";
+import "./scripts/overlay";

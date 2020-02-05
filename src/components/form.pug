@@ -47,6 +47,7 @@ form.form(@submit.prevent="submitForm")
     .form__button
       button(@click.prevent="submitForm").form__button--ref Отправить
   .overlay(:class="{disabled: overlayHidden}" @click="hideOverlay")
-    .overlay__content
-      .overlay__message {{resultMessage}}
-      button.overlay__closq(@click="hideOverlay") Закрыть
+    .overlay__content(@click="hideOverlayNo")
+      .overlay__message {{resultMessage}} 
+      .overlay__btn
+        button.overlay__close(@click="hideOverlay") Закрыть

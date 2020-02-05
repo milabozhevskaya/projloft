@@ -69,12 +69,15 @@ new Vue({
           }).then(() => {
             this.resultMessage = "Сообщение отправлено!";
             this.overlayHidden = false;
-            setTimeout(this.hideOverlay, 5000);
+            // setTimeout(this.hideOverlay, 5000);
           });
       }
     },
     hideOverlay() {
       this.overlayHidden = true;
+    },
+    hideOverlayNo() {
+      this.overlayHidden = false;
     }
   }
 });
