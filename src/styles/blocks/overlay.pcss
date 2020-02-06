@@ -1,0 +1,57 @@
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba($text-color, .5);
+  z-index: 40;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &.disabled {
+    display: none;
+    opacity: 0;
+  }
+  &__content {
+    width: 35%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+  }
+  &__message {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.88;
+    color: $text-color;
+    margin-bottom: 10%;
+    display: block;
+  }
+  &__btn {
+    display: flex;
+    justify-content: center;
+  }
+  &__close{
+    padding: 10px 60px;
+    background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,124,241) 60%, rgb(0,137,242) 100%);
+    text-transform: uppercase;
+    border-radius: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 2.67;
+    color: white;
+    transition: .6s;
+    &:hover {
+      background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,127,255) 35%, rgb(0,145,255) 100%);
+
+    }
+  }
+}

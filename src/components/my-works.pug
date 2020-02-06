@@ -7,45 +7,63 @@ section.my-works
 
 script(type="text/x=template")#slider-container
   .slider
-    pre {{works}}
-    display
-    description
+    //- pre {{works}}
+    display(
+      :works="works",
+      :currentWork="currentWork",
+      :currentIndex="currentIndex",
+      @slide="handleSlide"
+    )
+    description(
+      :currentWork="currentWork"
+    )
 
 script(type="text/x=template")#slider-display
-  .slider__display
+  .slider__display(:data-slide="currentIndex + 1")
     .display
-      +image("content/my-works-prev1.png", "my-works", "display-pic")
+      img(:src="currentWork.photo", alt="" class="display-pic")
       .display__slider-prev
-        thumbs
-        btns  
+        thumbs(
+          :works="reversedWorks"
+          :currentWork="currentWork"
+        )
+        btns(
+          @slide="$emit('slide', $event)"
+        )
   
 
 script(type="text/x=template")#slider-thumbs
   ul.slider-prev
-    each item in mini
-      li(class="slider-prev__item"+item[1])
-        button.slider-prev__link
-          .slider-prev__mask
-          +image(`content/${item[0]}.png`, "#{item[0]}", "slider-prev-mini")
+    li.slider-prev__item(
+      v-for="work in works"
+      :class="{active: work.id === currentWork.id}"
+    )
+      button.slider-prev__link
+        .slider-prev__mask
+        img(:src="work.photo" alt="" class="slider-prev-mini")
 
 script(type="text/x=template")#slider-btns
   .display__buttons
-    +arrow("display__btn", "next")
-    +arrow("display__btn", "prev")
+    button.display__btn.display__btn-next(@click.prevent="$emit('slide', 'next')")
+      +arrow("next")
+    button.display__btn.display__btn-prev(@click.prevent="$emit('slide', 'prev')")
+      +arrow("prev")
 
 script(type="text/x=template")#slider-description
   .slider__desc
     .slider__desc-tags
-      tags
+      tags(
+        :tags="tagsArray"
+      )
     .slider__desc-text
-      h3.slider__desc-title Сайт школы образования
-      .slider__desc-info Эта девушка проходила обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+      h3.slider__desc-title {{currentWork.title}}
+      .slider__desc-info {{currentWork.desc}}
     .slider__desc-btns
-      a.my-works__link
+      a(:href="currentWork.link" class="my-works__link")
         +icon("link", "my-works-icon")
         .my-works__link-text Посмотреть сайт
 
 script(type="text/x=template")#slider-tags
   ul.tags
-    each item in tags
-      li.tags__item #{item}
+    li.tags__item(v-for="tag in tags")
+      .tag {{tag}}

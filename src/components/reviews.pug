@@ -18,6 +18,6 @@ section.reviews(@click="checkArrows" @touchend="checkArrows")
                     .user__info-pos #{reviews[i][3]}
     .reviews__slider-direction
       .reviews__slider-direc--prev(@click="previous" )
-        +arrow("reviews__slider-btn", "prev")
+        +arrow("prev")
       .reviews__slider-direc--next(@click="next" :disabled=false)
-        +arrow("reviews__slider-btn", "next")
+        +arrow("next")
