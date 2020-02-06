@@ -1414,7 +1414,7 @@
       & .work--tag {
         padding: 10px 17px;
         background-color: #eceff2;
-        border-radius: 40%;
+        border-radius: 30px;
         margin-right: 3%;
       }
       & .rewriting__work--btns {
@@ -1527,7 +1527,6 @@
         box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
         padding-bottom: 2%;
         margin-bottom: 2%;
-        width: 48%;
         &.add-work {
           @include phones {
           padding: 13% 0;
@@ -1548,6 +1547,7 @@
         }
         @include tablets {
           margin-right: 3%;
+          width: 48%;
           &:nth-child(2n) {
             margin-right: 0;
           }
@@ -1584,13 +1584,17 @@
         color: currentColor;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: flex-end;
       }
       & .work--tag {
         padding: 8px 20px;
         background-color: #eceff2;
-        border-radius: 40%;
-        /* margin-right: 3%; */
+        border-radius: 30px;
+        margin-right: 2%;
+        /* margin-right: 10px; */
+        &:last-child() {
+          margin-right: 0;
+        }
       }
       & .work__desc {
         display: flex;
