@@ -1527,10 +1527,17 @@
         box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
         padding-bottom: 2%;
         margin-bottom: 2%;
+        @include tablets {
+          margin-right: 3%;
+          width: 48%;
+          &:nth-child(2n) {
+            margin-right: 0;
+        }
+        }
         &.add-work {
           @include phones {
-          padding: 13% 0;
-        }
+            padding: 13% 0;
+          }
         }
         
         &:last-child {
@@ -1545,13 +1552,7 @@
             margin-right: 0;
           }
         }
-        @include tablets {
-          margin-right: 3%;
-          width: 48%;
-          &:nth-child(2n) {
-            margin-right: 0;
-          }
-        }
+        
         @include phones {
           width: 100%;
           margin-right: 0;
