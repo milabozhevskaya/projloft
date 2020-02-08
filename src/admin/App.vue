@@ -1,27 +1,12 @@
 <template lang="pug">
   .wrapper
     login
+    adminheader
+    adminnav
     section.admin
       
-      header.admin-header
-        .admin-header__container
-          .user-info-photo
-            .user-info__avatar
-              img(src=`~images/content/user.jpg`).user-info__photo
-          .user-info
-            .user-info__name Мила Божевская
-            .admin-title Панель администрирования
-            .admin-exit
-              a.admin-exit__ref Выйти
-      nav.admin-nav
-        .admin-nav__container  
-          ul.admin__menu-list
-            li.admin__menu-item
-              a(href="#").admin__menu-link Обо мне
-            li.admin__menu-item
-              a(href="#").admin__menu-link Работы
-            li.admin__menu-item
-              a(href="#").admin__menu-link Отзывы
+      
+      
       main.content
         .about-me
           .about-me__container
@@ -339,11 +324,15 @@
 
 <script>
 import login from './components/pages/login';
+import adminheader from './components/header';
+import adminnav from './components/nav';
 
 export default {
   name: 'app',
   components: {
-    login
+    login,
+    adminheader,
+    adminnav
   },
   data () {
     return {
@@ -370,157 +359,8 @@ export default {
   }
   
   
-  .admin-header {
-    background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,124,241) 60%, rgb(0,137,242) 100%);
-    display: flex;
-    justify-content: center;
-    &__container {
-      width: 92%;
-      display: flex;
-      flex-direction: row;
-      color: white;
-      padding-top: 15px;
-      padding-bottom: 15px;
-      align-items: center;
-      justify-content: space-between;
-      @include tablets {
-        width: 97%;
-      }
-      @include phones {
-        flex-direction: row;
-        align-items: start;
-      }
-    }
-    & .user-info {
-      width: 95%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      @include desctop {
-        width: 92%;
-      }
-      @include phones {
-        width: 85%;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: start;
-      }
-      
-    }
-    & .user-info-photo {
-      width: 6%;
-      @include tablets {
-        width: 12%;
-      }
-    }
-    & .user-info__avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-right: 2%;
-      @include tablets {
-        margin-right: 2%;
-      }
-    }
-    & .user-info__photo {
-      min-width: 100%;
-      height: 100%;
-      /* min-height: 100%; */
-    }
-    & .user-info__name {
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 1.89;
-      width: 15%;
-      @include desctop {
-        width: 24%;
-      }
-      @include tablets {
-        width: 44%;
-      }
-      @include phones {
-        width: 70%;
-      }
-    }
-    & .admin-title {
-      width: 72%;
-      opacity: .7;
-      font-size: 14px;
-      @include tablets {
-        width: 60%;
-      }
-      @include phones {
-        display: none;
-      }
-    }
-    & .admin-exit {
-      width: 10%;
-      display: flex;
-      justify-content: flex-end;
-      @include phones {
-        width: 19%;
-        justify-content: flex-start;
-
-      }
-    }
-    & .admin-exit__ref {
-      text-decoration: underline;
-      opacity: .7;
-      transition: .6s;
-      &:hover {
-        opacity: 1;
-      }
-    }
-  }
-  .admin-nav {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3%;
-    &__container {
-      width: 92%;
-    }
-    & .admin__menu-list {
-      line-height: 6;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      width: 35%;
-      @include tablets {
-        width: 60%;
-      }
-      @include phones {
-        width: 100%;
-      }
-    }
-    & .admin__menu-item {
-      width: 10%;
-      color: $text-color;
-      border-bottom: 2px solid transparent;
-      opacity: .7;
-      transition: .6s;
-      flex-grow: 1;
-      text-align: center;
-      text-align: center;
-      &:hover {
-      border-bottom: 2px solid $main-color;
-
-      }
-    }
-    & .admin__menu-link {
-      text-decoration: none;
-      color: currentColor;
-      font-size: 16px;
-      font-weight: normal;
-      line-height: 2.25;
-      transition: .6s;
-      &:hover {
-        color: $main-color;
-        font-weight: 600;
-        
-      }
-    }
-  }
+  
+  
   .about-me {
     color: $text-color;
     display: flex;
