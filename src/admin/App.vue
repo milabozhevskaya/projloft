@@ -1,35 +1,8 @@
 <template lang="pug">
   .wrapper
+    login
     section.admin
-      .login
-        .login-bg
-          .login-bg__item.login-bg__item--1
-          .login-bg__item.login-bg__item--2
-          .login-bg__item.login-bg__item--3
-          .login-bg__item.login-bg__item--4
-          .login-bg__item.login-bg__item--5
-          .login-bg__item.login-bg__item--6
-          .login-bg__item.login-bg__item--7
-          .login-bg__item.login-bg__item--8
-          .login-bg__item.login-bg__item--9
-          .login-bg__item.login-bg__item--10
-        .login-overlay
-          .login-overlay__container
-            .login-overlay__menu
-              .login-overlay__close
-            .login-overlay__title Авторизация
-            .login-overlay__form
-              form.admin-entry
-                .admin-entry__form-wrap
-                  .admin-entry__text Логин
-                  input(name="name" type="text" placeholder="").admin__login.admin-entry__input
-                  .admin-entry__icon--name
-                .admin-entry__form-wrap
-                  .admin-entry__text Пароль
-                  input(name="name" type="password" placeholder="").admin__password.admin-entry__input
-                  .admin-entry__icon--passw
-                .admin-entry__btn
-                  button.admin__btn Отправить
+      
       header.admin-header
         .admin-header__container
           .user-info-photo
@@ -363,6 +336,25 @@
 
 
 </template>
+
+<script>
+import login from './components/pages/login';
+
+export default {
+  name: 'app',
+  components: {
+    login
+  },
+  data () {
+    return {
+
+    }
+  }
+}
+</script>
+
+
+
 <style lang="postcss">
   @import "../styles/main.pcss";
   @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
@@ -377,250 +369,7 @@
     }
   }
   
-  .login {
-    width: 100%;
-    height: 100vh;
-    min-height: 650px;
-    padding-bottom: 14%;
-    position: relative;
-    /* @include fulldesctop {
-      padding-bottom: 22%;
-      height: 100%;
-    }
-    @include desctop {
-      padding-bottom: 18%;
-      height: 100%;
-    }
-    @include tablets {
-      padding-bottom: 39%;
-      height: 100%;
-    } */
-    @include phones {
-      display: none;
-    } 
-
-    & .login-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-      z-index: -1;
-      &__item {
-        min-width: 100%;
-        background-position: 50% 0;
-        background-size: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translateX(0) translateZ(0);
-        &--1 {
-          background-image: url("../images/bg/paral1.png");
-          z-index: 1;
-          height: 55%;
-        }
-        &--2 {
-          background-image: url("../images/bg/paral2.png");
-          z-index: 2;
-          top: 36%;
-          height: 237px;
-        }
-        &--3 {
-          background-image: url("../images/bg/paral3.png");
-          z-index: 3;
-          top: 25%;
-          height: 500px;
-        }
-        &--4 {
-        background-image: url("../images/bg/paral4.png");
-          z-index: 4;
-          top: 31%;
-          height: 479px;
-        }
-        &--5 {
-        background-image: url("../images/bg/paral5.png");
-          z-index: 5;
-          top: 24%;
-          height: 500px;
-        }
-        &--6 {
-          background-image: url("../images/bg/paral6.png");
-          z-index: 6;
-          top: 30%;
-          height: 400px;
-        }
-        &--7 {
-          background-image: url("../images/bg/paral7.png");
-          z-index: 7;
-          top: 63%;
-          height: 53%;
-        }
-        &--8 {
-          background-image: url("../images/bg/paral8.png");
-          z-index: 8;
-          top: 41%;
-          height: 70%;
-        }
-        &--9 {
-          background-image: url("../images/bg/paral9.png");
-          z-index: 9;
-          height: 75%;
-          top: 25%;
-          background-color: rgb($text-color, .2);
-        }
-        &--10 {
-          height: 100%;
-          background-color: $text-color;
-          opacity: .4;
-          z-index: 10;
-        }
-      }
-    }
-
-    & .login-overlay {
-      position: absolute;
-      width: 35%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      background-color: white;
-      padding: 4%;
-      color: $text-color;
-      @include desctop {
-        width: 45%;
-      }
-      @include tablets {
-        width: 60%;
-      }
-      @include phones {
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-    & .login-overlay__container {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      @include phones {
-        /* width: 80%; */
-        display: none;
-      }
-    }
-    & .login-overlay__menu {
-      display: flex;
-      justify-content: flex-end;
-      @include phones {
-        position: absolute;
-        top: 8%;
-        right: 10%;
-      }
-    }
-    & .login-overlay__close {
-      background: svg-load("remove.svg", "fill=$text-color", "width=100%", "height=100%");
-      width: 20px;
-      height: 20px;
-      &:hover {
-        background: svg-load("remove.svg", "fill=$main-color", "width=100%", "height=100%");
-      }
-    }
-    & .login-overlay__title {
-      text-align: center;
-      font-size: 28px;
-      font-weight: 600;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1.2;
-      margin-bottom: 10%;
-    }
-    & .login-overlay__form {
-      
-    }
-    & .admin-entry {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      &__text {
-        opacity: .6;
-        padding-left: 50px;
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 1.88;
-      }
-      &__form-wrap {
-        transition: .6s;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 8%;
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-      &__input {
-        width: 100%;
-        background-color: transparent;
-        border: none;
-        outline: none;
-        border-bottom: 1px solid currentColor;
-        padding: 3px 4px 3px 50px;
-        font-size: 18px;
-        font-weight: bold;
-        line-height: 2;
-        color: currentColor;
-      }
-      & .admin-entry__btn {
-        text-align: center;
-        /* justify-content: center;
-        display: flex; */
-      }
-      & .admin__btn {
-        padding: 15px 80px;
-        background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,124,241) 60%, rgb(0,137,242) 100%);
-        text-transform: uppercase;
-        border-radius: 40px;
-        font-size: 18px;
-        font-weight: bold;
-        line-height: 2.67;
-        color: white;
-        transition: .6s;
-        @include desctop {
-          padding: 20px 70px;
-          font-size: 16px;
-        }
-        @include tablets {
-          padding: 13px 55px;
-          font-size: 16px;
-        }
-        &:hover {
-          background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,127,255) 35%, rgb(0,145,255) 100%);
-        }
-      }
-    }
-  }
- 
-  .admin-entry__icon--name {
-    background-image: svg-load("user.svg", "fill=$text-color", "width=100%", "height=100%");
-    width: 30px;
-    height: 30px;
-    opacity: .4;
-    position: absolute;
-    top: 40%;
-    left: 0;
-  }
-  .admin-entry__icon--passw {
-    background-image: svg-load("key.svg", "fill=$text-color", "width=100%", "height=100%");
-    width: 30px;
-    height: 30px;
-    opacity: .4;
-    position: absolute;
-    top: 40%;
-    left: 0;
-  }
+  
   .admin-header {
     background-image: linear-gradient(to right, rgb(0,103,239) 0%, rgb(0,124,241) 60%, rgb(0,137,242) 100%);
     display: flex;
