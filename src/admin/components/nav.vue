@@ -5,11 +5,13 @@
         li.admin__menu-item
           a(href="#").admin__menu-link Обо мне
         li.admin__menu-item
-          a(href="#").admin__menu-link Работы
+          a(href="#").admin__menu-link
+            router-link(
+              to="/works"
+            ) Работы
         li.admin__menu-item
           a(href="#").admin__menu-link Отзывы
 </template>
-
 <style lang="postcss">
   @import "../../styles/main.pcss";
   .admin-nav {

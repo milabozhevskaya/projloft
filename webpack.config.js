@@ -84,9 +84,13 @@ module.exports = (env, argv) => {
   };
 
   const config = {
+    // entry: {
+    //   main: "./src/main.js",
+    //   admin: "./src/admin/main.js"
+    // },
     entry: {
-      main: "./src/main.js",
-      admin: "./src/admin/main.js"
+      main: ["@babel/polyfill", "./src/main.js"],
+      admin: ["@babel/polyfill", "./src/admin/main.js"]
     },
     output: {
       path: path.resolve(__dirname, "./dist"),

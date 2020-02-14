@@ -1,36 +1,48 @@
 <template lang="pug">
   .wrapper
-    login
-    adminheader
-    adminnav
-    main.content
-      aboutme
-      works
-      reviews
+    template(v-if="$route.meta.public")
+      router-view
+    
+    template(v-else-if="userIsLogged")
+      adminheader
+      adminnav
+      main.content
+        router-view(:pageTitle="$route.meta.title")
    
 </template>
 
 <script>
-import login from './components/pages/login';
-import adminheader from './components/header';
-import adminnav from './components/nav';
-import aboutme from './components/pages/about';
-import works from './components/pages/works';
-import reviews from './components/pages/reviews';
-
+import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: 'app',
   components: {
-    login,
-    adminheader,
-    adminnav,
-    aboutme,
-    works,
-    reviews
+    adminheader: () => import("./components/header"),
+    adminnav: () => import("./components/nav"),
+    tooltips: () => import("./components/tooltips"),
+    // about: () => import("./components/pages/about")
   },
   data () {
     return {
 
+    }
+  },
+  computed: {
+    ...mapGetters("user",["userIsLogged"]),
+    ...mapState("tooltips", { visible: state => state.visible })
+  },
+  methods: {
+    ...mapActions("tooltips", ["closeTooltip"])
+  },
+  watch: {
+    visible(value) {
+      if (value === true) {
+        let timeout;
+        clearTimeout(timeout);
+
+        timeout = setTimeout(() => {
+          this.closeTooltip();
+        }, 3000);
+      }
     }
   }
 }

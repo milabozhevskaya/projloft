@@ -5,115 +5,61 @@
         .about-me__title Блок "Обо мне"
         .about-me__new-group
           .about-me__new-group--icon
-          button.about-me__new-group--title Добавить группу
+          button(type="button" @click="addSkillForm = true").about-me__new-group--title Добавить группу
       .about-me__skills
-          .about-me__form
-            form.form-skills.about-me__form-skills--add
+          .about-me__form(v-if="addSkillForm").about-me__form--add
+            form(@submit.prevent="addNewGroupOfSkills").form-skills.about-me__form-skills--add
               .form-skills__title.form-skills__title--add
-                input(name="name" placeholder="Название новой группы").title-group.title-group--new
+                input(v-model="titleGroup" type="text"  placeholder="Название новой группы").title-group.title-group--new
                 .title__btns.title__btns--add
-                  button(name="pencil").title__btn-pencil.title__btn-pencil--add.btn-pencil
-                  button(name="tick").title__btn-tick.title__btn-tick--add.btn-tick
-                  button(name="remove").title__btn-remove.title__btn-remove--add.btn-remove
+                  button(type="submit").title__btn-tick.title__btn-tick--add.btn-tick
               .form-skills__content.form-skills__content--add
               .form-skills__skill.form-skills__skill--add
                 input(name="name" type="text" placeholder="Новый навык").skill-title.skill-title--add
                 input(name="persent" type="value" max-value="100" min-value="0" placeholder="100").skill-persents.skill-persents--add
                 .skill-btn
-                  button.skill-btn--icon.skill-btn--add
-          .about-me__form
-            .form-skills.about-me__form-skills
-              .form-skills__title
-                .title-group Workflow
-                .title__btns
-                  button(name="pencil").title__btn-pencil.btn-pencil
-                  button(name="tick").title__btn-tick.btn-tick
-                  button(name="remove").title__btn-remove.btn-remove
-              .form-skills__content
-                .form-skills__skill-row
-                  .skill-row--name GIT
-                  .skill-row--persents 100
-                  .skill-row--btns
-                    button(name="pencil").skill-row__btn-pencil.btn-pencil
-                    button(name="trash").skill-row__btn-trash.btn-trash
-                    button(name="tick").skill-row__btn-tick.btn-tick
-                    button(name="remove").skill-row__btn-remove.btn-remove
-                .form-skills__skill-row
-                  .skill-row--name Terminal
-                  .skill-row--persents 90
-                  .skill-row--btns
-                    button(name="pencil").skill-row__btn-pencil.btn-pencil
-                    button(name="trash").skill-row__btn-trash.btn-trash
-                    button(name="tick").skill-row__btn-tick.btn-tick
-                    button(name="remove").skill-row__btn-remove.btn-remove
-                .form-skills__skill-row
-                  .skill-row--name Gulp
-                  .skill-row--persents 80
-                  .skill-row--btns
-                    button(name="pencil").skill-row__btn-pencil.btn-pencil
-                    button(name="trash").skill-row__btn-trash.btn-trash
-                    button(name="tick").skill-row__btn-tick.btn-tick
-                    button(name="remove").skill-row__btn-remove.btn-remove
-                .form-skills__skill-row
-                  .skill-row--name Webpack
-                  .skill-row--persents 85
-                  .skill-row--btns
-                    button(name="pencil").skill-row__btn-pencil.btn-pencil
-                    button(name="trash").skill-row__btn-trash.btn-trash
-                    button(name="tick").skill-row__btn-tick.btn-tick
-                    button(name="remove").skill-row__btn-remove.btn-remove
-              .form-skills__skill.form-skills__skill--add
-                input(name="name" type="text" placeholder="Новый навык").skill-title.skill-title--add
-                input(name="persent" type="value" max-value="100" min-value="0" placeholder="100").skill-persents.skill-persents--add
-                .skill-btn
-                  button.skill-btn--icon
-          .about-me__form
-            .form-skills.about-me__form-skills
-              .form-skills__title
-                .title-group Frontend
-                .title__btns
-                  button(name="pencil").title__btn-pencil.btn-pencil
-                  button(name="tick").title__btn-tick.btn-tick
-                  button(name="remove").title__btn-remove.btn-remove
-              .form-skills__content
-                .form-skills__skill-row
-                  .skill-row--name HTML5
-                  .skill-row--persents 100
-                  .skill-row--btns
-                    button(name="pencil").skill-row__btn-pencil.btn-pencil
-                    button(name="trash").skill-row__btn-trash.btn-trash
-                    button(name="tick").skill-row__btn-tick.btn-tick
-                    button(name="remove").skill-row__btn-remove.btn-remove
-                .form-skills__skill-row
-                  .skill-row--name CSS3
-                  .skill-row--persents 90
-                  .skill-row--btns
-                    button(name="pencil").skill-row__btn-pencil.btn-pencil
-                    button(name="trash").skill-row__btn-trash.btn-trash
-                    button(name="tick").skill-row__btn-tick.btn-tick
-                    button(name="remove").skill-row__btn-remove.btn-remove
-                .form-skills__skill-row
-                  .skill-row--name JavaScript
-                  .skill-row--persents 80
-                  .skill-row--btns
-                    button(name="pencil").skill-row__btn-pencil.btn-pencil
-                    button(name="trash").skill-row__btn-trash.btn-trash
-                    button(name="tick").skill-row__btn-tick.btn-tick
-                    button(name="remove").skill-row__btn-remove.btn-remove
-                .form-skills__skill-row
-                  .skill-row--name JQuery и Vue.js
-                  .skill-row--persents 85
-                  .skill-row--btns
-                    button(name="pencil").skill-row__btn-pencil.btn-pencil
-                    button(name="trash").skill-row__btn-trash.btn-trash
-                    button(name="tick").skill-row__btn-tick.btn-tick
-                    button(name="remove").skill-row__btn-remove.btn-remove
-              .form-skills__skill.form-skills__skill--add
-                input(name="name" type="text" placeholder="Новый навык").skill-title.skill-title--add
-                input(name="persent" type="value" max-value="100" min-value="0" placeholder="100").skill-persents.skill-persents--add
-                .skill-btn
-                  button.skill-btn--icon
+                  button(disabled).skill-btn--icon.skill-btn--add
+          .about-me__form(v-for="category in categories" :key="category.id")
+            skill(
+              :category="category"
+            )
 </template>
+
+<script>
+import { mapActions, mapState } from "vuex";
+export default {
+  components: {
+    skill: () => import("../skill")
+  },
+  data() {
+    return {
+      titleGroup: "",
+      addSkillForm: false
+    }
+    
+  },
+  computed: {
+    ...mapState("categories", {
+      categories: state => state.categories
+    })
+  },
+  created() {
+    this.fetchCategories();
+  },
+  methods: {
+    ...mapActions("categories", ["addNewGroup", "fetchCategories"]),
+    async addNewGroupOfSkills() {
+      try {
+        await this.addNewGroup(this.titleGroup);
+        this.addSkillForm = false;
+        this.titleGroup=""
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+  }
+};
+</script>
 
 <style lang="postcss">
   @import "../../../styles/main.pcss";
@@ -258,20 +204,21 @@
           opacity: .4;
           width: 14px;
           height: 14px;
+          /* display: none; */
+
         }
         & .btn-tick {
           background-image: svg-load("tick.svg", "fill=#00d70a", "width=100%", "height=100%");
           background-repeat: no-repeat;
           width: 15px;
           height: 13px;
-          display: none;
         }
         & .btn-remove {
           background-image: svg-load("remove.svg", "fill=#bf2929", "width=100%", "height=100%");
           background-repeat: no-repeat;
           width: 14px;
           height: 14px;
-          display: none;
+          /* display: none; */
 
         }
         & .form-skills__content {
@@ -466,3 +413,52 @@
       }
   }
 </style>
+
+
+ 
+          //- .about-me__form
+          //-   .form-skills.about-me__form-skills
+          //-     .form-skills__title
+          //-       .title-group Frontend
+          //-       .title__btns
+          //-         button(name="pencil").title__btn-pencil.btn-pencil
+          //-         button(name="tick").title__btn-tick.btn-tick
+          //-         button(name="remove").title__btn-remove.btn-remove
+          //-     .form-skills__content
+          //-       .form-skills__skill-row
+          //-         .skill-row--name HTML5
+          //-         .skill-row--persents 100
+          //-         .skill-row--btns
+          //-           button(name="pencil").skill-row__btn-pencil.btn-pencil
+          //-           button(name="trash").skill-row__btn-trash.btn-trash
+          //-           button(name="tick").skill-row__btn-tick.btn-tick
+          //-           button(name="remove").skill-row__btn-remove.btn-remove
+          //-       .form-skills__skill-row
+          //-         .skill-row--name CSS3
+          //-         .skill-row--persents 90
+          //-         .skill-row--btns
+          //-           button(name="pencil").skill-row__btn-pencil.btn-pencil
+          //-           button(name="trash").skill-row__btn-trash.btn-trash
+          //-           button(name="tick").skill-row__btn-tick.btn-tick
+          //-           button(name="remove").skill-row__btn-remove.btn-remove
+          //-       .form-skills__skill-row
+          //-         .skill-row--name JavaScript
+          //-         .skill-row--persents 80
+          //-         .skill-row--btns
+          //-           button(name="pencil").skill-row__btn-pencil.btn-pencil
+          //-           button(name="trash").skill-row__btn-trash.btn-trash
+          //-           button(name="tick").skill-row__btn-tick.btn-tick
+          //-           button(name="remove").skill-row__btn-remove.btn-remove
+          //-       .form-skills__skill-row
+          //-         .skill-row--name JQuery и Vue.js
+          //-         .skill-row--persents 85
+          //-         .skill-row--btns
+          //-           button(name="pencil").skill-row__btn-pencil.btn-pencil
+          //-           button(name="trash").skill-row__btn-trash.btn-trash
+          //-           button(name="tick").skill-row__btn-tick.btn-tick
+          //-           button(name="remove").skill-row__btn-remove.btn-remove
+          //-     .form-skills__skill.form-skills__skill--add
+          //-       input(name="name" type="text" placeholder="Новый навык").skill-title.skill-title--add
+          //-       input(name="persent" type="value" max-value="100" min-value="0" placeholder="100").skill-persents.skill-persents--add
+          //-       .skill-btn
+          //-         button.skill-btn--icon

@@ -5,18 +5,46 @@
         .login-overlay__close
       .login-overlay__title Авторизация
       .login-overlay__form
-        form.admin-entry
+        form(@submit.prevent="loginEntry").admin-entry
           .admin-entry__form-wrap
             .admin-entry__text Логин
-            input(name="name" type="text" placeholder="").admin__login.admin-entry__input
+            input(v-model="user.name" type="text" placeholder="").admin__login.admin-entry__input
             .admin-entry__icon--name
           .admin-entry__form-wrap
             .admin-entry__text Пароль
-            input(name="name" type="password" placeholder="").admin__password.admin-entry__input
+            input(v-model="user.password" type="password" placeholder="").admin__password.admin-entry__input
             .admin-entry__icon--passw
           .admin-entry__btn
-            button.admin__btn Отправить
+            button(type="submit").admin__btn Отправить
 </template>
+<script>
+import $axios from "../requests";
+export default {
+  data: () => ({
+    user: {
+      name: "",
+      password: ""
+    }
+  }),
+  methods: {
+    async loginEntry() {
+      try {
+        const response = await $axios.post("/login", this.user);
+        const token = response.data.token;
+
+        localStorage.setItem("token", token);
+        $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
+
+        this.$router.replace("/");
+        // console.log(response);
+      } catch (error) {
+
+      }
+    }
+  }
+}
+</script>
+
 
 <style lang="postcss" scoped>
   @import "../../styles/main.pcss";
