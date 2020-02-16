@@ -1,4 +1,9 @@
 import Vue from "vue";
+import axios from "axios";
+
+const $axios = axios.create({
+  baseURL: "https://webdev-api.loftschool.com"
+});
 
 const thumbs = {
   template: "#slider-thumbs",
@@ -9,16 +14,28 @@ const btns = {
 };
 const tags = {
   template: "#slider-tags",
-  props: ["tags"]
+  props: ["tags"],
+  computed: {
+      tagsArray() {
+        return (this.tags.length === 0) ? [] :this.tags.split(',');
+    }
+  }
+  // data() {
+  //   return {
+  //     tagsArray: (this.tags.length === 0) ? [] :this.tags.split(',')
+  //   }
+  // }
 };
+
+
 const description = {
   template: "#slider-description",
   components: {tags},
   props: ["currentWork"],
   computed: {
-    tagsArray() {
-      return this.currentWork.skills.split(', ');
-    }
+    // tagsArray() {
+    //   return this.currentWork.techs.split(', ');
+    // }
   }
 };
 
@@ -57,8 +74,11 @@ new Vue({
   methods: {
     makeArrWithRequiredImages(data) {
       return data.map(item => {
-        const requiredPic = require(`../images/content/${item.photo}`);
-        item.photo = requiredPic;
+        const iTems = item;
+        const imgUrlBase="https://webdev-api.loftschool.com/";
+        item.photo = imgUrlBase + iTems.photo;
+        // console.log(item.photo);
+        // console.log(item);
         return item;
 
       });
@@ -107,8 +127,10 @@ new Vue({
       this.loopIndex(value);
     }
   },
-  created() {
-    const data = require("../data/works.json");
-    this.works = this.makeArrWithRequiredImages(data);
+  async created() {
+    const data = await $axios.get("/works/259");
+    // console.log(data.data);
+    this.works = this.makeArrWithRequiredImages(data.data);
+    // this.works = data.data;
   }
 });

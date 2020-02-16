@@ -20,7 +20,6 @@ const skill = {
     // const percent = (dashArray / 100) * (100 - this.skillPercent);
     // console.log(percent);
     const percent = "-" + this.skill.percent + "s";
-    console.log(percent);
     circle.style.animationDelay = percent;
   }
 };

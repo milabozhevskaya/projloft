@@ -13,5 +13,5 @@ export default {
       tagsArray: (this.tags.length === 0) ? [] :this.tags.split(',')
     }
   }
-}
+};
 </script>

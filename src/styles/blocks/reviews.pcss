@@ -94,12 +94,15 @@
     height: 29px;
   }
 }
-
+.review {
+  width: 90%;
+}
 .review__text {
   font-weight: 600;
   line-height: 1.88;
   opacity: .5;
   margin-bottom: 7%;
+  word-wrap: break-word;
   @include fulldesctop {
     margin-bottom: 9%;
   }
@@ -160,7 +163,9 @@
   }
   
 }
-
+.user__photo-avatar {
+  height: 100%;
+}
 [disabled] { 
   background-color: transparent;
   border-color: rgba(currentColor, .3);

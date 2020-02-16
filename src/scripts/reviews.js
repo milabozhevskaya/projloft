@@ -1,8 +1,15 @@
 import Vue from 'vue';
 import Flickity from 'vue-flickity';
- 
+import axios from "axios";
+
+const $axios = axios.create({
+  baseURL: "https://webdev-api.loftschool.com"
+});
+
+
 new Vue({
   el: '.reviews',
+  // template: "reviewsContainer",
   // data: {
   //   disabledClass: true
   // },
@@ -15,6 +22,7 @@ new Vue({
   
   data() {
     return {
+      reviews: [],
       flickityOptions: {
         initialIndex: 0,
         prevNextButtons: false,
@@ -32,6 +40,17 @@ new Vue({
   },
   
   methods: {
+    requiredImages(data) {
+      return data.map(item => {
+        const iTems = item;
+        const imgUrlBase="https://webdev-api.loftschool.com/";
+        item.photo = imgUrlBase + iTems.photo;
+        console.log(item.photo);
+        console.log(item);
+        return item;
+
+      });
+    },
     next() {
       this.$refs.flickity.next();
       this.checkArrows();
@@ -67,5 +86,20 @@ new Vue({
       }
     
     }
+  },
+  async created() {
+    const  data  = await $axios.get("/reviews/259");
+    console.log(data);
+    this.reviews = data.data.map(item => {
+      const iTems = item;
+      const imgUrlBase="https://webdev-api.loftschool.com/";
+      item.photo = imgUrlBase + iTems.photo;
+      console.log(item.photo);
+      console.log(item);
+      return item;
+
+    });
+    // this.reviews = requiredImages(data.data);
+    // this.reviews = data.data;
   }
 });
