@@ -8,9 +8,21 @@
         .user-info__name Мила Божевская
         .admin-title Панель администрирования
         .admin-exit
-          a.admin-exit__ref Выйти
+          a.admin-exit__ref(@click="logoutUser") Выйти
 </template>
+<script>
+  import { mapActions } from "vuex";
 
+export default {
+  methods: {
+    ...mapActions("user", ["logout"]),
+    logoutUser() {
+      this.logout();
+      this.$router.replace("/login");
+    }
+  }
+};
+</script>
 <style lang="postcss">
   @import "../../styles/main.pcss";
   .admin-header {
@@ -39,7 +51,7 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      @include desctop {
+      @include desktop {
         width: 92%;
       }
       @include phones {
@@ -76,7 +88,7 @@
       font-weight: 600;
       line-height: 1.89;
       width: 15%;
-      @include desctop {
+      @include desktop {
         width: 24%;
       }
       @include tablets {

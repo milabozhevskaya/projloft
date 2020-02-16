@@ -11,6 +11,6 @@ export const getToken = () => {
 };
 
 //подставляет токен в запрос
-export const setAuthHttpHeaderToAxios = (axiosInstance, token) => {
+export const setAuthInHeaders = (axiosInstance, token) => {
   axiosInstance.defaults.headers["Authorization"] = `Bearer ${token}`; 
 };

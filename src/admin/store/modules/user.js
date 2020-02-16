@@ -1,5 +1,5 @@
-import { generateStdError } from "./../../helpers/errorHandler";
-import { removeToken } from "./../../helpers/token";
+// import { generateStdError } from "./../../helpers/errorHandler";
+// import { removeToken } from "./../../helpers/token";
 
 export default {
   namespaced: true,
@@ -16,7 +16,7 @@ export default {
     userIsLogged: state => {
       const userObj = state.user;
       const userObjectIsEmpty =
-        Object.keys(userObj).length === 0 && userObj.constructor === Object.user;
+        Object.keys(userObj).length === 0 && userObj.constructor === Object;
       
       return userObjectIsEmpty === false;
     },
@@ -25,18 +25,19 @@ export default {
     }
   },
   actions: {
-    async loginUser({ commit }, user) {
-      try {
-        const response = await this.$axios.post("/login", user);
-        return response;
-      } catch (error) {
-        generateStdError(error);
-      }
-    },
+    // async loginUser({ commit }, user) {
+    //   try {
+    //     const response = await this.$axios.post("/login", user);
+    //     return response;
+    //   } catch (error) {
+    //     generateStdError(error);
+    //   }
+    // },
     logout({ commit }) {
       commit("CLEAR_USER");
-      removeToken();
-      location.href = "/admin"
+      // removeToken();
+      localStorage.clear();
+      // location.href = "/admin"
     }
   }
-}
+};

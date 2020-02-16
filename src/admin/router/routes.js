@@ -2,37 +2,37 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
-import login from './../components/pages/login.vue';
 const routes = [
   {
     path: '/',
-    component: () => import('./../components/pages/about.vue'),
+    component: () => import('../components/pages/about.vue'),
     meta: {
       title: "Блок Обо мне"
     }
   },
   {
     path: '/works',
-    component: () => import('./../components/pages/works.vue'),
+    component: () => import('../components/pages/works.vue'),
     meta: {
       title: "Блок Работы"
     }
   },
   {
     path: '/reviews',
-    component: () => import('./../components/pages/reviews.vue'),
+    component: () => import('../components/pages/reviews.vue'),
     meta: {
       title: "Блок Отзывы"
     }
   },
   {
     path: '/login',
-    component: login,
+    component: () => import("../components/pages/login.vue"),
     meta: {
       public: true
     }
   }
 ];
+// export default routes;
 export default new VueRouter({ routes });
 
 // export default [

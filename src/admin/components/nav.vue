@@ -4,16 +4,52 @@
       ul.admin__menu-list
         li.admin__menu-item
           a(href="#").admin__menu-link Обо мне
-        li.admin__menu-item
-          a(href="#").admin__menu-link
             router-link(
-              to="/works"
-            ) Работы
+              to="/"
+            ).router-to-about
+        li.admin__menu-item
+          a(href="#" ).admin__menu-link Работы
+            router-link(
+              to="works"
+            ).router-to-works
         li.admin__menu-item
           a(href="#").admin__menu-link Отзывы
+            router-link(
+              to="reviews"
+            ).router-to-reviews 
 </template>
+<script>
+export default {
+  methods: {
+    toWorks() {
+      this.$router.go("http://localhost:8080/admin#/works");
+    }
+  }
+}
+</script>
 <style lang="postcss">
   @import "../../styles/main.pcss";
+  .router-to-about {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+  .router-to-works {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+  .router-to-reviews {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
   .admin-nav {
     display: flex;
     justify-content: center;
@@ -43,6 +79,7 @@
       flex-grow: 1;
       text-align: center;
       text-align: center;
+      position: relative;
       &:hover {
       border-bottom: 2px solid $main-color;
 

@@ -3,120 +3,63 @@
     .works__container
       .works__info
         .works__info--title Блок "Работы"
-      form.works__rewriting
-        .rewriting
-          .rewriting--title Редактирование работы
-        .rewriting__work
-          .rewriting__work--img
-            label(for="image").label-upload
-              .label-upload--text Перетащите или загрузите для загрузки изображения
-              input(name="image" type="file").label-upload--file
-              .label-upload--btn
-                button.btn-upload Загрузить
-          .rewriting__work--info
-            .rewriting__work--info-row
-              .rewriting__work--name-title Название
-              .rewriting__work--name-input
-                input(name="name" type="text" value="Дизайн сайта для авто салона Porsche").work--name 
-            .rewriting__work--info-row
-              .rewriting__work--link-title Ссылка
-              .rewriting__work--link-input
-                input(name="name" type="text" value="https://www.porsche-pulkovo.ru").work--link 
-            .rewriting__work--textarea
-              .rewriting__work--textarea-title  Описание
-              .rewriting__work--textarea-input
-                textarea(name="name" type="textarea" max-cols="30" max-rows="10" value="").work--textarea Порше Центр Пулково - является официальным дилером марки Порше в Санкт-Петербурге и предоставляет полный цикл услуг по продаже и сервисному обслуживанию автомобилей
-            .rewriting__work--info-row
-              .rewriting__work--tags-title Добавление тэга
-              .rewriting__work--tags-input
-                input(name="name" type="text" value="Jquery, Vue.js, HTML5").work--tags
-            .rewriting__work--tag 
-              .work--tag HTML5
-              .work--tag JS
-              .work--tag PHP
-            .rewriting__work--btns
-              button.rewriting__work--btn.work--reset Отмена
-              button.rewriting__work--btn.work--save Сохранить
+      worksUpgrate(
+        v-if="addFormVisible"
+        :mode="mode"
+        @closeAddForm="closeAddForm"
+      )
       .works-dashboard
-        .works-form.add-work
-          button.add-work__btn 
+        .works-form.add-work(v-if="addFormVisible==false")
+          button(type="button" @click.prevent="showAddForm('new')").add-work__btn 
             .add-work__icon
               .add-work__icon-circle
               .add-work__icon-plus
             .add-work__text Добавить работу
-        .works-form.works-form-1
-          .works-form__work
-            .work__thumb
-              .work__img
-                img(src=`~images/content/slider-1.jpg`).work__img--photo
-              .work__tags
-                .work--tag HTML5
-                .work--tag JS
-                .work--tag PHP
-            .work__desc
-              .work__title Сайт школы образования
-              .work__info Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              a.work__link http://loftschool.ru
-          .works-form__btns
-            button.works-form__pencil
-              .works-form__pencil--text Править
-              .works-form__pencil--icon 
-            button.works-form__remove
-              .works-form__remove--text Удалить
-              .works-form__remove--icon
-        .works-form
-          .works-form__work
-            .work__thumb
-              .work__img
-                img(src=`~images/content/slider-2.jpg`).work__img--photo
-              .work__tags
-            .work__desc
-              .work__title Сайт школы образования
-              .work__info Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .work__link http://loftschool.ru
-          .works-form__btns
-            button.works-form__pencil
-              .works-form__pencil--text Править
-              .works-form__pencil--icon 
-            button.works-form__remove
-              .works-form__remove--text Удалить
-              .works-form__remove--icon
-        .works-form
-          .works-form__work
-            .work__thumb
-              .work__img
-                img(src=`~images/content/slider-3.jpg`).work__img--photo
-              .work__tags
-            .work__desc
-              .work__title Сайт школы образования
-              .work__info Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .work__link http://loftschool.ru
-          .works-form__btns
-            button.works-form__pencil
-              .works-form__pencil--text Править
-              .works-form__pencil--icon 
-            button.works-form__remove
-              .works-form__remove--text Удалить
-              .works-form__remove--icon
-        .works-form
-          .works-form__work
-            .work__thumb
-              .work__img
-                img(src=`~images/content/slider-4.jpg`).work__img--photo
-              .work__tags
-            .work__desc
-              .work__title Сайт школы образования
-              .work__info Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .work__link http://loftschool.ru
-          .works-form__btns
-            button.works-form__pencil
-              .works-form__pencil--text Править
-              .works-form__pencil--icon 
-            button.works-form__remove
-              .works-form__remove--text Удалить
-              .works-form__remove--icon
+        workItem(
+          :work="work"
+          @editUserWork="showAddForm('edit')"
+          v-for="work in works"
+          :key="work.id"
+        )
 </template>
-
+<script>
+import { mapActions, mapState } from 'vuex';
+export default {
+  components: {
+    worksUpgrate: () => import("../worksUpgrate"),
+    workItem: () => import("../workItem")
+  },
+  data() {
+    return {
+      addFormVisible: false,
+      mode: ""
+    }
+  },
+  computed: {
+    ...mapState("works", { works: state => state.works })
+  },
+  methods: {
+    ...mapActions("works", ["getWorks"]),
+    showAddForm(mode) {
+      this.mode = mode;
+      this.addFormVisible = true;
+    },
+    closeAddForm() {
+      this.addFormVisible = false;
+    }
+  },
+  async created() {
+    try {
+      await this.getWorks();
+    } catch (error) {
+      this.showTooltip({
+        type: "error",
+        text: error.message
+      });
+    }
+  }
+}
+</script>
 <style lang="postcss">
   @import "../../../styles/main.pcss";
 
@@ -205,6 +148,7 @@
         flex-direction: column;
         justify-content: center;
         margin: 0 auto;
+        position: relative;
       }
       & .label-upload--text {
         text-align: center;
@@ -215,7 +159,14 @@
         opacity: .5;
       }
       & .label-upload--file {
-        visibility: hidden;
+        opacity: 0;
+        width: 100%;
+        cursor: pointer;
+        position: absolute;
+        z-index: 9999;
+        height: 134%;
+        top: -20%;
+        /* visibility: hidden; */
       }
       & .label-upload--btn {
         text-align: center;
@@ -231,7 +182,7 @@
         line-height: 2;
         color: white;
         transition: .6s;
-        @include desctop {
+        @include desktop {
           padding: 8px 20px; 
           width: 60%; 
         }
@@ -466,6 +417,7 @@
         align-items: bottom;
         color: white;
         position: relative;
+        min-height: 481px;
         &__btn {
           width: 100%;
           height: 100%;
@@ -673,3 +625,56 @@
 
   }
 </style>
+
+
+        // //- .works-form
+        // //-   .works-form__work
+        // //-     .work__thumb
+        // //-       .work__img
+        // //-         img(src=`~images/content/slider-2.jpg`).work__img--photo
+        // //-       .work__tags
+        // //-     .work__desc
+        // //-       .work__title Сайт школы образования
+        // //-       .work__info Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+        // //-       .work__link http://loftschool.ru
+        // //-   .works-form__btns
+        // //-     button.works-form__pencil
+        // //-       .works-form__pencil--text Править
+        // //-       .works-form__pencil--icon 
+        // //-     button.works-form__remove
+        // //-       .works-form__remove--text Удалить
+        // //-       .works-form__remove--icon
+        // //- .works-form
+        // //-   .works-form__work
+        // //-     .work__thumb
+        // //-       .work__img
+        // //-         img(src=`~images/content/slider-3.jpg`).work__img--photo
+        // //-       .work__tags
+        // //-     .work__desc
+        // //-       .work__title Сайт школы образования
+        // //-       .work__info Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+        // //-       .work__link http://loftschool.ru
+        // //-   .works-form__btns
+        // //-     button.works-form__pencil
+        // //-       .works-form__pencil--text Править
+        // //-       .works-form__pencil--icon 
+        // //-     button.works-form__remove
+        // //-       .works-form__remove--text Удалить
+        // //-       .works-form__remove--icon
+        // //- .works-form
+        //   .works-form__work
+        //     .work__thumb
+        //       .work__img
+        //         img(src=`~images/content/slider-4.jpg`).work__img--photo
+        //       .work__tags
+        //     .work__desc
+        //       .work__title Сайт школы образования
+        //       .work__info Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+        //       .work__link http://loftschool.ru
+        //   .works-form__btns
+        //     button.works-form__pencil
+        //       .works-form__pencil--text Править
+        //       .works-form__pencil--icon 
+        //     button.works-form__remove
+        //       .works-form__remove--text Удалить
+        //       .works-form__remove--icon

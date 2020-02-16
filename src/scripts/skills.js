@@ -1,10 +1,17 @@
 console.log('this is skills module');
 
 import Vue from "vue";
+import axios from "axios";
+
+const $axios = axios.create({
+  baseURL: "https://webdev-api.loftschool.com"
+});
 
 const skill = {
   template: "#skill",
-  props: ["skillName", "skillPercent"],
+  props: {
+    skill: Object
+  },
   mounted() {
     const circle = this.$refs["color-circle"];
     // const dashArray = parseInt(
@@ -12,7 +19,9 @@ const skill = {
     // );
     // const percent = (dashArray / 100) * (100 - this.skillPercent);
     // console.log(percent);
-    circle.style.animationDelay = this.skillPercent;
+    const percent = "-" + this.skill.percent + "s";
+    console.log(percent);
+    circle.style.animationDelay = percent;
   }
 };
 
@@ -34,8 +43,8 @@ new Vue({
   components: {
     skillsRow
   },
-  created() {
-    const data = require("../data/skills.json");
+  async created() {
+    const { data } = await $axios.get("/categories/259")
     this.skills = data;
   }
 })

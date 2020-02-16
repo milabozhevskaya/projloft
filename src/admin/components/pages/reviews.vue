@@ -1,91 +1,74 @@
 <template lang="pug">
-  .reviews
+  .reviews("style"="padding:0")
     .reviews__container
       .reviews__info
         .reviews__info--title Блок "Отзывы"
-      .reviews__add
-        .review-new
-          .review-new--title Новый отзыв
-        form.review-new__form
-          .review-new__desc
-            .review-new__photo
-              .review-new__photo--icon
-                .photo--icon
-              label(for="photo").label-upload--review-new
-                input(name="photo" type="file").label-upload--review-file
-                .label-upload--review-btn
-                  .label-upload--add-photo
-                    button.label-upload--btn-text Добавить фото
-                  .label-upload--rewr-photo
-                    button.label-upload--btn-text Редактировать фото
-            .review-new__info
-              .review-new__autor
-                .review-new__autor--name
-                  .review-new__autor--name-title Имя автора
-                  input(name="name" type="text" value="Ковальчук Дмитрий" placeholder="Введите имя").review-new__autor--name-text
-                .review-new__autor--pos
-                  .review-new__autor--pos-title Титул автора
-                  input(name="name" type="text" value="Основатель LoftSchool" placeholder="Введите титул").review-new__autor--pos-text
-              .review-new__review
-                .review-new__review--title Отзыв
-                textarea(name="name" cols="45"  type="textarea" rows="3" wrap="soft" value="").review-new__review--text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-          .review-new__review--btns
-              button.review-new__review--btn.review--reset Отмена
-              button.review-new__review--btn.review--save Сохранить
+      reviewAdd(
+        v-if="addReviewVisible"
+        :mode="mode"
+        @closeAddReview="closeAddReview"
+      )
       .reviews-dashboard
-        .reviews-form.add-review
-          button.add-review__btn 
+        .reviews-form.add-review(v-if="addReviewVisible==false")
+          button(type="button" @click.prevent="showAddReview('new')").add-review__btn 
             .add-review__icon
               .add-review__icon-circle
               .add-review__icon-plus
             .add-review__text Добавить отзыв
-        - for (var i = 0; i<2; i++)
-          .reviews-form
-            .review-form__review
-              .review-form__review--autor
-                .review-form__review--autor-photo
-                  .user__photo
-                    img(src=`~images/content/sabanc.png`).user__photo-avatar
-                .review-form__review--autor-info
-                  .review-form__review--autor-name Владимир Сабанцев
-                  .review-form__review--autor-pos Преподаватель LoftSchool
-              .review__desc
-                .review__desc--text Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-            .review-form__btns
-              button.review-form__pencil
-                .review-form__pencil--text Править
-                .review-form__pencil--icon 
-              button.review-form__remove
-                .review-form__remove--text Удалить
-                .review-form__remove--icon
-          .reviews-form
-            .review-form__review
-              .review-form__review--autor
-                .review-form__review--autor-photo
-                  .user__photo
-                    img(src=`~images/content/sabanc.png`).user__photo-avatar
-                .review-form__review--autor-info
-                  .review-form__review--autor-name Ковальчук Дмитрий
-                  .review-form__review--autor-pos Основатель LoftSchool
-              .review__desc
-                .review__desc--text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-            .review-form__btns
-              button.review-form__pencil
-                .review-form__pencil--text Править
-                .review-form__pencil--icon 
-              button.review-form__remove
-                .review-form__remove--text Удалить
-                .review-form__remove--icon
+        reviewItem(
+          :review="review"
+          @editUserReview="showAddReview('edit')"
+          v-for="review in reviews"
+          :key="review.id"
+        )
 </template>
+<script>
+import { mapActions, mapState } from 'vuex';
 
+export default {
+  components: {
+    reviewAdd: () => import("../reviewAdd"),
+    reviewItem: () => import("../reviewItem")
+  },
+  data() {
+    return {
+      addReviewVisible: false,
+      mode: ""
+    }
+  },
+  computed: {
+    ...mapState("reviews", { reviews: state => state.reviews })
+  },
+  methods: {
+    ...mapActions("reviews", ["getReviews"]),
+    showAddReview(mode) {
+      this.mode = mode;
+      this.addReviewVisible = true;
+    },
+    closeAddReview() {
+      this.addReviewVisible = false;
+    }
+  },
+  async created() {
+    try {
+      await this.getReviews();
+    } catch (error) {
+      this.showTooltip({
+        type: "error",
+        text: error.message
+      });
+    }
+  }
+}
+</script>
 <style lang="postcss">
   @import "../../../styles/main.pcss";
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
 
   .reviews {
     color: $text-color;
     display: flex;
     justify-content: center;
+    padding-top: 0;
     &__container {
       width: 92%;
       display: flex;
@@ -93,12 +76,14 @@
       justify-content: center
     }
     & .reviews__info {
+      color: $text-color;
       display: flex;
       flex-direction: row;
       align-items: center;
       margin-bottom: 4%;
     }
     & .reviews__info--title {
+      color: $text-color;
       font-size: 21px;
       font-weight: bold;
       line-height: 1.62;
@@ -127,6 +112,7 @@
       font-size: 18px;
       font-weight: bold;
       line-height: 1.89;
+      color: $text-color;
     }
     & .review-new__form {
       width: 85%;
@@ -134,7 +120,7 @@
       justify-content: center;
       flex-direction: column;
       margin: 0 auto;
-      @include desctop {
+      @include desktop {
         width: 90%;
       }
       @include tablets {
@@ -155,6 +141,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      position: relative;
       @include tablets {
           width: 40%;
           margin-right: 2%;
@@ -166,10 +153,11 @@
       justify-content: center;
       background-color: #dee4ed;
       border-radius: 50%;
+      overflow: hidden;
       width: 200px;
       height: 200px;
       margin: 0 auto;
-      @include desctop {
+      @include desktop {
         max-width: 100%;
       }
       @include tablets {
@@ -177,12 +165,20 @@
         height: 180px;
       }
     }
+    & .img-photoUrl {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
     & .photo--icon {
       width: 50%;
       height: 60%;
       background-image: svg-load("user-icon.svg", "fill=white", "width=100%", "height=100%");
       background-position: center;
       background-repeat: no-repeat;
+      &.filled {
+        display: none;
+      }
     }
     & .label-upload--review-new{
       width: 90%;
@@ -193,7 +189,15 @@
       margin: 0 auto;
     }
     & .label-upload--review-file {
-       visibility: hidden;
+        opacity: 0;
+        width: 100%;
+        cursor: pointer;
+        position: absolute;
+        z-index: 9999;
+        height: 112%;
+        top: 0%;
+        left: 0;
+        /* visibility: hidden; */
     }
     .label-upload--review-btn {
       margin: 0 auto;
@@ -362,6 +366,7 @@
         align-items: bottom;
         color: white;
         position: relative;
+        min-height: 400px;
         
         &__btn {
           width: 100%;
@@ -413,6 +418,7 @@
         font-size: 18px;
         font-weight: bold;
         line-height: 1.67;
+        color: white;
         @include phones {
           top: 50%;
         }
@@ -422,12 +428,13 @@
         margin-right: 2%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
-        padding: 2%;
+        padding: 3% 2%;
         margin-bottom: 2%;
         color: $text-color;
+        min-height: 350px;
 
         &.add-review {
           @include phones {
@@ -463,6 +470,7 @@
         }
       }
       & .review-form__review {
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -493,6 +501,7 @@
         & .user__photo-avatar {
           max-width: 100%;
           max-height: none;
+          height: 100%;
         }
         &-info {
           width: 74%;
@@ -517,6 +526,8 @@
       }
       & .review__desc {
         margin-bottom: 20%;
+        /* overflow: hidden; */
+        width: 100%;
       }
       & .review__desc--text {
         font-size: 16px;
@@ -524,6 +535,7 @@
         line-height: 1.88;
         opacity: .7;
         padding: 3%;
+        word-wrap: break-word;
       }
       
       & .review-form__btns {
@@ -535,7 +547,7 @@
         font-weight: 600;
         line-height: 1.88;
         width: 87%;
-        @include desctop {
+        @include desktop {
           width: 100%;
         }
       }

@@ -13,6 +13,7 @@
                 input(v-model="titleGroup" type="text"  placeholder="Название новой группы").title-group.title-group--new
                 .title__btns.title__btns--add
                   button(type="submit").title__btn-tick.title__btn-tick--add.btn-tick
+                  button(name="remove" type="button" @click="addSkillForm=false").title__btn-remove.btn-remove
               .form-skills__content.form-skills__content--add
               .form-skills__skill.form-skills__skill--add
                 input(name="name" type="text" placeholder="Новый навык").skill-title.skill-title--add

@@ -1,7 +1,8 @@
 import axios from "axios";
-import { getToken, setAuthHttpHeaderToAxios, setToken } from "./helpers/token";
+import { getToken, setAuthInHeaders, setToken } from "./helpers/token";
 //с вебинара
-const token = localStorage.getItem("token") || "";
+const token = getToken();
+// const token = localStorage.getItem("token");
 
 if (!token) console.warn("Отсутствует токен");
 
@@ -11,6 +12,26 @@ const requests = axios.create({
     "Authorization": `Bearer ${token}`
   }
 });
+
+requests.interceptors.response.use(
+  response => response,
+  async error => {
+    const originalRequest = error.config;
+
+    if (error.response.status === 401) {
+      const response = await requests.post("/refreshToken");
+      const token = response.data.token;
+
+      // localStorage.setItem("token", token);
+      setToken(token);
+      // requests.defaults.headers["Authorization"] = `Bearer ${token}`;
+      setAuthInHeaders(requests, token);
+      originalRequest.headers["Authorization"] = `Bearer ${token}`;
+      return axios(originalRequest);
+    }
+    return Promise.reject(error);
+  }
+);
 export default requests;
 
 

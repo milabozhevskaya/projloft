@@ -49,7 +49,6 @@ export default {
 <style lang="postcss" scoped>
   @import "../../styles/main.pcss";
 
-
  .login-overlay {
     position: absolute;
     width: 35%;
@@ -59,7 +58,7 @@ export default {
     background-color: white;
     padding: 4%;
     color: $text-color;
-    @include desctop {
+    @include desktop {
       width: 45%;
     }
     @include tablets {
@@ -153,7 +152,7 @@ export default {
         line-height: 2.67;
         color: white;
         transition: .6s;
-        @include desctop {
+        @include desktop {
           padding: 20px 70px;
           font-size: 16px;
         }
