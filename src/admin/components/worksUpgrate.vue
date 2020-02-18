@@ -26,7 +26,7 @@
           .rewriting__work--textarea-input
             textarea(name="description" field-type="textarea" v-model="work.description" autocomplete="off").work--textarea Порше Центр Пулково - является официальным дилером марки Порше в Санкт-Петербурге и предоставляет полный цикл услуг по продаже и сервисному обслуживанию автомобилей
         work-tags(
-          :tags="work.techs"
+          :tagsS="work.techs"
           @defineTagsString="defineTagsString"
         )
         .rewriting__work--btns()
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapState, mapMutations } from 'vuex';
 import { getImgUrl } from "../helpers/getImgUrl";
 import vueDropzone from 'vue2-dropzone';
 export default {
@@ -44,6 +44,10 @@ export default {
   },
   data() {
     return {
+      payloaD: {
+        type: "success",
+        text: "hello"
+      },
       photoUrl: "",
       techsStirng: "",
       work: {
@@ -88,7 +92,7 @@ export default {
     if (this.mode === "edit") this.getCurrentWork();
   },
   methods: {
-    ...mapActions('works', ['addWork', 'updateWork']),
+    ...mapActions('works', ['addWork', 'updateWork', "getWorks"]),
     ...mapActions('tooltips', ['showTooltip']),
     loadPhoto(e) {
       const file = e.target.files[0];
@@ -105,7 +109,7 @@ export default {
       } catch (error) {
         this.showTooltip ({
           type: "error",
-          text: error.message
+          text: "Не получилось прочитать фото"
         });
       }
     },
@@ -114,10 +118,17 @@ export default {
         const response = await this.addWork(this.work);
         this.work = {};
         this.$emit('closeAddForm');
-        this.showTooltip({
-          type: "success",
-          text: "Работа добавлена"
-        });
+        if (response == 201) {
+          this.showTooltip({
+            type: "success",
+            text: "Работа добавлена"
+          });
+        } else {
+          this.showTooltip({
+            type: "error",
+            text: "Работа не добавлена"
+          });
+        }
       } catch (error) {
         this.showTooltip({
           type: "error",
@@ -127,7 +138,10 @@ export default {
     },
     async updateUserWork() {
       try {
+        // console.log(this.work);
         const response = await this.updateWork(this.work);
+        console.log(response);
+        this.getWorks();
         this.work = {};
         this.$emit('closeAddForm');
         this.showTooltip({

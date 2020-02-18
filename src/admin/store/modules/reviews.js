@@ -22,7 +22,6 @@ export default {
   actions: {
     async addReview({ commit }, reviews) {
       const data = wrapIntoFormData(reviews);
-      // console.log(data);
       try {
         const response = await this.$axios.post("/reviews", data);
         commit("ADD_REVIEW", response.data);
@@ -54,8 +53,9 @@ export default {
       const data = wrapIntoFormData(review);
       try {
         const response = await this.$axios.post(`reviews/${review.id}`, data);
+        // console.log(response);
         commit("UPDATE_REVIEW", response.data.review);
-        return response;
+        return response.data.message;
       } catch (error) {
         generateStdError(error);
       }

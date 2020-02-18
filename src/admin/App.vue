@@ -8,7 +8,7 @@
       adminnav
       main.content
         router-view(:pageTitle="$route.meta.title")
-   
+        //- tooltips
 </template>
 
 <script>
@@ -17,9 +17,7 @@ export default {
   name: 'app',
   components: {
     adminheader: () => import("./components/header"),
-    adminnav: () => import("./components/nav"),
-    tooltips: () => import("./components/tooltips"),
-    // about: () => import("./components/pages/about")
+    adminnav: () => import("./components/nav")
   },
   data () {
     return {

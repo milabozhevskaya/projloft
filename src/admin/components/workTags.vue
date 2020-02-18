@@ -3,14 +3,15 @@
     .rewriting__work--tags-title Добавление тэга
     .rewriting__work--tags-input
       input(name="tags" type="text" v-model="tagsList" @input="tagsInArray" autocomplete="off").work--tags
-    .rewriting__work--tag(v-for="(tag, index) in tagsArray" :key="index") 
-      .work--tag {{tag}}
-        button.work--tag-remove(@click.prevent="removeTag(index)")
+    .rewriting__work--tags-under
+      .rewriting__work--tag(v-for="(tag, index) in tagsArray" :key="index") 
+        .work--tag {{tag}}
+          button.work--tag-remove(@click.prevent="removeTag(index)")
 </template>
 <script>
 export default {
   props: {
-    tags: String
+    tagsS: String
   },
   data() {
     return {
@@ -20,7 +21,7 @@ export default {
   },
   watch: {
     tags() {
-      this.tagsList = this.tags;
+      this.tagsList = this.tagsS;
       this.tagsInArray();
     },
     tagsList() {
@@ -37,7 +38,7 @@ export default {
     }
   },
   mounted() {
-    this.tagsList = this.tags;
+    this.tagsList = this.tagsS;
     this.tagsInArray();
   }
 }

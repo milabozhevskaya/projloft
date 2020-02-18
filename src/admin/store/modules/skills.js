@@ -4,6 +4,8 @@ export default {
     async addSkill({commit}, skill) {
       try {
         const {data} = await this.$axios.post("/skills", skill);
+        console.log(data);
+        console.log("in addSkill from skills");
         commit("categories/ADD_SKILL", data, { root: true }); //вызываем мутацию из соседнего модуля
       } catch (error) {
 

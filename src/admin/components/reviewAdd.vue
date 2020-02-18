@@ -107,12 +107,10 @@ export default {
       try {
         const response = await this.addReview(this.review);
         this.review = {};
-        console.log("отправили новый ревью");
         this.$emit('closeAddReview');
-        console.log("отправили closeadd");
         this.showTooltip({
           type: "success",
-          text: "Работа добавлена"
+          text: "Отзыв добавлен"
         });
       } catch (error) {
         this.showTooltip({
@@ -128,7 +126,7 @@ export default {
         this.$emit('closeAddReview');
         this.showTooltip({
           type: "success",
-          text: "Работа изменена"
+          text: "Отзыв успешно изменен"
         });
       } catch (error) {
         this.showTooltip({

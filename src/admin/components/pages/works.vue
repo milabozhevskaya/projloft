@@ -21,18 +21,21 @@
           v-for="work in works"
           :key="work.id"
         )
+    tooltips
 </template>
 <script>
 import { mapActions, mapState } from 'vuex';
 export default {
   components: {
     worksUpgrate: () => import("../worksUpgrate"),
-    workItem: () => import("../workItem")
+    workItem: () => import("../workItem"),
+    tooltips: () => import("../tooltips")
   },
   data() {
     return {
       addFormVisible: false,
       mode: ""
+      
     }
   },
   computed: {
@@ -40,12 +43,15 @@ export default {
   },
   methods: {
     ...mapActions("works", ["getWorks"]),
+    ...mapActions('tooltips', ['showTooltip']),
+
     showAddForm(mode) {
       this.mode = mode;
       this.addFormVisible = true;
     },
     closeAddForm() {
       this.addFormVisible = false;
+      this.getWorks();
     }
   },
   async created() {
@@ -54,7 +60,7 @@ export default {
     } catch (error) {
       this.showTooltip({
         type: "error",
-        text: error.message
+        text: "Не получилось получить работы"
       });
     }
   }
@@ -338,6 +344,7 @@ export default {
         font-size: 16px;
         font-weight: 600;
         line-height: 1.5;
+        margin-bottom: 5%;
         & .work--tags {
           border-top: 1px  solid transparent;
           border-left: 1px  solid transparent;
@@ -354,20 +361,33 @@ export default {
           }
         }
       }
+      & .rewriting__work--tags-under {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
       & .rewriting__work--tag {
         display: flex;
         flex-direction: row;
         align-items: center;
         margin-bottom: 5%;
+        margin-right: 5px;
+        &:last-child {
+          margin-right: 0;
+        }
         @include phones {
           margin-bottom: 15%;
         }
       }
       & .work--tag {
+        display: flex;
+        flex-direction: row;
         padding: 10px 17px;
         background-color: #eceff2;
         border-radius: 30px;
-        margin-right: 3%;
+        /* margin-right: 3%; */
+        align-items: center;
+
       }
       & .rewriting__work--btns {
         display: flex;
@@ -459,7 +479,7 @@ export default {
       }
       & .add-work__text {
         position: absolute;
-        top: 62%;
+        top: 65%;
         width: 48%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -475,7 +495,7 @@ export default {
         margin-right: 2%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         box-shadow: 0 0 10px 5px rgba(0,0,0,0.1);
         padding-bottom: 2%;
@@ -539,6 +559,7 @@ export default {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
+        flex-wrap: wrap;
       }
       & .work--tag {
         padding: 8px 20px;

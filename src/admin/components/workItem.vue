@@ -26,7 +26,11 @@ import { getImgUrl } from "../helpers/getImgUrl";
 
 export default {
   props: {
-    work: Object
+    work: {
+      type: Object,
+      default: () => {},
+      required: true
+    }
   },
   components: {
     workTagsList: () => import('./workTagsList')
@@ -42,18 +46,19 @@ export default {
     }
   },
   methods: {
-    ...mapActions('works', ["removeWork"]),
+    ...mapActions('works', ["removeWork", "getWorks"]),
     ...mapMutations('works', ["SET_CURRENT_WORK"]),
     ...mapActions("tooltips", ["showTooltip"]),
     editUserWork() {
       this.SET_CURRENT_WORK(this.work.id);
       this.$emit("editUserWork");
+      this.getWorks();
     },
     async removeUserWork() {
       try {
         const response = await this.removeWork(this.work.id);
         this.showTooltip({
-          type: "success",
+          type: "warning",
           text: "Работа удалена"
         });
       } catch (error) {

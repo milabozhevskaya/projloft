@@ -5,7 +5,7 @@
       .title__btns
         button(name="pencil" type="button" @click="editGroup = true").title__btn-pencil.btn-pencil
         //- button(name="tick").title__btn-tick.btn-tick
-        button(name="remove" type="button" @click="removeGroupOfSkills").title__btn-remove.btn-remove
+        button(name="trash" type="button" @click="removeGroupOfSkills").title__btn-trash.btn-trash
     .form-skills__title(v-else)
       input(type="text" placeholder="Title" v-model="editedGroup.category").title-group
       .title__btns
@@ -60,8 +60,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions('tooltips', ['showTooltip']),
     ...mapActions("skills", ["addSkill"]),
-    ...mapActions("categories", ["removeCategory", "updateCategory"]),
+    ...mapActions("categories", ["removeCategory", "updateCategory", "fetchCategories"]),
     async addNewSkill() {
       this.loading = true;
       try {
@@ -69,11 +70,20 @@ export default {
           await this.addSkill(this.skill);
           this.skill.title = "";
           this.skill.percent = "";
+          this.fetchCategories();
+          this.showTooltip({
+            type: "success",
+            text: "Навык успешно добавлен"
+        });
         } else {
           throw "Есть незаполненные поля"
         }
         
       } catch (error) {
+        this.showTooltip({
+          type: "error",
+          text: error.message
+        });
       } finally {
         this.loading = false;
       }
@@ -81,17 +91,32 @@ export default {
     async removeGroupOfSkills() {
       try {
         await this.removeCategory(this.category.id);
+        this.showTooltip({
+          type: "warning",
+          text: "Вы удалили категорию"
+        });
       } catch (error) {
-
+        this.showTooltip({
+          type: "error",
+          text: error.message
+        });
       }
     },
     async editExistedGroup() {
       try {
         // console.log(this.editedGroup);
         await this.updateCategory(this.editedGroup);
+        this.fetchCategories();
         this.editGroup = false;
+        this.showTooltip({
+          type: "success",
+          text: "Категория успешно обновлена"
+        });
       } catch (error) {
-
+        this.showTooltip({
+          type: "error",
+          text: error.message
+        });
       }
     }
   }
@@ -106,23 +131,4 @@ export default {
   pointer-events: none;
   user-select: none;
 }
-// .form-skills {
-//         padding: 5%;
-//         color: $text-color;
-//         display: flex;
-//         flex-direction: column;
-//         align-content: space-between;
-//         justify-content: center;
-
-//         &__title {
-//           border-bottom: 1px solid rgba($text-color,.4);
-//           display: flex;
-//           flex-direction: row;
-//           padding-top: 2%;
-//           padding-bottom: 2%;
-//           margin-bottom: 4%;
-//           justify-content: space-between;
-          
-//           }
-//         }
 </style>

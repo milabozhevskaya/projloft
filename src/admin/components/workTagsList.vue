@@ -10,8 +10,9 @@ export default {
   },
   data() {
     return {
-      tagsArray: (this.tags.length === 0) ? [] :this.tags.split(',')
+      tagsArray: (this.tags.length === 0) ? [] : this.tags.split(', ')
     }
+    
   }
 };
 </script>

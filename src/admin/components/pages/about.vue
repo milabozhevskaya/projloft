@@ -13,7 +13,7 @@
                 input(v-model="titleGroup" type="text"  placeholder="Название новой группы").title-group.title-group--new
                 .title__btns.title__btns--add
                   button(type="submit").title__btn-tick.title__btn-tick--add.btn-tick
-                  button(name="remove" type="button" @click="addSkillForm=false").title__btn-remove.btn-remove
+                  button(name="trash" type="button" @click="addSkillForm=false").title__btn-remove.btn-remove
               .form-skills__content.form-skills__content--add
               .form-skills__skill.form-skills__skill--add
                 input(name="name" type="text" placeholder="Новый навык").skill-title.skill-title--add
@@ -24,12 +24,14 @@
             skill(
               :category="category"
             )
+    tooltips        
 </template>
 
 <script>
 import { mapActions, mapState } from "vuex";
 export default {
   components: {
+    tooltips: () => import("../tooltips"),
     skill: () => import("../skill")
   },
   data() {
@@ -49,13 +51,21 @@ export default {
   },
   methods: {
     ...mapActions("categories", ["addNewGroup", "fetchCategories"]),
+    ...mapActions('tooltips', ['showTooltip']),
     async addNewGroupOfSkills() {
       try {
         await this.addNewGroup(this.titleGroup);
         this.addSkillForm = false;
         this.titleGroup=""
+        this.showTooltip({
+          type: "success",
+          text: "Новая категория добавлена"
+        });
       } catch (error) {
-        alert(error.message);
+        this.showTooltip({
+          type: "error",
+          text: error.message
+        });
       }
     }
   }
@@ -198,6 +208,13 @@ export default {
           flex-direction: row;
           justify-content: flex-end;
           align-items: center;
+          & .btn-pencil {
+          margin-right: 15px;
+          /* display: none; */
+          }
+          & .btn-tick {
+            margin-right: 15px;
+          }
         }
         & .btn-pencil {
           background-image: svg-load("pencil.svg", "fill=$text-color", "width=100%", "height=100%");
@@ -206,7 +223,9 @@ export default {
           width: 14px;
           height: 14px;
           /* display: none; */
-
+          &:hover {
+            opacity: 1;
+          }
         }
         & .btn-tick {
           background-image: svg-load("tick.svg", "fill=#00d70a", "width=100%", "height=100%");
@@ -214,12 +233,24 @@ export default {
           width: 15px;
           height: 13px;
         }
+        & .btn-trash {
+          background-image: svg-load("trash.svg", "fill=$text-color", "width=100%", "height=100%");
+          background-repeat: no-repeat;
+          width: 13px;
+          height: 15px;
+          opacity: .4;
+          &:hover {
+            opacity: 1;
+          }
+        }
         & .btn-remove {
           background-image: svg-load("remove.svg", "fill=#bf2929", "width=100%", "height=100%");
           background-repeat: no-repeat;
           width: 14px;
           height: 14px;
           /* display: none; */
+
+
 
         }
         & .form-skills__content {
@@ -268,6 +299,10 @@ export default {
           &:focus {
             border-bottom: 1px solid rgba($text-color,1);
           }
+          & .skill-name--input {
+            width: 100%;
+            padding: 2% 1%;
+          }
         }
         & .skill-row--persents {
           width: 20%;
@@ -285,6 +320,10 @@ export default {
          
           &:focus {
             border-bottom: 1px solid rgba($text-color,1);
+          }
+           & .skill-percent--input {
+            width: 100%;
+            padding: 2% 1%;
           }
         }
         & .skill-row--btns {

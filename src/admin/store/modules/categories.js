@@ -81,6 +81,7 @@ export default {
     async addNewGroup({commit}, title) {
       try {
         const {data} = await this.$axios.post("/categories", { title });
+        console.log(data);
         commit("ADD_CATEGORY", data);
       } catch (error) {
         generateStdError(error);
@@ -124,8 +125,9 @@ export default {
       try {
         // console.log(editedCategory);
         const {data} = await this.$axios.post(`/categories/${editedCategory.id}`, {title:editedCategory.category});
-        // console.log(category);
+        console.log(data);
         commit("UPDATE_CATEGORY", data.category);
+
         // return category;
       } catch(error) {
         generateStdError(error);

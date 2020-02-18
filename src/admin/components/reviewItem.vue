@@ -49,7 +49,7 @@ export default {
       try {
         const response = await this.removeReview(this.review.id);
         this.showTooltip({
-          type: "success",
+          type: "warning",
           text: "Работа удалена"
         });
       } catch (error) {

@@ -6,13 +6,13 @@ export default {
     type: ""
   },
   mutations: {
-    SET_VISIBLE: (state,trueOrFalse) => (state.visible = trueOrFalse),
+    SET_VISIBLE: (state, trueOrFalse) => (state.visible = trueOrFalse),
     SET_TEXT: (state, text) => (state.text = text),
     SET_TYPE: (state, type) => (state.type = type)
   },
   actions: {
     showTooltip({ commit }, payload) {
-      const availableTypeOptions = ["seccess", "warning", "error"];
+      const availableTypeOptions = ["success", "warning", "error"];
 
       if (availableTypeOptions.includes(payload.type) === false) {
         console.warn("Был передан недопустимый тип для тултипов");

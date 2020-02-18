@@ -1,30 +1,42 @@
 <template lang="pug">
-  .messages 
+  .messages(v-if="visible")
     .message(:class="type")
       .message__container
-        message__text {{text}}
-        button.message__close(type="button" @click="closeTooltip")
+        //- pre {{text}}
+        .message__text {{text}}
+        button.message__close(type="button" @click="closeTooltipUser")
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
 
 export default {
+  props: {
+    // visible: ""
+    // message: {
+    //   text: "",
+    //   type: ""
+    // }
+  },
   computed: {
     ...mapState('tooltips', {
+      visible: state => state.visible,
       text: state => state.text,
       type: state => state.type
     })
   },
   methods: {
-    ...mapActions('tooltips', ['closeTooltip'])
+    ...mapActions('tooltips', ['closeTooltip']),
+    closeTooltipUser() {
+      this.closeTooltip();
+    }
   }
 }
 </script>
 <style lang="postcss">
   .messages {
     position: fixed;
-    botton: 0;
+    bottom: 7%;
     left: 0;
     width: 100%;
     transform: translateY(100%);
@@ -37,11 +49,13 @@ export default {
     }
   }
   .message {
-    width: 400px;
+    /* width: 400px; */
     color: #fff;
+    width: 45%;
     margin: 0 auto;
-    padding: 20px 30px;
-
+    padding: 15px 20px;
+    border-radius: 5px;
+    position: relative;
     &.success {
       background: green;
     }
@@ -54,7 +68,7 @@ export default {
     &__container {
       width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
     }
     &__text {
@@ -63,11 +77,16 @@ export default {
     }
     &__close {
       display: block;
-      width: 20px;
+      width: 15px;
       background: none;
       border: 0;
-      position: relative;
-      &:before {
+      position: absolute;
+      height: 15px;
+      top: 50%;
+      right: 3%;
+      transform: translate(-50%, -50%);
+      background: svg-load("remove.svg", fill="#fff") center no-repeat;
+      /* &:before {
         position: absolute;
         content: "";
         width: 20px;
@@ -76,7 +95,7 @@ export default {
         left: 50%;
         transform: translate(-50%, -50%);
         background: svg-load("remove.svg", fill="#fff") center no-repeat / container;
-      }
+      } */
     }
   }
 

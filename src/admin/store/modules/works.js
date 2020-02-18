@@ -16,17 +16,17 @@ export default {
       state.currentWork = state.works.filter(work => work.id === updatedWorkId)[0];
     },
     UPDATE_WORK: (state, updatedWork) => {
-      state.works = state.works.map(work => work.id === updatedWork.id ? updateWork : work);
+      state.works = state.works.map(work => work.id === updatedWork.id ? updatedWork : work);
     }
   },
   actions: {
     async addWork({ commit }, works) {
       const data = wrapIntoFormData(works);
-      console.log(data);
       try {
         const response = await this.$axios.post("/works", data);
+        console.log(response.status);
         commit("ADD_WORK", response.data);
-        return response;
+        return response.status;
       } catch (error) {
         generateStdError(error);
       }
@@ -54,8 +54,9 @@ export default {
       const data = wrapIntoFormData(works);
       try {
         const response = await this.$axios.post(`works/${works.id}`, data);
+        console.log(response);
         commit("UPDATE_WORK", response.data.work);
-        return response;
+        return response.data.message;
       } catch (error) {
         generateStdError(error);
       }

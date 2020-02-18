@@ -21,12 +21,14 @@
           v-for="review in reviews"
           :key="review.id"
         )
+    tooltips    
 </template>
 <script>
 import { mapActions, mapState } from 'vuex';
 
 export default {
   components: {
+    tooltips: () => import("../tooltips"),
     reviewAdd: () => import("../reviewAdd"),
     reviewItem: () => import("../reviewItem")
   },
@@ -41,6 +43,8 @@ export default {
   },
   methods: {
     ...mapActions("reviews", ["getReviews"]),
+    ...mapActions('tooltips', ['showTooltip']),
+    
     showAddReview(mode) {
       this.mode = mode;
       this.addReviewVisible = true;
@@ -412,7 +416,7 @@ export default {
         position: absolute;
         top: 62%;
         left: 50%;
-        top: 70%;
+        top: 75%;
         width: 46%;
         transform: translate(-50%, -50%);
         font-size: 18px;
@@ -502,6 +506,8 @@ export default {
           max-width: 100%;
           max-height: none;
           height: 100%;
+          width: 100%;
+          object-fit: cover;
         }
         &-info {
           width: 74%;
