@@ -9,7 +9,7 @@
             img(:src="photoUrl" v-if='photoUrl.length !== 0').img-photoUrl
             .photo--icon(:class="{filled: photoUrl.length}")
           label(for="photo").label-upload--review-new
-            vue-dropzone(id="drop1" :options="dropOptions")
+            vue-dropzone(id="drop2" :options="dropOptions")
             input(name="photo" @change="loadPhoto" type="file").label-upload--review-file
             .label-upload--review-btn
               .label-upload--add-photo
@@ -144,3 +144,11 @@ export default {
 }
 
 </script>
+<style lang="postcss">
+#drop2 {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+}
+</style>
