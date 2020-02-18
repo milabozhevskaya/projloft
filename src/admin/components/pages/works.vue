@@ -2,7 +2,7 @@
   .works
     .works__container
       .works__info
-        .works__info--title Блок "Работы"
+        .works__info--title Блок "Работы" 
       worksUpgrate(
         v-if="addFormVisible"
         :mode="mode"
@@ -35,7 +35,6 @@ export default {
     return {
       addFormVisible: false,
       mode: ""
-      
     }
   },
   computed: {

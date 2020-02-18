@@ -1,6 +1,6 @@
 <template lang="pug">
   .work__tags
-    .work--tag(v-for="(tag, index) in tagsArray" :key="index")
+    .work--tag(v-for="(tag, index) in (this.tags.split(', '))" :key="index")
       .work--tag-item {{tag}}
 </template>
 <script>
@@ -10,7 +10,8 @@ export default {
   },
   data() {
     return {
-      tagsArray: (this.tags.length === 0) ? [] : this.tags.split(', ')
+      // one: this.tags,
+      // tagsArray: (this.tags.length === 0) ? [] : this.tags.split(', ')
     }
     
   }
