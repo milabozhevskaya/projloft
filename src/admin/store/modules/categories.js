@@ -90,11 +90,11 @@ export default {
         // );
       }
     },
-    async fetchCategories({commit}) {
+    async fetchCategories({commit, rootGetters}) {
       try {
         // const userID = await this.$axios.get("/user");
-
-        const { data } = await this.$axios.get("/categories/259");
+        const userId = rootGetters['user/userId'];
+        const { data } = await this.$axios.get(`/categories/${userId}`);
         commit("SET_CATEGORIES", data);
         console.log(data);
       } catch (error) {
