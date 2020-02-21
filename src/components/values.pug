@@ -26,13 +26,15 @@ script(type="text/x-template")#skills-list
         
 script(type="text/x-template")#skills-row
   .skills-row
-    .skills-row__title {{skill.skillsGroup}}
+    .skills-row__title {{skill.category}}
     .skills-row__desc
       ul.skills
-        li.skills__item(v-for="(skillPercent, skillName) in skill.skills")
+        li.skills__item(
+          v-for="skillItem in skill.skills"
+          v-if="skill.skills.length"
+        )
           skill(
-            :skillName="skillName"
-            :skillPercent="skillPercent"
+            :skill="skillItem"
           )
 
 script(type="text/x-template")#skill
@@ -48,6 +50,6 @@ script(type="text/x-template")#skill
       circle(
         r="67" cx="100" cy="100" ref="color-circle" stroke="url(#skill__gradient" transform="rotate(-180 100 100)" 
       ).skill__circle.skill__circle--above
-    .skill__title {{skillName}}
+    .skill__title {{skill.title}}
 
 

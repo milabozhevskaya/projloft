@@ -50,4 +50,4 @@ form.form(@submit.prevent="submitForm")
     .overlay__content(@click="hideOverlayNo")
       .overlay__message {{resultMessage}} 
       .overlay__btn
-        button.overlay__close(@click="hideOverlay") Закрыть
+        button(@click.prevent="hideOverlay").overlay__close Закрыть

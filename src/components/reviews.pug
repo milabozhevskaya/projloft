@@ -1,21 +1,21 @@
 section.reviews(@click="checkArrows" @touchend="checkArrows")
   .container.reviews__container
     .reviews__content
+      //- pre {{reviews}}
       h2.reviews__title Что обо мне говорят
-      flickity(ref="flickity" :options="flickityOptions").reviews__slider
-        - for (var i = 0; i<7; i++)
-          .reviews__item
-            .reviews__quote
-              +icon("quote", "reviews__quote-icon")
-            .review
-              .review__text #{reviews[i][0]}
-              .review__user
-                .user
-                  .user__photo
-                    +image(`content/${reviews[i][1]}.png`, "user photo", "user__photo-avatar")
-                  .user__info
-                    .user__info-name #{reviews[i][2]}
-                    .user__info-pos #{reviews[i][3]}
+      flickity(ref="flickity" :options="flickityOptions" v-if="reviews.length > 0").reviews__slider
+        .reviews__item(v-for="review in reviews")
+          .reviews__quote
+            +icon("quote", "reviews__quote-icon")
+          .review
+            .review__text {{review.text}}
+            .review__user
+              .user
+                .user__photo
+                  img(:src="review.photo").user__photo-avatar
+                .user__info
+                  .user__info-name {{review.author}}
+                  .user__info-pos {{review.occ}}
     .reviews__slider-direction
       .reviews__slider-direc--prev(@click="previous" )
         +arrow("prev")

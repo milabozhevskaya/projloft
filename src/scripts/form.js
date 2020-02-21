@@ -74,6 +74,7 @@ new Vue({
       }
     },
     hideOverlay() {
+      
       this.overlayHidden = true;
     },
     hideOverlayNo() {

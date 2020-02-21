@@ -8,6 +8,7 @@ section.my-works
 script(type="text/x=template")#slider-container
   .slider
     //- pre {{works}}
+    //- pre {{currentWork}}
     display(
       :works="works",
       :currentWork="currentWork",
@@ -18,8 +19,25 @@ script(type="text/x=template")#slider-container
       :currentWork="currentWork"
     )
 
+script(type="text/x=template")#slider-description
+  .slider__desc
+    //- pre {{currentWork}}
+    .slider__desc-tags
+      tags(
+        :tags="currentWork.techs"
+      )
+    .slider__desc-text
+      h3.slider__desc-title {{currentWork.title}}
+      .slider__desc-info {{currentWork.description}}
+    .slider__desc-btns
+      a(:href="currentWork.link" class="my-works__link")
+        +icon("link", "my-works-icon")
+        .my-works__link-text Посмотреть сайт
+
+
 script(type="text/x=template")#slider-display
   .slider__display(:data-slide="currentIndex + 1")
+    //- pre {{currentWork}}
     .display
       img(:src="currentWork.photo", alt="" class="display-pic")
       .display__slider-prev
@@ -49,21 +67,9 @@ script(type="text/x=template")#slider-btns
     button.display__btn.display__btn-prev(@click.prevent="$emit('slide', 'prev')")
       +arrow("prev")
 
-script(type="text/x=template")#slider-description
-  .slider__desc
-    .slider__desc-tags
-      tags(
-        :tags="tagsArray"
-      )
-    .slider__desc-text
-      h3.slider__desc-title {{currentWork.title}}
-      .slider__desc-info {{currentWork.desc}}
-    .slider__desc-btns
-      a(:href="currentWork.link" class="my-works__link")
-        +icon("link", "my-works-icon")
-        .my-works__link-text Посмотреть сайт
+
 
 script(type="text/x=template")#slider-tags
   ul.tags
-    li.tags__item(v-for="tag in tags")
+    li.tags__item(v-for="tag in tagsArray" )
       .tag {{tag}}
