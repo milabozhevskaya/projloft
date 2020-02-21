@@ -8,25 +8,38 @@
         form(@submit.prevent="loginEntry").admin-entry
           .admin-entry__form-wrap
             .admin-entry__text Логин
-            input(v-model="user.name" type="text" placeholder="").admin__login.admin-entry__input
+            input(v-model="user.name" type="text" :v-model="login" @input="validateLogin" placeholder="").admin__login.admin-entry__input
             .admin-entry__icon--name
           .admin-entry__form-wrap
             .admin-entry__text Пароль
-            input(v-model="user.password" type="password" placeholder="").admin__password.admin-entry__input
+            input(v-model="user.password" :v-model="pass" type="password" @input="validateLogin" placeholder="").admin__password.admin-entry__input
             .admin-entry__icon--passw
           .admin-entry__btn
-            button(type="submit").admin__btn Отправить
+            button(type="submit" disabled=true ).admin__btn Отправить
 </template>
 <script>
 import $axios from "../requests";
 export default {
   data: () => ({
+    login: "",
+    pass: "",
     user: {
       name: "",
       password: ""
     }
   }),
   methods: {
+   validateLogin() {
+      this.login = this.$el.querySelector('.admin__login').value;
+      this.pass = this.$el.querySelector('.admin__password').value;
+      
+      if ((this.login.length != 0)&(this.pass != 0)) {
+        this.$el.querySelector('.admin__btn').disabled = false;
+      } else {
+        this.$el.querySelector('.admin__btn').disabled = true;
+      }
+    
+    },
     async loginEntry() {
       try {
         const response = await $axios.post("/login", this.user);

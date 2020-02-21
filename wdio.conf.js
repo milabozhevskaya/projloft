@@ -264,13 +264,13 @@ const shared = {
 };
 exports.firefox = {
     ...shared,
-    desiredCapbilities: {
+    desiredCapabilities: {
         browserName: 'firefox'
     }
 };
 exports.chrome = {
     ...shared,
-    desiredCapbilities: {
+    desiredCapabilities: {
         browserName: 'chrome',
         chromeOptions: {
             args: ["disable-gpu", 'no-sandbox', 'disable-setuid-sandbox', 'incognito', 'disable-dev-shm-usage']
